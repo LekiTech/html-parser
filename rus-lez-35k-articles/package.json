@@ -18,8 +18,5 @@
   "main": "index.js",
   "scripts": {
     "parser": "node index.js"
-  },
-  "dependencies": {
-
   }
 }
