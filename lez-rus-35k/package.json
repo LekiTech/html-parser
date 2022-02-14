@@ -1,0 +1,22 @@
+{
+  "name": "lez-rus-35k",
+  "description": "Dictionary. Lezghian - Russian [35K articles]",
+  "version": "1.0.0",
+  "license": "ISC",
+  "author": "EEA",
+  "keywords": [
+    "dictionaries",
+    "lezgi",
+    "lezghian-russian",
+    "лезгинско-русский",
+    "словари",
+    "словарь",
+    "лезги-урус чIалан гафалаг",
+    "лезги",
+    "урус"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "parser": "node index.js"
+  }
+}
