@@ -1,0 +1,20 @@
+{
+  "name": "html-parser",
+  "description": "HTML-Parser for dictionaries.",
+  "version": "1.0.0",
+  "license": "ISC",
+  "author": "EEA",
+  "keywords": [
+    "dictionaries",
+    "dictionary",
+    "словари",
+    "словарь"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "rus-lez-35k-articles": "node rus-lez-35k-articles/index.js"
+  },
+  "dependencies": {
+    "puppeteer": "^13.1.2"
+  }
+}
