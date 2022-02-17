@@ -12,7 +12,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "rus-lez-35k-articles": "node rus-lez-35k-articles/index.js"
+    "lez-rus-35k-articles": "node lez-rus-35k-articles/index.js"
   },
   "dependencies": {
     "puppeteer": "^13.1.2"
