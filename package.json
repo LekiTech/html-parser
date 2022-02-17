@@ -12,9 +12,15 @@
   ],
   "main": "index.js",
   "scripts": {
-    "lez-rus-35k": "node lez-rus-35k/index.js"
+    "lez-rus-35k": "node lez-rus-35k/index.js",
+    "tab-rus-25k": "npx ts-node tab-rus-25k/index.ts"
   },
   "dependencies": {
-    "puppeteer": "^13.1.2"
+    "puppeteer": "13.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.18",
+    "ts-node": "10.5.0",
+    "typescript": "4.5.5"
   }
 }

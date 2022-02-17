@@ -19,7 +19,8 @@ async function run() {
         article.definitions = await page.evaluate(() => {
             let p = document.querySelectorAll("p");
             return [...p].map((el) => el.innerText.split('\n'))
-                .filter((el) => el.match(/[^\s]+/g)).flat()
+                .flat()
+                .filter((el) => el.match(/[^\s]+/g))
                 .reduce((prev, curr) => prev + curr)
                 .replaceAll(/\s{2,}/g, " ")
         })
