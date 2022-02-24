@@ -3,22 +3,23 @@ import fs from "fs";
 import path from "path";
 import url from "url";
 
-export async function parseAllPages(sourceDirPath: string,
+export async function parseAllPages<T>(sourceDirPath: string,
     outputDir: string,
-    htmlPageParser: () => any,
-    postProcessing: (parsedValues: any[]) => any[],
+    htmlPageParser: () => T[],
+    postProcessing: (parsedValues: T[]) => any[],
     testFirstFile = false
     ) {
     const browser = await puppeteer.launch({
         args: ['--disable-web-security']
      })
     const fsPromises = fs.promises
-    const directory = (await fsPromises.readdir(sourceDirPath))
+    let directory = (await fsPromises.readdir(sourceDirPath))
         .filter((name: string) => name.endsWith('.html'));
     const page = await browser.newPage()
     
     const parsedValues = []
-  
+    const sortedFilenames = directory.sort((f1, f2) => parseInt(path.basename(f1)) - parseInt(path.basename(f2)))
+    console.log(sortedFilenames);
     for (let file of directory) {
         const address = url.pathToFileURL(path.join(sourceDirPath, file)).toString()
         await page.goto(address)
@@ -28,6 +29,7 @@ export async function parseAllPages(sourceDirPath: string,
         
         // Run single cycle of for-loop for testing purposes
         if (testFirstFile) {
+            console.log(`Tested file '${file}'`);
             break;
         }
     }
