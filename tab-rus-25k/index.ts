@@ -26,6 +26,7 @@ type Definition = {
 
 type Expression = {
   spelling: string;
+  inflection?: string;
   definitions: Definition[]
 }
 
@@ -121,7 +122,31 @@ function postProcessing(extractedValues: TextObject[]) {
         wordPartsCombined.push({...currentTextObj});
     }
   }
-  return wordPartsCombined;
+
+  const expressions: Expression[] = [];
+  for (const wordPart of wordPartsCombined) {
+    // Condition to add new expression
+    if (wordPart.isUpperCase) {
+      expressions.push({ spelling: wordPart.text, definitions: [] });
+    } 
+    // If previous condition didn't fire then word part must be an inflection or definition part
+    else if (expressions.length > 0) {
+      const lastExpression = expressions[expressions.length - 1];
+      const wordPartFontProps = getFontStyleProps(wordPart);
+      // Condition to add inflection
+      if (lastExpression.definitions.length === 0 && wordPart.text.trim().startsWith('-')) {
+        lastExpression.inflection = wordPart.text;
+      } else {
+        lastExpression.definitions.push({
+          text: wordPart.text,
+          type: wordPartFontProps.isPlain ? DefinitionType.Plain : 
+            (wordPartFontProps.isBold ? DefinitionType.Example : DefinitionType.Tag)
+        })
+      }
+    }
+  }
+
+  return expressions;
 }
 
 const sourceDirPath = path.join(__dirname, 'dictionary');
