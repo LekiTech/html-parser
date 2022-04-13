@@ -10,6 +10,21 @@ Replace patterns:
       {
         "text": "
 
+",
+        "type": "Example"
+      },
+      {
+        "text": "~ ",
+        "type": "Plain"
+      },
+      {
+        "text": "
+
+□ ~ ",
+        "type": "Plain"
+      },
+      {
+        "text": "апIуб
 
 
 апГуб => апIуб
