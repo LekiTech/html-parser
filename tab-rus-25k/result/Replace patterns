@@ -27,6 +27,9 @@ Replace patterns:
         "text": "апIуб
 
 
+"definitions": []
+
+
 апГуб => апIуб
 
 ЫО => найти и заменить на ЬЮ ью
