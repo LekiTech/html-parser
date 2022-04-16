@@ -27,7 +27,7 @@ Replace patterns:
         "text": "апIуб
 
 
-"definitions": []
+"spelling": ".+ .+",
 
 
 апГуб => апIуб
