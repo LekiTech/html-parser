@@ -1,4 +1,5 @@
 import path from 'path';
+import { Expression, Definition, DefinitionType } from './types';
 import { parseAllPages } from '../htmlReader';
 
 // Definitions
@@ -13,22 +14,6 @@ const resultForm = {
 const verticalLines = new Set(['Ӏ', 'I']);
 const wordBreak = '- ';
 
-enum DefinitionType {
-  Plain = 'Plain',
-  Tag = 'Tag',
-  Example = 'Example',
-}
-
-type Definition = {
-  text: string;
-  type: DefinitionType;
-}
-
-type Expression = {
-  spelling: string;
-  inflection?: string;
-  definitions: Definition[]
-}
 
 type TextObject = {
   text: string;

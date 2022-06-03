@@ -1,3 +1,5 @@
+// THIS SCRIPTS ARE USED IN A BROWSER FOR QUICK TESTING PARSING LOGIC
+
 let extractedValues = [...document.querySelectorAll('span')]
   .map(el => {
       const allStyles = window.getComputedStyle(el);
