@@ -3,11 +3,20 @@ import fs from "fs";
 import path from "path";
 import url from "url";
 
+export type Dictionary = {
+    name: string;
+    url?: string;
+    expressionLanguageId: string;
+    definitionLanguageId: string;
+    dictionary: any[]
+}
+
 export async function parseAllPages<T>(sourceDirPath: string,
     outputDir: string,
     htmlPageParser: () => T[],
     postProcessing: (parsedValues: T[]) => any[],
-    testFirstFile = false
+    testFirstFile = false,
+    dictionaryTemplate?: Dictionary
     ) {
     const browser = await puppeteer.launch({
         args: ['--disable-web-security']
@@ -33,7 +42,7 @@ export async function parseAllPages<T>(sourceDirPath: string,
             break;
         }
     }
-    const dictionary = postProcessing(parsedValues);
+    const dictionary = getResultDictionary<T>(dictionaryTemplate, postProcessing, parsedValues);
 
     const resultPath = path.join(outputDir, 'dictionary.json');
     fs.writeFile(resultPath, JSON.stringify(dictionary, null, 2),
@@ -46,4 +55,12 @@ export async function parseAllPages<T>(sourceDirPath: string,
         });
 
     await browser.close()
+}
+
+function getResultDictionary<T>(dictionaryTemplate: Dictionary, postProcessing: (parsedValues: T[]) => any[], parsedValues: any[]) {
+    if (dictionaryTemplate) {
+        dictionaryTemplate.dictionary = postProcessing(parsedValues);
+        return dictionaryTemplate;
+    }
+    return postProcessing(parsedValues);
 }
