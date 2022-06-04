@@ -13,7 +13,7 @@ export type Dictionary = {
 
 export async function parseAllPages<T>(sourceDirPath: string,
     outputDir: string,
-    htmlPageParser: () => T[],
+    htmlPageParser: (page: puppeteer.Page) => Promise<T[]>,
     postProcessing: (parsedValues: T[]) => any[],
     testFirstFile = false,
     dictionaryTemplate?: Dictionary
@@ -33,7 +33,7 @@ export async function parseAllPages<T>(sourceDirPath: string,
         const address = url.pathToFileURL(path.join(sourceDirPath, file)).toString()
         await page.goto(address)
 
-        const parsedPageValues = await page.evaluate(htmlPageParser);
+        const parsedPageValues = await htmlPageParser(page);
         parsedValues.push(...parsedPageValues);
         
         // Run single cycle of for-loop for testing purposes
@@ -59,7 +59,9 @@ export async function parseAllPages<T>(sourceDirPath: string,
 
 function getResultDictionary<T>(dictionaryTemplate: Dictionary, postProcessing: (parsedValues: T[]) => any[], parsedValues: any[]) {
     if (dictionaryTemplate) {
-        dictionaryTemplate.dictionary = postProcessing(parsedValues);
+        const dictData = postProcessing(parsedValues);
+        console.log('dictData', dictData.length);
+        dictionaryTemplate.dictionary = dictData;
         return dictionaryTemplate;
     }
     return postProcessing(parsedValues);

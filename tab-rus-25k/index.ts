@@ -1,6 +1,7 @@
 import path from 'path';
 import { Expression, Definition, DefinitionType } from './types';
 import { parseAllPages } from '../htmlReader';
+import { Page } from 'puppeteer';
 
 // Definitions
 const resultForm = {
@@ -47,28 +48,30 @@ function appendTextToLastObjectInList(textObject: TextObject, list: TextObject[]
 
 // Parser functions
 
-function htmlPageParser() {
-  const extractedValues: TextObject[] = [...document.querySelectorAll('span')]
-    .map(el => {
-        const allStyles = window.getComputedStyle(el);
-        const uppercaseCharsCount =  el.innerText
-          .replace(/Ӏ/g, '')
-          .replace(/I/g, '')
-          .match(/\p{Uppercase}/gu)?.length;
-        const isUpperCase = uppercaseCharsCount > 1 &&
-            el.innerText !== el.innerText.toLowerCase();
-        return { 
-            text: el.innerText,
-            isUpperCase,
-            style: {
-                fontFamily: allStyles.fontFamily,
-                fontSize: allStyles.fontSize,
-                left: allStyles.left,
-                bottom: allStyles.bottom
-            }
-        }
-    });
-  return extractedValues;
+async function htmlPageParser(page: Page) {
+  return await page.evaluate(() => {
+    const extractedValues: TextObject[] = [...document.querySelectorAll('span')]
+      .map(el => {
+          const allStyles = window.getComputedStyle(el);
+          const uppercaseCharsCount =  el.innerText
+            .replace(/Ӏ/g, '')
+            .replace(/I/g, '')
+            .match(/\p{Uppercase}/gu)?.length;
+          const isUpperCase = uppercaseCharsCount > 1 &&
+              el.innerText !== el.innerText.toLowerCase();
+          return { 
+              text: el.innerText,
+              isUpperCase,
+              style: {
+                  fontFamily: allStyles.fontFamily,
+                  fontSize: allStyles.fontSize,
+                  left: allStyles.left,
+                  bottom: allStyles.bottom
+              }
+          }
+      });
+    return extractedValues;
+  })
 }
 
 function postProcessing(extractedValues: TextObject[]) {
