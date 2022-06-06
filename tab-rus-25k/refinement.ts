@@ -2,7 +2,8 @@
 import fs from "fs";
 import path from "path";
 import editedDictionary from './result/dictionary_manual_check.json';
-import { Expression, Definition, DefinitionType } from './types';
+import { Expression, Definition, DefinitionType } from '../types';
+import { aggregateDefinitions } from '../utils';
 
 type ExpressionResult = Omit<Expression, 'definitions'> & {
   definitions: string[];
@@ -10,31 +11,14 @@ type ExpressionResult = Omit<Expression, 'definitions'> & {
 
 const dictData = editedDictionary as Expression[];
 
-function addTagsWithinSpaces(text: string, leftTag: string, rightTag: string) {
-  const hasLeftSpace = /^\s/.test(text);
-  const hasRightSpace = /\s$/.test(text);
-  return (hasLeftSpace ? ' ' : '') + leftTag +
-    text.trim() +
-    rightTag + (hasRightSpace ? ' ' : '');
-}
+// function addTagsWithinSpaces(text: string, leftTag: string, rightTag: string) {
+//   const hasLeftSpace = /^\s/.test(text);
+//   const hasRightSpace = /\s$/.test(text);
+//   return (hasLeftSpace ? ' ' : '') + leftTag +
+//     text.trim() +
+//     rightTag + (hasRightSpace ? ' ' : '');
+// }
 
-function aggregateDefinitions(definitions: Definition[]): string[] {
-  return [
-    definitions.map(def => {
-      switch (def.type) {
-        case DefinitionType.Example:
-          return addTagsWithinSpaces(def.text, '{', '}'); //`{${def.text}}`;
-        case DefinitionType.Tag:
-          return addTagsWithinSpaces(def.text, '<', '>'); //`<${def.text}>`;
-        default:
-          if (def.type !== DefinitionType.Plain) {
-            console.error(def.type, 'is not of type', DefinitionType.Plain)
-          }
-          return def.text;
-      }
-    }).join('')
-  ]
-}
 
 const finalDictionary = {
   name: 'ТАБАСАРАНСКО-РУССКИЙ СЛОВАРЬ (ХАНМАГОМЕДОВ Б.Г.К., ШАЛБУЗОВ К.Т.)',

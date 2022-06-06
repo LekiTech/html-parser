@@ -1,5 +1,5 @@
 import path from 'path';
-import { Expression, Definition, DefinitionType } from './types';
+import { Expression, Definition, DefinitionType } from '../types';
 import { parseAllPages } from '../htmlReader';
 import { Page } from 'puppeteer';
 
