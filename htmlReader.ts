@@ -10,6 +10,7 @@ export type Dictionary = {
     definitionLanguageId: string;
     dictionary: any[]
 }
+const _inspectBrowser = false;
 
 export async function parseAllPages<T>(sourceDirPath: string,
     outputDir: string,
@@ -19,13 +20,19 @@ export async function parseAllPages<T>(sourceDirPath: string,
     dictionaryTemplate?: Dictionary
     ) {
     const browser = await puppeteer.launch({
-        args: ['--disable-web-security']
+        args: ['--disable-web-security'],
+        headless: !_inspectBrowser
      })
     const fsPromises = fs.promises
     let directory = (await fsPromises.readdir(sourceDirPath))
         .filter((name: string) => name.endsWith('.html'));
     const page = await browser.newPage()
-    
+    // Log all messages from browser console to terminal
+    // @ts-ignore
+    page.on('console', async msg => console[msg._type](
+        ...await Promise.all(msg.args().map(arg => arg.jsonValue()))
+      ));
+
     const parsedValues = []
     const sortedFilenames = directory.sort((f1, f2) => parseInt(path.basename(f1)) - parseInt(path.basename(f2)))
     console.log(sortedFilenames);
@@ -41,6 +48,9 @@ export async function parseAllPages<T>(sourceDirPath: string,
             console.log(`Tested file '${file}'`);
             break;
         }
+    }
+    if (_inspectBrowser) {
+        await page.waitForTimeout(10000000);
     }
     const dictionary = getResultDictionary<T>(dictionaryTemplate, postProcessing, parsedValues);
 

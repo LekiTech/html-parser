@@ -13,6 +13,10 @@ const dictionaryTemplate: Dictionary = {
   dictionary: []
 }
 
+type ChildNodeExt = ChildNode 
+  & {tagName: string}
+  & {className: string};
+
 type PreProcessedArticle = {
   spelling?: string;
   inflection?: string;
@@ -31,110 +35,116 @@ type PreProcessedArticle = {
 */
 async function htmlPageParser(page: Page) { //}: Promise<PreProcessedArticle[][]> {
   return await page.evaluate((tags) => {
+    const isInflection = (lines, i, el) => {
+      // const trimmedText = el.textContent.trim();
+      // return (
+      //   (trimmedText.startsWith('(') && trimmedText.endsWith(')')) || 
+      //   (i > 0 && lines[i-1]?.textContent.trim().endsWith('(') && lines[i+1]?.textContent.trim().startsWith(')'))
+      // );
+      const trimmedText = el.textContent.trim();
+      const currentElStartsWithBrace = trimmedText.startsWith('(');
+      const currentElEndsWithBrace = trimmedText.endsWith(')');
+      const prevElEndsWithBrace = i > 0 && lines[i-1]?.textContent.trim().endsWith('(');
+      const nextElStartsWithBrace = lines[i+1]?.textContent.trim().startsWith(')')
+      // console.log(trimmedText, prevElEndsWithBrace,
+      //    currentElStartsWithBrace, currentElEndsWithBrace,
+      //    nextElStartsWithBrace)
+      return (
+        (currentElStartsWithBrace && currentElEndsWithBrace) || 
+        (prevElEndsWithBrace && currentElEndsWithBrace) || 
+        (currentElStartsWithBrace && nextElStartsWithBrace) || 
+        (prevElEndsWithBrace && nextElStartsWithBrace)
+      );
+    }
     // Get all lines from single HTML page (1 letter per page)
     const allLines = [...document.querySelectorAll('p.af1')].map(el => {
       return [...el.childNodes]
     })
     // Map all HTML DOM elements (lines) to JS objects
-    const result = allLines.map(line => {
+    //.slice(2980, 2981) ashukarun
+    //.slice(3035, 3036) ayaman
+    const result = allLines.map((line: ChildNodeExt[], i) => {
+      // aggregate sibling elements with the same className
+      const aggregatedLine = [line[0]];
+      for (let i = 1; i < line.length; i++) {
+          if (aggregatedLine[aggregatedLine.length - 1].className === line[i].className) {
+              aggregatedLine[aggregatedLine.length - 1].textContent += line[i].textContent;
+          } else {
+              if (line[i].className === 'af') {
+                  // only 'spelling' type may have className = 'af' others with the same className should be plain text
+                  line[i].className = '';
+              }
+              aggregatedLine.push(line[i]);
+          }
+      }
+
       // Map every word/phrase in a line to JS object so that spelling, definition and inflection 
       // texts are  distinguishable. 
       // Also to find different types of text within definitions like plain text, examples or tags
-      return line.map((el: ChildNode & {className: string}) => {
-        if (el.nodeName === '#text' || el.textContent.trim().length === 0) {
-            return { text: el.textContent, type: 'Plain' };
-        }
-        switch(el.className) {
-            case 'af': return { spelling: el.textContent };
-            case 'a1':
-              const tagKey = el.textContent.endsWith('.') ? el.textContent.trim() : (el.textContent.trim() + '.');
-              if (tags[tagKey]) {
-                  return { text: el.textContent, type: 'Tag' };
-              }
+      return aggregatedLine
+        .map((el: ChildNodeExt) => el.tagName === 'A' ? [...el.childNodes] : el)
+        .flat()
+        .map((el: ChildNodeExt, i) => {
+          if (el.nodeName === '#text' || el.textContent.trim().length === 0) {
               return { text: el.textContent, type: 'Plain' };
-            case 'aff0': 
-              const trimmedText = el.textContent.trim();
-              if (trimmedText.startsWith('(') && trimmedText.endsWith(')')) {
-                return { inflection: el.textContent };
-              }
-              return { text: el.textContent, type: 'Example' };
-            default: return { text: el.textContent, type: 'Plain' };
-        }
-      })
-      .filter(obj => obj != undefined)
-      // Map line arrays to the objects where all definition phrases are inside a 'definitions' array
-      .reduce((acc, obj) => {
-        if (obj.spelling) {
-          acc['spelling'] = obj.spelling;
-        }
-        else if (obj.inflection) {
-          acc['inflection'] = obj.inflection;
-        } else {
-          acc.definitions.push(obj);
-        }
-        return acc;
-      }, { definitions: [] });
+          }
+          switch(el.className) {
+              case 'af':
+                return { spelling: el.textContent };
+              case 'a1':
+                // Parse italic text, we are only interested in separating tags
+                // all other texts like comments or description can be plain text
+                const tagKey = el.textContent.endsWith('.') ? el.textContent.trim() : (el.textContent.trim() + '.');
+                if (tags[tagKey]) {
+                    return { text: el.textContent, type: 'Tag' };
+                }
+                return { text: el.textContent, type: 'Plain' };
+              case 'aff0':
+                // Parse bold text, it can be an inflection or an example
+                if (isInflection(line, i, el)) {
+                  return { inflection: el.textContent };
+                }
+                return { text: el.textContent, type: 'Example' };
+              default: return { text: el.textContent, type: 'Plain' };
+          }
+        })
+        .filter(obj => obj != undefined)
+        // Map line arrays to the objects where all definition phrases are inside a 'definitions' array
+        .reduce((acc, obj) => {
+          if (obj.spelling) {
+            acc['spelling'] = obj.spelling;
+          } else if (obj.inflection) {
+            acc['inflection'] = obj.inflection;
+          } else if (obj.type === 'Example' && obj.inflection && acc.definitions.length === 0) {
+            // If we find objects of type "Example" 
+            // and it is the first one to add to "definitions"
+            // and there is already an inflection added to accumulating object
+            // Then this "Example" object is most probably wrongly parsed inflection
+            acc['inflection'] += obj.text;
+          } else {
+            acc.definitions.push(obj);
+          }
+          return acc;
+        }, { definitions: [] });
     })
     .reduce((acc, lineObj) => {
       if (lineObj['spelling']) {
         acc.push(lineObj);
       } else {
-        acc[acc.length - 1].definitions.push(...lineObj.definitions);
+        acc[acc.length - 1]?.definitions.push(...lineObj.definitions);
       }
       return acc;
     }, []);
     return result;
-    // .map(line => {
-    //   const result = {};
-    //   const spellingObjIdx = line.findIndex(obj => obj.spelling);
-    //   if (spellingObjIdx > -1) {
-    //     result['spelling'] = line[spellingObjIdx];
-    //     result['definitions'] = [
-    //       line.splice(spellingObjIdx,spellingObjIdx)
-    //         .map(obj => obj.text)
-    //         .join('')
-    //     ]
-    //   } else {
-    //     result['definitions'] = [
-    //       line.map(obj => obj.text).join('')
-    //     ]
-    //   }
-    //   return result;
-    // });
   }, tags);
 }
 
 function postProcessing(extractedValues: Expression[]): any[] {
-  // return extractedValues.flat().filter(obj => obj.inflection);
-  // const result = [];
-  // for(let i = 0; i < extractedValues.length; i++) {
-  //   const line = extractedValues[i];
-  //   const article = {};
-  //   const spellingObjIdx = line.findIndex(obj => obj.spelling);
-  //   if (spellingObjIdx > -1) {
-  //     article['spelling'] = line[spellingObjIdx];
-  //     article['definitions'] = [
-  //       line.splice(spellingObjIdx, spellingObjIdx)
-  //         .map(obj => obj.text)
-  //         .join('')
-  //     ]
-  //   } else {
-  //     article['definitions'] = [
-  //       line.map(obj => obj.text).join('')
-  //     ]
-  //   }
-  // }
-  //  .map(line => {
-  //   return line.map(obj => {
-  //     if (obj.text) {
-  //       return { text: () }
-  //     } 
-  //   })
-  // });
   return extractedValues.map(exp => {
     return {
       spelling: exp.spelling,
-      inflection: exp.inflection,
+      // remove enclosing parentheses
+      inflection: exp.inflection?.trim().replace(/^\(|\)$/gm, ''),
       definitions: aggregateDefinitions(exp.definitions)
     };
   });
@@ -144,7 +154,13 @@ const sourceDirPath = path.join(__dirname, 'dictionary/letters');
 const resultDirPath = path.join(__dirname, 'result');
 (async () => {
   try {
-      await parseAllPages(sourceDirPath, resultDirPath, htmlPageParser, postProcessing, true, dictionaryTemplate);
+      await parseAllPages(
+        sourceDirPath,
+        resultDirPath,
+        htmlPageParser,
+        postProcessing,
+        false,
+        dictionaryTemplate);
   } catch (err) {
       console.error(err)
   }
