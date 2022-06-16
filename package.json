@@ -12,7 +12,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "lez-rus-35k": "node lez-rus-35k/index.js",
+    "lez-rus-35k": "npx ts-node lez-rus-35k/index.ts",
     "tab-rus-25k": "npx ts-node tab-rus-25k/index.ts"
   },
   "dependencies": {
