@@ -1,0 +1,733 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h1
+	{mso-style-link:"Заголовок 1 Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";}
+h2
+	{mso-style-link:"Заголовок 2 Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	font-style:italic;}
+h3
+	{mso-style-link:"Заголовок 3 Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Верхний колонтитул Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"Нижний колонтитул Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Название Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-autospace:none;
+	font-size:16.0pt;
+	font-family:"Cambria","serif";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Текст выноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-link:"Цитата 2 Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;
+	font-style:italic;}
+p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote
+	{mso-style-link:"Выделенная цитата Знак";
+	margin-top:10.0pt;
+	margin-right:46.8pt;
+	margin-bottom:14.0pt;
+	margin-left:46.8pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoBookTitle
+	{font-variant:small-caps;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+span.1
+	{mso-style-name:"Заголовок 1 Знак";
+	mso-style-link:"Заголовок 1";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.2
+	{mso-style-name:"Заголовок 2 Знак";
+	mso-style-link:"Заголовок 2";
+	font-family:"Cambria","serif";
+	font-weight:bold;
+	font-style:italic;}
+span.3
+	{mso-style-name:"Заголовок 3 Знак";
+	mso-style-link:"Заголовок 3";
+	font-family:"Cambria","serif";
+	font-weight:bold;}
+span.a
+	{mso-style-name:"Верхний колонтитул Знак";
+	mso-style-link:"Верхний колонтитул";
+	font-family:"Times New Roman","serif";}
+span.a0
+	{mso-style-name:"Нижний колонтитул Знак";
+	mso-style-link:"Нижний колонтитул";
+	font-family:"Times New Roman","serif";}
+span.a1
+	{mso-style-name:"Название Знак";
+	mso-style-link:Название;
+	font-family:"Cambria","serif";
+	font-weight:bold;}
+span.a2
+	{mso-style-name:"Текст выноски Знак";
+	mso-style-link:"Текст выноски";
+	font-family:"Tahoma","sans-serif";}
+span.20
+	{mso-style-name:"Цитата 2 Знак";
+	mso-style-link:"Цитата 2";
+	font-family:"Times New Roman","serif";
+	color:black;
+	font-style:italic;}
+span.a3
+	{mso-style-name:"Выделенная цитата Знак";
+	mso-style-link:"Выделенная цитата";
+	font-family:"Times New Roman","serif";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+p.msolistparagraphbullet1gif, li.msolistparagraphbullet1gif, div.msolistparagraphbullet1gif
+	{mso-style-name:"msolistparagraphbullet1\.gif";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.msolistparagraphbullet2gif, li.msolistparagraphbullet2gif, div.msolistparagraphbullet2gif
+	{mso-style-name:"msolistparagraphbullet2\.gif";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.msolistparagraphbullet3gif, li.msolistparagraphbullet3gif, div.msolistparagraphbullet3gif
+	{mso-style-name:"msolistparagraphbullet3\.gif";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.10
+	{mso-style-name:"Стиль1 Знак";
+	mso-style-link:Стиль1;
+	font-family:"Times New Roman","serif";
+	color:maroon;
+	background:white;
+	font-weight:bold;}
+p.11, li.11, div.11
+	{mso-style-name:Стиль1;
+	mso-style-link:"Стиль1 Знак";
+	margin-top:0cm;
+	margin-right:-.25pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";
+	color:maroon;
+	font-weight:bold;}
+span.21
+	{mso-style-name:"Стиль2 Знак";
+	mso-style-link:Стиль2;
+	font-family:"Times New Roman","serif";
+	background:white;
+	font-weight:bold;}
+p.22, li.22, div.22
+	{mso-style-name:Стиль2;
+	mso-style-link:"Стиль2 Знак";
+	margin-top:0cm;
+	margin-right:-.25pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+span.30
+	{mso-style-name:"Стиль3 Знак";
+	mso-style-link:Стиль3;
+	font-family:"Times New Roman","serif";
+	background:white;
+	font-style:italic;}
+p.31, li.31, div.31
+	{mso-style-name:Стиль3;
+	mso-style-link:"Стиль3 Знак";
+	margin-top:0cm;
+	margin-right:-.25pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";
+	font-style:italic;}
+p.12, li.12, div.12
+	{mso-style-name:"Стиль Стиль1";
+	margin-top:.7pt;
+	margin-right:1.2pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.13, li.13, div.13
+	{mso-style-name:"Стиль Стиль1 + не полужирный надстрочные";
+	margin-top:.7pt;
+	margin-right:1.2pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";
+	color:maroon;
+	vertical-align:super;}
+span.4
+	{mso-style-name:"Стиль4 Знак";
+	mso-style-link:Стиль4;
+	font-family:"Times New Roman","serif";
+	background:white;}
+p.40, li.40, div.40
+	{mso-style-name:Стиль4;
+	mso-style-link:"Стиль4 Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:18.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.a4
+	{mso-style-name:"Словарь Знак";
+	mso-style-link:Словарь;
+	font-family:"Times New Roman","serif";
+	background:white;
+	font-weight:bold;}
+p.a5, li.a5, div.a5
+	{mso-style-name:Словарь;
+	mso-style-link:"Словарь Знак";
+	margin-top:1.9pt;
+	margin-right:2.65pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-.7pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.Noparagraphstyle, li.Noparagraphstyle, div.Noparagraphstyle
+	{mso-style-name:"\[No paragraph style\]";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:120%;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;}
+span.5
+	{mso-style-name:"Стиль5 Знак";
+	mso-style-link:Стиль5;
+	font-family:"Times New Roman","serif";
+	color:#0D0D0D;}
+p.50, li.50, div.50
+	{mso-style-name:Стиль5;
+	mso-style-link:"Стиль5 Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:#0D0D0D;}
+span.a6
+	{mso-style-name:"ПОДСЛОВО Знак";
+	mso-style-link:ПОДСЛОВО;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.a7, li.a7, div.a7
+	{mso-style-name:ПОДСЛОВО;
+	mso-style-link:"ПОДСЛОВО Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+span.6
+	{mso-style-name:"Стиль6 Знак";
+	mso-style-link:Стиль6;
+	font-family:"Times New Roman","serif";
+	color:#215868;
+	font-weight:bold;}
+p.60, li.60, div.60
+	{mso-style-name:Стиль6;
+	mso-style-link:"Стиль6 Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:28.0pt;
+	font-family:"Times New Roman","serif";
+	color:#215868;
+	font-weight:bold;}
+p.1-025, li.1-025, div.1-025
+	{mso-style-name:"Стиль Заголовок 1 + Темно-красный Первая строка\:  025 см Перед\: \.\.\.";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:7.1pt;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.112, li.112, div.112
+	{mso-style-name:"Стиль Стиль1 + 12 пт";
+	margin-top:0cm;
+	margin-right:-.25pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:#943634;
+	font-weight:bold;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.a8
+	{mso-style-name:СЛОВО;
+	font-family:"Times New Roman","serif";
+	color:#C0504D;
+	font-weight:bold;}
+span.a9
+	{mso-style-name:Курсив;
+	font-style:italic;}
+span.aa
+	{mso-style-name:Полжир;
+	font-weight:bold;}
+span.ab
+	{mso-style-name:"СЛОВО Знак";
+	color:#943634;
+	font-weight:bold;}
+span.120
+	{mso-style-name:"Стиль СЛОВО + 12 пт";
+	color:#943634;
+	font-weight:bold;}
+span.285
+	{mso-style-name:"Стиль СЛОВО + 28 пт Акцент 5";
+	color:#215868;
+	font-weight:bold;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor="#DEE6D3" background="Bukva_Щ.files/image001.jpg" lang=RU
+link=blue vlink=purple>
+<!-- DO NOT MOVE! The following AllWebMenus linking code section must always be placed right AFTER the BODY tag-->
+<!-- ******** BEGIN ALLWEBMENUS CODE FOR menu ******** -->
+<script type="text/javascript">var MenuLinkedBy="AllWebMenus [4]",awmMenuName="menu",awmBN="702";awmAltUrl="";</script><script charset="UTF-8" src="menu.js" type="text/javascript"></script><script type="text/javascript">awmBuildMenu();</script>
+<!-- ******** END ALLWEBMENUS CODE FOR menu ******** -->
+
+<div class=Section1>
+
+<h1 style='margin-left:2.0cm'><span style='font-size:20.0pt;color:#17365D'>Щщ</span></h1>
+
+<p class=MsoNormal style='margin-left:2.0cm'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩАВЕЛЬ</span><i> м мн.
+нет</i> цурун пешер (недай, хуьрекдик кутадай, чуьлда акъечIдай).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩАДИТЬ</span> <i>несов.,
+</i>1. инсаф авун; регьим авун; <b>не щадить врага!</b> душмандиз инсаф ийимир!
+2. инсаф авун, гьайиф атун; <b>щадить здоровье</b> ччандиз инсаф авун (ччан
+хуьн), ччан гьайиф атун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕБЕНКА</span> <i>мн.
+нет. </i>см. <b>щебень</b>.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕБЕНЬ</span><i> м мн.
+нет </i>чирх,<i> </i>кукIварай куьлуь къванер, хирхем къванер (рекье, ччиле
+твадай).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕБЕТ</span> <i>мн.
+нет</i> чIив-чIив, чIирив-чIирив, чIивривар.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕБЕТАНИЕ</span> <i>мн.
+нет</i> 1. см. <b>щебетать</b>. 2. чIивчIив, чIирив-чIирив, чIивривар
+(къушарин).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕБЕТАТЬ</span> <i>несов.</i>
+1. чIив-чIивар авун, чIирив-чIирив авун, цIив-цIивар авун. 2. <i>пер. </i>акъваз
+тийиз зарбдиз рахун (аял; дишегьли). </p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕГОЛ</span> <i>зоол.
+</i>щегол (макьамар ядай цIару нуькI).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕГОЛИХА</span>
+дамахчи (дишегьли), дамахдалди алукIнавай (алукIдай) дишегьли.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕГОЛЬ</span><i> м </i>дамахчи,
+гзаф дамахдалди алукIдай (алукIнавай) кас.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕГОЛЬНУТЬ</span> <i>однокр.</i>,
+см. <b>щеголять</b>.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕГОЛЬСКОЙ</span>
+гзаф дамахдин; дамах гвай, багьа, тIарам (мес. партал).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕГОЛЯТЬ</span> <i>несов.</i>
+1. гзаф дамахдалди гуьрчегдиз алукIун; дамах авун; <b>щеголять в новом пальто</b>
+цIийи пальто алаз дамах авун. 2. <i>пер. разг. </i>дамах авун, фурс авун; <b>щеголять
+знаниями</b> чирвилералди дамах авун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕДРОСТЬ</span><i>
+ж мн. нет</i> жумартвал.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕДРЫЙ</span> 1.
+жумарт; <b>щедрый человек</b> жумарт кас. 2. къиметлу, багьа; бул; <b>щедрые
+подарки</b> къиметлу еке савкьатар (пишкешар).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕКА</span> хъвехъ.
+&#9830; <b>есть (уписывать) за обе щеки</b> <i>разг. </i>кьве хъвехъни дакIуриз
+тIуьн, къанихвилелди, гзаф иштагьдалди тIуьн.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕКОЛДА</span>
+къапу (рак) агалдай ракь, тIуб.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕКОТАТЬ</span> <i>несов.</i>
+1. хъиткъитIар кутун (къвалак кягъуналди хъуьруьн гъун). 2. хьиткъитI къведай
+хьиз хьун, квазвай хьиз хьун; <b>у меня в носу щекочет</b> зи нерин къеняй
+хъиткъитI къвезвай хьиз (квазвай хьиз) ава. 3<i>. пер. </i>тIимил хуш
+къведайвал хкуьрун (мес. кефиник).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕКОТКА</span> <i>мн.
+нет</i> хъиткъитI, хъиткъитIар.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕКОТЛИВЫЙ</span>
+1. хъиткъитI (хъиткъитIар) къведай. 2. <i>пер. </i>четин, назик, мукьуфдалди
+эгечIна кIандай месэла (яни регъуь хьун, айиб арадал гъидай месэла).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕКОТНО</span> <i>в
+знач. сказ. </i>хъиткъитI къвезва.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕЛИСТЫЙ</span>
+гзаф ферер авай, хъиткьерар авай.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕЛК</span> <i>разг.
+</i>1. тIампI. 2. тIампI ягъун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЁЛКА</span>
+гъвечIи фер, гъвечIи хъиткьер.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЁЛКАНЬЕ</span> <i>мн.
+нет </i>см. <b>щёлкать</b>.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЁЛКАТЬ</span> <i>несов</i>.
+1. тIампI ягъун; тIампIар ягъун; <b>щёлкать по лбу </b>пелез тIампIар ягъун. 2.
+тIарпI авун (мецелди); чIверкь авун, тIарпI авун (къамчиди); тIакьа-тIакь авун
+(сарари); тIампI ягъун, тIанбул ягъун (тупIаралди). 3. макьамар ягъун,
+чIивривар авун (къушари). 4. хун, тIеркь ийиз хун (сараралди, мес. кIерецар);
+хаз тIуьн (мес. семечкаяр).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЁЛКНУТЬ</span> <i>однокр.,</i>
+см. <b>щёлкать</b>.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЁЛОК</span> щёлок
+(руьхъведин яд; поташ квай яд, парталар чуьхуьн патал ва техникада ишлемишда).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕЛОЧИТЬ</span> <i>несов.</i>
+щёлок (ва я щёлочь) кутун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕЛОЧНОЙ</span>
+щёлокдин, щёлок квай; щёлочдин.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЁЛОЧЬ</span><i> ж хим.</i>
+щёлочь (кудай химический затI я).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕЛЧОК </span>тIампI;
+<b>дал щелчок по лбу</b> пелез тампI яна.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕЛЬ</span><i> ж </i>1.
+фер (свар, швал); хъиткьер. 2. жув бомбайрикай хуьдай хандакI.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕМИТЬ</span> <i>несов.</i>
+1. чуькьуьн. 2. <i>пер. </i>рикI чуькьуьн, рикI ккун, рикI чуькьвезвай хьиз
+хажалат гун, гьамлу авун; <b>сердце у меня щемит </b>зи рикI чуькьвезвай хьиз
+ава, рикIиз дерт жезва, рикIе гъам гьатнава.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕНИТЬСЯ</span> <i>несов.</i>
+гурцIулар хун (кча), шарагар хун (жанавурди, сикIре (ва мсб).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕНОК</span>
+гурцIул.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕПА</span>
+хъвалахъ, чIидгъем (кIарасдилай алатай).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕПАТЬ</span> <i>несов.</i>
+гудун, чIидгьем-чIидгъем авун, чIидгъемар авун (мес. кьулунин кIусуникай цIай
+авун патал).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕПЕТИЛЬНЫЙ</span>
+лап куьлуь-шуьлуьйриз фикир гудай (кас).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕПКА</span>
+хъвалахъ; чIидгъем.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕПОТКА</span> пуд
+тупIув кьур, са пуд тупIув кьур; <b>щепотка соли</b> са пуд тупIув кьур кьел.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕПОТЬ</span><i> ж </i>1.
+сад-садав агудай пуд тIуб (чIехи -кIанчIал тIубни, кьвед лагьай тIубни юкьван
+тIуб). 2. см. <b>щепотка</b>.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕРБАТЫЙ</span> 1.
+чупур, чупурвал квай, гелер квай; <b>щербатое лицо</b> чупурвал квай (гелер
+квай) ччин. 2. гелер-кьацIар авай, кьацI-кьацI хьайи, лекъвер-синер авай; <b>щербатый
+пол</b> лекъвер-кьацIар авай ччил (тахта ттур кIвалин).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕРБИНА</span> 1.
+кьацI; <b>нож с щербинами</b> кьацIар авай (кьацI-кьацI хьайи, мурз аватай)
+чукIул. 2. гел (мес. ччинал цIегьрен гел).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕРИТЬ</span> <i>несов.
+разг.</i> экъисун; <b>щерить зубы</b> сарар экъисун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕТИНА</span> <i>мн.
+нет</i> векъи чIарар; векъи чIар (мес вакIан); <b>щетина густых волос</b> къалин
+векъи чIарар.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕТИНИСТЫЙ</span>
+векъи; вакIан чIарар хьтин.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕТИНИТЬ</span> <i>несов.,
+разг. </i>цаз-цаз авун, тик акъвазрун (чIарар).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕТИНИТЬСЯ</span> <i>несов.</i>
+1. чIарар цаз-цаз авун, чIарар тик акъвазрун. 2. цаз-цаз хьун, тик акъвазун
+(чIарар). 3. <i>пер. </i>хъел атун, ажугълу хьун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩЕТКА </span>1.
+щётка (щутка); <b>зубная щётка</b> сарарин (сарар михьдай) щётка; <b>платяная
+щётка</b> парталрин щётка. 2. балкIандин кIвачин зигил (закIам, зкIам) ва адал
+алай чIар.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩИ</span> <i>ед.
+нет </i>келем квай шурпа, щи; <b>зелёные щи</b> къацу затIар (цурун пешер ва
+мсб) квай шурпа.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩИКОЛОТКА</span>
+кIегьеб, зигил (кIвачин).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩИПАТЬ</span> <i>несов.</i>
+1. жакIум (жакIумар) акъудун, кIасун (кьве тупIалди хам), цIиб гун; <b>щипать
+руку</b> гъиляй жакIумар акъудун (цIиб гун). 2. чухун (цIакулар акъудун); <b>щипать
+курицу</b> верч чухун. 3. атIуз тIуьн, атIун; <b>коза щиплет траву</b> цIегьре
+сараривди атIуз (кьаз акъажиз) векь незва. 4. <i>пер. </i>ккун; кIасдай хьиз
+ккун; <b>мороз щиплет за уши</b> аязди япар кузва. 5. кьаз ахъаюн, кьаз
+акъажун, тупIалай авун (спелар).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩИПКОВЫЙ</span>
+тезенекдалди ва я тупIаралди ядай (музыкадин алатар, мес. гитара, балалайка,
+чуьнгуьр).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩИПНУТЬ</span> <i>однокр.</i>
+жакIум акъудун, тупIаралди кIасун, цIиб гун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩИПОК</span>
+жакIум, цIиб. (цIиб гун, жакIум акъудун).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ШИПЦЫ</span> <i>ед.
+нет </i>1. хех; <b>сахарные щипцы</b> шекер хадай хех. 2. маша.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩИПЧИКИ</span> 1. гъвечIи
+хех. 2. гъвечIи маша. 3. накьаш (нерай, япарай чIарар акъуддай бицIи хех
+хьтинди).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩИТ</span> 1. <i>ист.</i>
+къалхан (душмандин ягъуникай хуьн патал адан яракьдин хура акъвазардай гъиле
+кьадай элкъвей ва я кьуд пипIен ракьун ва я кIарасдин кьул хьтин алат, яракь).
+2. щит (1. тупчи душмандин гуьллейрикай далдаламишдай, тупунин гьулдандин
+тахта; гьакI далдаламишдай, хуьдай маса тахта, затIар. 2. бандунин сиве авай
+юзурдай кьул, къапу. 3. къалурун патал затIар эцигдай кьул.4. электричестводин
+ток паюн, уьлчмишун патал приборар алай мармардикай ва я маса затIункай
+раснавай кьул. 5. бязи гьайванрин винел алай кIеви кIараб хьтин къабух, хам).
+&#9830; <b>поднять на щит</b> кьадардилай артух тариф авун, цавуз акъудун. </p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩИТОВИДНЫЙ</span>
+къалхандиз ухшар, къалхан хьиз аквадай; <b>щитовидная железа</b> туьтуьн
+хатунин цIумаруф.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩУКА</span> щука
+(кIезрияр недай са чIехи балугъ).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩУПАЛЬЦЕ</span> <i>зоол.
+</i>щупальце; <b>щупальцы </b>щупальцияр (пепейрин, кукварин ва бязи маса
+гьайванрин сивин патаривай жедай, затI кьун ва чирун патал герек тир, акьажиз
+ахъайдай, юзуриз жедай крчар, къармахар хьтин орган).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩУПАТЬ</span> <i>несов.</i>
+гъил-тIуб авун, гъил авуна килигун, гъил-тIуб авуна чирун, гъил-тIуб авуна
+ахтармишун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩУПЛЫЙ</span>
+зайиф, шуьткьвей, жансуз; гьакIан кьиян; <b>щуплый человек</b> шуьткьвей жансуз
+инсан.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩУР</span> <i>зоол.
+</i>щур (макьамар ядай са нуькI).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩУРИТЬ</span> <i>несов.</i>
+агажун; <b>щурить глаза</b> вилер агажун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩУРИТЬСЯ</span> <i>несов</i>.
+вилер агажун; (вилер) агаж хьун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЩУЧИЙ</span>
+щукадин, щука балугъдин.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

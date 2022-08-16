@@ -1,0 +1,635 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h1
+	{mso-style-link:"Заголовок 1 Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";}
+h2
+	{mso-style-link:"Заголовок 2 Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	font-style:italic;}
+h3
+	{mso-style-link:"Заголовок 3 Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Верхний колонтитул Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"Нижний колонтитул Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Название Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-autospace:none;
+	font-size:16.0pt;
+	font-family:"Cambria","serif";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Текст выноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-link:"Цитата 2 Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;
+	font-style:italic;}
+p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote
+	{mso-style-link:"Выделенная цитата Знак";
+	margin-top:10.0pt;
+	margin-right:46.8pt;
+	margin-bottom:14.0pt;
+	margin-left:46.8pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoBookTitle
+	{font-variant:small-caps;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+span.1
+	{mso-style-name:"Заголовок 1 Знак";
+	mso-style-link:"Заголовок 1";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.2
+	{mso-style-name:"Заголовок 2 Знак";
+	mso-style-link:"Заголовок 2";
+	font-family:"Cambria","serif";
+	font-weight:bold;
+	font-style:italic;}
+span.3
+	{mso-style-name:"Заголовок 3 Знак";
+	mso-style-link:"Заголовок 3";
+	font-family:"Cambria","serif";
+	font-weight:bold;}
+span.a
+	{mso-style-name:"Верхний колонтитул Знак";
+	mso-style-link:"Верхний колонтитул";
+	font-family:"Times New Roman","serif";}
+span.a0
+	{mso-style-name:"Нижний колонтитул Знак";
+	mso-style-link:"Нижний колонтитул";
+	font-family:"Times New Roman","serif";}
+span.a1
+	{mso-style-name:"Название Знак";
+	mso-style-link:Название;
+	font-family:"Cambria","serif";
+	font-weight:bold;}
+span.a2
+	{mso-style-name:"Текст выноски Знак";
+	mso-style-link:"Текст выноски";
+	font-family:"Tahoma","sans-serif";}
+span.20
+	{mso-style-name:"Цитата 2 Знак";
+	mso-style-link:"Цитата 2";
+	font-family:"Times New Roman","serif";
+	color:black;
+	font-style:italic;}
+span.a3
+	{mso-style-name:"Выделенная цитата Знак";
+	mso-style-link:"Выделенная цитата";
+	font-family:"Times New Roman","serif";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+p.msolistparagraphbullet1gif, li.msolistparagraphbullet1gif, div.msolistparagraphbullet1gif
+	{mso-style-name:"msolistparagraphbullet1\.gif";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.msolistparagraphbullet2gif, li.msolistparagraphbullet2gif, div.msolistparagraphbullet2gif
+	{mso-style-name:"msolistparagraphbullet2\.gif";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.msolistparagraphbullet3gif, li.msolistparagraphbullet3gif, div.msolistparagraphbullet3gif
+	{mso-style-name:"msolistparagraphbullet3\.gif";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.10
+	{mso-style-name:"Стиль1 Знак";
+	mso-style-link:Стиль1;
+	font-family:"Times New Roman","serif";
+	color:maroon;
+	background:white;
+	font-weight:bold;}
+p.11, li.11, div.11
+	{mso-style-name:Стиль1;
+	mso-style-link:"Стиль1 Знак";
+	margin-top:0cm;
+	margin-right:-.25pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";
+	color:maroon;
+	font-weight:bold;}
+span.21
+	{mso-style-name:"Стиль2 Знак";
+	mso-style-link:Стиль2;
+	font-family:"Times New Roman","serif";
+	background:white;
+	font-weight:bold;}
+p.22, li.22, div.22
+	{mso-style-name:Стиль2;
+	mso-style-link:"Стиль2 Знак";
+	margin-top:0cm;
+	margin-right:-.25pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+span.30
+	{mso-style-name:"Стиль3 Знак";
+	mso-style-link:Стиль3;
+	font-family:"Times New Roman","serif";
+	background:white;
+	font-style:italic;}
+p.31, li.31, div.31
+	{mso-style-name:Стиль3;
+	mso-style-link:"Стиль3 Знак";
+	margin-top:0cm;
+	margin-right:-.25pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";
+	font-style:italic;}
+p.12, li.12, div.12
+	{mso-style-name:"Стиль Стиль1";
+	margin-top:.7pt;
+	margin-right:1.2pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.13, li.13, div.13
+	{mso-style-name:"Стиль Стиль1 + не полужирный надстрочные";
+	margin-top:.7pt;
+	margin-right:1.2pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";
+	color:maroon;
+	vertical-align:super;}
+span.4
+	{mso-style-name:"Стиль4 Знак";
+	mso-style-link:Стиль4;
+	font-family:"Times New Roman","serif";
+	background:white;}
+p.40, li.40, div.40
+	{mso-style-name:Стиль4;
+	mso-style-link:"Стиль4 Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:18.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.a4
+	{mso-style-name:"Словарь Знак";
+	mso-style-link:Словарь;
+	font-family:"Times New Roman","serif";
+	background:white;
+	font-weight:bold;}
+p.a5, li.a5, div.a5
+	{mso-style-name:Словарь;
+	mso-style-link:"Словарь Знак";
+	margin-top:1.9pt;
+	margin-right:2.65pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-.7pt;
+	background:white;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.Noparagraphstyle, li.Noparagraphstyle, div.Noparagraphstyle
+	{mso-style-name:"\[No paragraph style\]";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:120%;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;}
+span.5
+	{mso-style-name:"Стиль5 Знак";
+	mso-style-link:Стиль5;
+	font-family:"Times New Roman","serif";
+	color:#0D0D0D;}
+p.50, li.50, div.50
+	{mso-style-name:Стиль5;
+	mso-style-link:"Стиль5 Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:#0D0D0D;}
+span.a6
+	{mso-style-name:"ПОДСЛОВО Знак";
+	mso-style-link:ПОДСЛОВО;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.a7, li.a7, div.a7
+	{mso-style-name:ПОДСЛОВО;
+	mso-style-link:"ПОДСЛОВО Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+span.6
+	{mso-style-name:"Стиль6 Знак";
+	mso-style-link:Стиль6;
+	font-family:"Times New Roman","serif";
+	color:#215868;
+	font-weight:bold;}
+p.60, li.60, div.60
+	{mso-style-name:Стиль6;
+	mso-style-link:"Стиль6 Знак";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:28.0pt;
+	font-family:"Times New Roman","serif";
+	color:#215868;
+	font-weight:bold;}
+p.1-025, li.1-025, div.1-025
+	{mso-style-name:"Стиль Заголовок 1 + Темно-красный Первая строка\:  025 см Перед\: \.\.\.";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:7.1pt;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.112, li.112, div.112
+	{mso-style-name:"Стиль Стиль1 + 12 пт";
+	margin-top:0cm;
+	margin-right:-.25pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:9.0pt;
+	background:white;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:#943634;
+	font-weight:bold;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.a8
+	{mso-style-name:СЛОВО;
+	font-family:"Times New Roman","serif";
+	color:#C0504D;
+	font-weight:bold;}
+span.a9
+	{mso-style-name:Курсив;
+	font-style:italic;}
+span.aa
+	{mso-style-name:Полжир;
+	font-weight:bold;}
+span.ab
+	{mso-style-name:"СЛОВО Знак";
+	color:#943634;
+	font-weight:bold;}
+span.120
+	{mso-style-name:"Стиль СЛОВО + 12 пт";
+	color:#943634;
+	font-weight:bold;}
+span.285
+	{mso-style-name:"Стиль СЛОВО + 28 пт Акцент 5";
+	color:#215868;
+	font-weight:bold;}
+span.-
+	{mso-style-name:"Стиль полужирный Темно-красный";
+	color:#C0504D;
+	font-weight:bold;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor="#DEE6D3" background="Bukva_Ю.files/image001.jpg" lang=RU
+link=blue vlink=purple>
+<!-- DO NOT MOVE! The following AllWebMenus linking code section must always be placed right AFTER the BODY tag-->
+<!-- ******** BEGIN ALLWEBMENUS CODE FOR menu ******** -->
+<script type="text/javascript">var MenuLinkedBy="AllWebMenus [4]",awmMenuName="menu",awmBN="702";awmAltUrl="";</script><script charset="UTF-8" src="menu.js" type="text/javascript"></script><script type="text/javascript">awmBuildMenu();</script>
+<!-- ******** END ALLWEBMENUS CODE FOR menu ******** -->
+
+<div class=Section1>
+
+<h1 style='margin-left:2.0cm'><span class=285><span
+style='font-size:20.0pt'>Юю</span></span></h1>
+
+<p class=MsoNormal style='margin-left:2.0cm'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮБИЛЕЙ</span>
+юбилей (са касдин ва я са тешкилатдин, идарадин кIвалахдин ва я са
+республикадин цIуд йис, къанни вад ва и жуьреда мадни гзаф йисар тамам хьайи
+сувар авун; гьа сувар, гьа вакъиадиз талукь гьуьрметдин межлис).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮБИЛЕЙНЫЙ</span>
+юбилейдин; юбилейдиз талукь тир.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮБИЛЯР</span>
+юбиляр (вичин юбилей авай кас ва я идара).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮБКА</span> юбка
+(дишегьлидин юкьвалай вини пад галачир партал).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮВЕЛИР</span> 1.
+заргар, ювелир. 2. ювелир (къизил-гимишдин ва багьа къашарин затIар маса гудай
+алверчи).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮВЕЛИРНЫЙ</span>
+ювелирдин; ювелирдин затIар; <b>ювелирные товары</b><span style='position:absolute;
+z-index:1;left:0px;margin-left:907px;margin-top:529px;width:2px;height:20px'><img
+width=2 height=20 src="Bukva14.files/image001.gif"></span> ювелирдин товарар; <b>ювелирный
+магазин </b>ювелирный магазин, ювелирдин затIар маса гудай магазин.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮГ</span> <i>мн.
+нет </i>1. кьибле, кьиблепад. 2. кьибледин чими уьлкве (чка).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮГО-ВОСТОК </span><i>мн.
+нет </i>кьиблединни рагъэкъечIдай патан ара.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮГО-ВОСТОЧНЫЙ</span>
+кьиблединни рагъэкъечIдайдан арадин.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮГО-ЗАПАД </span><i>мн.
+нет</i> кьиблединни рагъакIидайдан ара.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮГО-ЗАПАДНЫЙ</span>
+кьиблединни рагъакIидайдан ара.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮДОФОБ</span><i> см</i>.
+<b>антисемит</b>.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮДОФОБСТВО</span> <i>мн.
+нет. </i>см. <b>антисемитизм</b>.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮЖАНИН</span> кьиблепатан
+(чими) уьлкведин эгьли.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮЖНЫЙ</span> кьибледин,
+кьиблепатан.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮЛА</span> 1.
+кIепIербан (кIапIажул, пIеверган, кьепIербан). 2  <i>пер. разг. </i>тIурутI
+квай хьтинди (футIфутI квайди), санал акъваз тийирди (кас).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮЛИТЬ</span> <i>несов.
+разг.</i> 1. алчуд хьун, элкъуьн. 2. <i>пер. </i>садалай элкъвез ттум галтадун,
+ялтахвал авун.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮМОР</span><span
+style='letter-spacing:-.15pt'> <i>мн. нет </i>юмор (инсандин </span>кимивилер,
+кьилел атай крар хъуьредай тегьерда къалурун, абрал, рикIе писвал, хъел авачиз,
+хъуьруьн).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮМОРИСТ</span>
+юморист (юмор, хъуьруьн квай шейэр кхьидай писатель ва я юмор кваз рахадай
+кас).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮМОРИСТИЧЕСКИЙ</span>
+юмордин юмор квай, хъвер къведай.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮНГА</span> юнга
+(гимида матросвилиз гьазур жезвай жегьил гада).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮНЕЦ</span> жегьил,
+жегьил гада.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮНКЕР</span> <i>ист.
+</i>юнкер (1. Пруссияда еке ччилер авай помещик. 2. революциядилай вилик
+Россияда дяведин школада кIелзавайди).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮНАТ</span> юнат
+(тIебиат ахтармишдай, чирдай кружокдин иштаракчи жегьил гада).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮНОСТЬ</span><i> ж мн.
+нет </i>жегьилвал, жегьил яш; жегьилвилин йисар, жегьил вахт.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮНОША</span>
+жегьил, жегьил гада.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮНОШЕСКИЙ</span>
+жегьилвилин; жегьил йисарин, жегьил яшдин.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮНОШЕСТВО</span> <i>мн.
+нет </i>1. жегьилвал, жегьил вахт, жегьилвилии йисар. 2. жегьилар (гадаяр ва
+рушар).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮНЫЙ</span><span
+style='letter-spacing:-.05pt'> 1. жегьил; <b>юные пионеры</b> </span>жегьил
+пионерар; <b>юный возраст</b> жегьил яш. 2. жегьилвилин; жегьил вахтунин.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮРИДИЧЕСКИЙ</span>
+юридический (юриствилин; юриспруденциядин, яни закондалди авай ихтияррин,
+гьакьарин гьакъиндай тир).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮРИСДИКЦИЯ</span> <i>мн.
+нет </i>юрисдикция (суд ийиз, дуван ийиз ихтияр хьунухь; месэла гьа суддиз
+талукь яз хьунухь).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮРИСКОНСУЛЬТ</span>
+юрисконсульт (идарада, предприятиеда юридический месэлайрин, крарин патахъай
+меслятар къалурдай, судда ва маса идарайра вич авай идарадин менфятар хуьдай
+къуллугъэгьли, векил).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮРИСПРУДЕНЦИЯ</span>
+<i>мн. нет </i><span style='letter-spacing:-.05pt'>юриспруденция (юридический,
+яни </span>законрин ва закондалди авай их<span style='letter-spacing:-.05pt'>тияррин
+гьакъиндай илимар; юриди</span>ческий кIвалахар).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮРИСТ</span> юрист
+(юридический крарал ва илимдал машгъул тир кас).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮРКИЙ</span>
+зиринг, йигин, фарфалаг хьтин; <b>юркий мальчик</b> фарфалаг хьтин зиринг гада.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮРКНУТЬ</span> <i>разг.
+</i>футна (тадиз, зарбдиз, тарпна) фин (хъфин, гьахьун ва мсб).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮРОДИВЫЙ</span>
+абдал, абдалвал гвайди; кIамашвал квайди, кьилиз эсер янавайди.</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮРТА</span> юрта
+(кIвал, бязи куьчери халкьарин чпихъ галаз гваз къекъведай, мес. литерин
+кIвал).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮСТИЦИЯ</span>
+юстиция (1. суддин крар, дуванар кьиле тухунин кар,<i> </i><span
+style='letter-spacing:-.05pt'>вири судрин, дуванриз килигдай </span>идарайрин
+вири система).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮТИТЬСЯ</span> <i>несов.
+</i>аваз хьун; алаз хьун; секин хьун (яшамиш жез, чка кьуна, ацукьна).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'><span class=a8>ЮФТЬ</span><i><span
+style='letter-spacing:-.4pt'> ж мн. нет </span></i><span style='letter-spacing:
+-.4pt'>юфть (хъуьтуьл </span>тумаждин са жуьре).</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:2.0cm'>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>
