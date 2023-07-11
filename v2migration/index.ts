@@ -20,6 +20,35 @@ export type DictionaryV1 = {
   }[];
 };
 
+export type Example = string | { src: string; trl: string };
+
+export type ExpressionDetails = {
+  // TODO: find out the full name of the field
+  gr?: string;
+  inflection?: string;
+  definitions: {
+    text: string;
+    // NOTE: extracted from the definition
+    tags: string[];
+  }[];
+  // NOTE: extracted from the definition
+  examples: Example[];
+};
+
+export type Expression = {
+  spelling: string;
+  details: ExpressionDetails[];
+  examples: Example[];
+};
+
+export type DictionaryV2_1 = {
+  name: string;
+  url?: string;
+  expressionLanguageId: string;
+  definitionLanguageId: string;
+  expressions: Expression[];
+};
+
 export type DictionaryV2 = {
   name: string;
   url?: string;
@@ -260,10 +289,14 @@ export function convertDictionaryV1ToV2(dictionary: DictionaryV1): DictionaryV2 
   };
 }
 
-const dictV1 = readDictionaryFromJSONFile('./input/lezgi_rus_dict_babakhanov.json');
-const dictV2 = convertDictionaryV1ToV2(dictV1);
-writeJSONFile('./output/lezgi_rus_dict_babakhanov_v2_test2.json', dictV2);
+// const dictV1 = readDictionaryFromJSONFile('./input/lezgi_rus_dict_babakhanov.json');
+// const dictV2 = convertDictionaryV1ToV2(dictV1);
+// writeJSONFile('./output/lezgi_rus_dict_babakhanov_v2_test2.json', dictV2);
 
 // const dictV1 = readDictionaryFromJSONFile('./input/rus_lezgi_dict_hajiyev.json');
 // const dictV2 = convertDictionaryV1ToV2(dictV1);
 // writeJSONFile('./output/rus_lezgi_dict_hajiyev_v2.json', dictV2);
+
+const dictV1 = readDictionaryFromJSONFile('./input/tab_rus_dict_hanmagomedov_shalbuzov.json');
+const dictV2 = convertDictionaryV1ToV2(dictV1);
+writeJSONFile('./output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json', dictV2);
