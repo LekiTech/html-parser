@@ -106,6 +106,8 @@ export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint 
 export function extractTagsFromDefinition(definition: string): { tags: string[]; def: string } {
   const tags: string[] = [];
   const def = definition
+    .replaceAll(/(>\.|>)/gi, '> ')
+    .replaceAll(/ +/gi, ' ')
     .trim()
     .split(' ')
     .map((word, i) => {
@@ -175,10 +177,11 @@ export function convertDictionaryV1ToV2(
     mergeWithExisting: boolean;
   },
 ): DictionaryV2 {
+  const parsedSpellings = new Set<string>();
   const expressions: ExpressionV2[] = []; //dict.dictionary.map(customMapper);
   for (const oldExpression of dict.dictionary) {
     const { expression, mergeWithExisting } = customMapper(oldExpression);
-    if (mergeWithExisting) {
+    if (mergeWithExisting || parsedSpellings.has(expression.spelling)) {
       const existingExpression = expressions.find((e) => e.spelling === expression.spelling);
       if (existingExpression) {
         existingExpression.details.push(...expression.details);
@@ -188,6 +191,7 @@ export function convertDictionaryV1ToV2(
     } else {
       expressions.push(expression);
     }
+    parsedSpellings.add(expression.spelling);
   }
   return {
     name: dict.name,

@@ -1,6 +1,5 @@
 import path from 'path';
 import {
-  // Definition,
   EXAMPLE_START_SYMBOLS,
   ROMAN_NUMERALS,
   convertDictionaryV1ToV2,
@@ -10,22 +9,6 @@ import {
   writeJSONFile,
 } from './engine';
 import { Example, ExpressionDetails, ExpressionV1, ExpressionV2 } from './engine/types';
-
-// function combineExamples(inputs: Definition[]): Definition[] {
-//   return inputs.reduce((acc: Definition[], curr: Definition) => {
-//     // Check if the current item has text.
-//     if (curr.text !== '') {
-//       // This is a text item. Add it to the accumulator.
-//       acc.push(curr);
-//     } else if (curr.examples && acc.length > 0) {
-//       // This is an example item and we have a last text item. Add the examples to the last text item.
-//       const lastItemWithText = acc[acc.length - 1];
-//       lastItemWithText.examples = lastItemWithText.examples || [];
-//       lastItemWithText.examples.push(...curr.examples);
-//     }
-//     return acc;
-//   }, []);
-// }
 
 const customMapper = (
   entry: ExpressionV1,
@@ -91,6 +74,9 @@ const customMapper = (
               const definitionResult = createDefinitionObject(d);
               const exampleObj = splitToExampleObject(definitionResult.value);
               if (exampleObj) {
+                if (definitionResult.tags && definitionResult.tags.length > 0) {
+                  exampleObj.tags = definitionResult.tags;
+                }
                 examples.push(exampleObj);
                 isPreviousExample = true;
                 return null;
@@ -112,6 +98,9 @@ const customMapper = (
           const definitionResult = createDefinitionObject(definitionWithoutAnyNumeral);
           const exampleObj = splitToExampleObject(definitionResult.value);
           if (exampleObj) {
+            if (definitionResult.tags && definitionResult.tags.length > 0) {
+              exampleObj.tags = definitionResult.tags;
+            }
             details.examples.push(exampleObj);
           } else {
             details.definitionDetails.push({ definitions: [definitionResult] });
@@ -146,10 +135,14 @@ combineExamples(definitions)
 EDGE CASES:
 
 АБАД
+АБАДДАКАЗ
 АВАТУН
 АКУДУН
 АЛУХ
 АХЪА
+РИКIИН
+ТАДИ
+ТАЗ
 
 */
 
