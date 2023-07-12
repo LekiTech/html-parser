@@ -156,5 +156,5 @@ EDGE CASES:
 const filePath = path.join(__dirname, './input/lezgi_rus_dict_babakhanov.json');
 const dictV1 = readDictionaryFromJSONFile(filePath);
 const dictV2 = convertDictionaryV1ToV2(dictV1, customMapper);
-const resultPath = path.join(__dirname, './output/lezgi_rus_dict_babakhanov_v2_test3.json');
+const resultPath = path.join(__dirname, './output/lezgi_rus_dict_babakhanov_v2.json');
 writeJSONFile(resultPath, dictV2);
