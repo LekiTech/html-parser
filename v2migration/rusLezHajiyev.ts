@@ -16,6 +16,24 @@ function hasOneMoreClosingParenthesis(str: string) {
   return str.split(')').length - str.split('(').length === 1;
 }
 
+function mergeTagsWithDefinitions(arr: string[]): string[] {
+  const result: string[] = [];
+  let tempPrefix: string | undefined = undefined;
+
+  for (const item of arr) {
+    if (item.match(/^\d\./gi)) {
+      result.push(tempPrefix ? tempPrefix + ' ' + item : item);
+      tempPrefix = undefined;
+    } else {
+      tempPrefix = tempPrefix ? tempPrefix + ' ' + item : item;
+    }
+  }
+  if (tempPrefix) {
+    result.push(tempPrefix);
+  }
+  return result;
+}
+
 const customMapper = (
   entry: ExpressionV1,
 ): { expression: ExpressionV2; mergeWithExisting: boolean } => {
@@ -29,7 +47,7 @@ const customMapper = (
   const definitions = entry.definitions
     .map((definition) => {
       if (definition.match(/^.+\d\./gi)) {
-        return definition.split(/\d\./gi).map((d) => {
+        const splittedByNumbers = definition.split(/(?=\d\.)/gi).map((d) => {
           const result = d.replace(/\($/gi, '').trim();
           if (hasOneMoreClosingParenthesis(result)) {
             if (result.endsWith(')')) {
@@ -40,6 +58,13 @@ const customMapper = (
           }
           return result;
         });
+        const merged = mergeTagsWithDefinitions(splittedByNumbers);
+        // if (definition.startsWith('1. <филос.> абсолютный (масадав')) {
+        //   console.log(splittedByNumbers);
+        //   console.log(merged);
+        // }
+        return merged;
+        // return splittedByNumbers;
       }
       return definition;
     })
@@ -48,6 +73,9 @@ const customMapper = (
     .map((d) => d.split(EXAMPLE_START_SYMBOLS_REGEX).map((d, i) => d.trim()))
     .flat()
     .filter((d) => d && d.length > 0);
+  // if (entry.spelling === 'РЯБИТЬ') {
+  //   console.log(definitions);
+  // }
 
   for (const definition of definitions) {
     const trimmedDefinition = definition.trimStart();
@@ -170,6 +198,9 @@ EDGE CASES:
 "УМ"
 УСТРОИТЬ
 РЯБИТЬ
+ТЮФЯК
+ШЕСТВИЕ
+"НА"
 
 */
 
