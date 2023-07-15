@@ -10,11 +10,11 @@ import {
   ExpressionV2,
 } from './types';
 const DEFINED_TAGS = Object.keys(tags);
-const DEFINED_TAGS_REGEX = new RegExp(
+export const DEFINED_TAGS_REGEX = new RegExp(
   `(<|^)(${DEFINED_TAGS.join('|').replaceAll('.', '\\.')})(>|$)`,
   'g',
 );
-const DEFINED_TAGS_REGEX_WITHOUT_END_DOTS = new RegExp(
+export const DEFINED_TAGS_REGEX_WITHOUT_END_DOTS = new RegExp(
   `(<|^)(${DEFINED_TAGS.map((t) => (t.endsWith('.') ? t.slice(0, -1) : t)).join('|')})(>|>.|$)`,
   'g',
 );
@@ -97,6 +97,8 @@ export function readDictionaryFromJSONFile(filePath: string): DictionaryV1 {
  * @param {boolean} prettyPrint Whether to pretty print the JSON file
  */
 export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint = true) {
+  // console.log(JSON.stringify([...tempStartTagsSet].sort(), null, 2));
+  // console.log('Total size:', tempStartTagsSet.size);
   const fileContent = JSON.stringify(data, null, prettyPrint ? 2 : null);
   fs.writeFileSync(filePath, fileContent);
 }
@@ -116,12 +118,6 @@ export function extractTagsFromDefinition(definition: string): { tags: string[];
     .map((word, i) => {
       const matches =
         word.match(DEFINED_TAGS_REGEX) || word.match(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS);
-      // if (word === 'фу') {
-      //   console.log(definition);
-      //   console.log(matches);
-      //   console.log(DEFINED_TAGS_REGEX);
-      //   console.log(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS);
-      // }
       if (!!matches && matches.length > 0 && i === tags.length) {
         tags.push(...matches); //, `i=${i} tags.length=${tags.length}`
         return undefined;
@@ -134,6 +130,8 @@ export function extractTagsFromDefinition(definition: string): { tags: string[];
   return { tags, def };
 }
 
+const tempStartTagsSet = new Set<string>();
+
 /**
  * Create definition object from definition string
  * @param {string} definition string
@@ -141,18 +139,24 @@ export function extractTagsFromDefinition(definition: string): { tags: string[];
  * */
 export function createDefinitionObject(definition: string): { value: string; tags?: string[] } {
   const { tags, def } = extractTagsFromDefinition(definition);
-  const definitionWithoutTags = (def.length > 0 || tags.length > 0 ? def : definition).replace(/^\d\./gi, '').trim();
+  const definitionWithoutTags = (def.length > 0 || tags.length > 0 ? def : definition)
+    .replace(/^\d(\.|\))/gi, '')
+    .trim();
   const definitionResult = {
     value: definitionWithoutTags,
   };
   if (tags.length > 0) {
     definitionResult['tags'] = tags;
   }
-  // TODO: remove
-  if (definitionResult.value === '' && (tags.includes('фин.') || tags.includes('фин'))) {
-    definitionResult.value = 'фин';
-    definitionResult['tags'] = tags.filter((t) => t !== 'фин.' && t !== 'фин');
+  // // TODO: remove
+  if (definitionWithoutTags.startsWith('<')) {
+    definitionWithoutTags.match(/^<[^>]*>/gi)?.forEach((t) => tempStartTagsSet.add(t));
+    // tempStartTagsSet.add();
   }
+  // if (definitionResult.value === '' && (tags.includes('фин.') || tags.includes('фин'))) {
+  //   definitionResult.value = 'фин';
+  //   definitionResult['tags'] = tags.filter((t) => t !== 'фин.' && t !== 'фин');
+  // }
   return definitionResult;
 }
 
