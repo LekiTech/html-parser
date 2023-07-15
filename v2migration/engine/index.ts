@@ -97,8 +97,8 @@ export function readDictionaryFromJSONFile(filePath: string): DictionaryV1 {
  * @param {boolean} prettyPrint Whether to pretty print the JSON file
  */
 export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint = true) {
-  // console.log(JSON.stringify([...tempStartTagsSet].sort(), null, 2));
-  // console.log('Total size:', tempStartTagsSet.size);
+  // console.log(JSON.stringify([...tempDefaultInflection].sort(), null, 2));
+  // console.log('Total size:', tempDefaultInflection.size);
   const fileContent = JSON.stringify(data, null, prettyPrint ? 2 : null);
   fs.writeFileSync(filePath, fileContent);
 }
@@ -130,7 +130,7 @@ export function extractTagsFromDefinition(definition: string): { tags: string[];
   return { tags, def };
 }
 
-const tempStartTagsSet = new Set<string>();
+// const tempDefaultInflection = new Set<string>();
 
 /**
  * Create definition object from definition string
@@ -148,15 +148,6 @@ export function createDefinitionObject(definition: string): { value: string; tag
   if (tags.length > 0) {
     definitionResult['tags'] = tags;
   }
-  // // TODO: remove
-  if (definitionWithoutTags.startsWith('<')) {
-    definitionWithoutTags.match(/^<[^>]*>/gi)?.forEach((t) => tempStartTagsSet.add(t));
-    // tempStartTagsSet.add();
-  }
-  // if (definitionResult.value === '' && (tags.includes('фин.') || tags.includes('фин'))) {
-  //   definitionResult.value = 'фин';
-  //   definitionResult['tags'] = tags.filter((t) => t !== 'фин.' && t !== 'фин');
-  // }
   return definitionResult;
 }
 
@@ -198,6 +189,15 @@ export function convertDictionaryV1ToV2(
   const parsedSpellings = new Set<string>();
   const expressions: ExpressionV2[] = []; //dict.dictionary.map(customMapper);
   for (const oldExpression of dict.dictionary) {
+    // // === todo: remove
+    // if (oldExpression.inflection) {
+    //   oldExpression.inflection = oldExpression.inflection
+    //     .trim()
+    //     .replace(/.*(,|\.)$/gi, '')
+    //     .trim();
+    //   tempDefaultInflection.add(oldExpression.inflection);
+    // }
+    // // ===
     const { expression, mergeWithExisting } = customMapper(oldExpression);
     if (mergeWithExisting || parsedSpellings.has(expression.spelling)) {
       const existingExpression = expressions.find((e) => e.spelling === expression.spelling);

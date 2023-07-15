@@ -33,6 +33,65 @@ function mergeTagsWithDefinitions(arr: string[]): string[] {
   return result;
 }
 
+function removeAllNumeralsFromDefinitionStart(definition: string) {
+  let mergeWithExisting = false;
+  const trimmedDefinition = definition.trimStart();
+  // Check if the definition starts with a roman numeral
+  const foundRomanNumeral = ROMAN_NUMERALS.find((romanNumeral) => {
+    if (trimmedDefinition.startsWith(romanNumeral)) {
+      return romanNumeral;
+    }
+  });
+  if (foundRomanNumeral) {
+    mergeWithExisting = true;
+  }
+  const definitionWithoutRomanNumeral = foundRomanNumeral
+    ? definition.replace(foundRomanNumeral, '').trimStart()
+    : definition;
+  // Check if the definition starts with an arabic numeral
+  const foundArabicNumeral = definitionWithoutRomanNumeral.match(/^\d+(\.|\))/);
+  const definitionWithoutAnyNumeral = foundArabicNumeral
+    ? definitionWithoutRomanNumeral.replace(foundArabicNumeral[0], '').trimStart()
+    : definitionWithoutRomanNumeral;
+  return { definitionWithoutAnyNumeral, mergeWithExisting };
+}
+
+/**
+ *
+ * @param definition
+ * @param tempInflections
+ * @param details
+ * @param spelling
+ *
+ * @returns new definition without inflections
+ */
+function extractInflections(
+  definition: string,
+  tempInflections: any[],
+  details: ExpressionDetails,
+  spelling: string,
+): string {
+  const inflections = definition
+    .match(/^<[^>]*>/gi)
+    ?.filter(
+      (word) => !word.match(DEFINED_TAGS_REGEX) && !word.match(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS),
+    );
+  if (inflections && inflections.length > 0) {
+    tempInflections.push(...inflections);
+    if (!details.inflection) {
+      details.inflection = inflections[0].replaceAll('<', '').replaceAll('>', '');
+      const definitionWithoutInflection = definition.replace(inflections[0], '').trim();
+      const definitionWithoutInflectionAndNumerals = removeAllNumeralsFromDefinitionStart(
+        definitionWithoutInflection,
+      );
+      return definitionWithoutInflectionAndNumerals.definitionWithoutAnyNumeral;
+    } else {
+      console.error('Multiple inflections', spelling, inflections);
+    }
+  }
+  return definition;
+}
+
 const customMapper = (
   entry: ExpressionV1,
 ): { expression: ExpressionV2; mergeWithExisting: boolean } => {
@@ -80,26 +139,12 @@ const customMapper = (
   // }
   const tempInflections = [];
   for (const definition of definitions) {
-    const trimmedDefinition = definition.trimStart();
     // === Extract tags from the definition ===
-    // Check if the definition starts with a roman numeral
-    const foundRomanNumeral = ROMAN_NUMERALS.find((romanNumeral) => {
-      if (trimmedDefinition.startsWith(romanNumeral)) {
-        return romanNumeral;
-      }
-    });
-    if (foundRomanNumeral) {
+    const { definitionWithoutAnyNumeral, mergeWithExisting: mergeCurrentDefWithExisting } =
+      removeAllNumeralsFromDefinitionStart(definition);
+    if (mergeCurrentDefWithExisting) {
       mergeWithExisting = true;
     }
-    const definitionWithoutRomanNumeral = foundRomanNumeral
-      ? definition.replace(foundRomanNumeral, '').trimStart()
-      : definition;
-    // Check if the definition starts with an arabic numeral
-    const foundArabicNumeral = definitionWithoutRomanNumeral.match(/^\d+(\.|\))/);
-    const definitionWithoutAnyNumeral = foundArabicNumeral
-      ? definitionWithoutRomanNumeral.replace(foundArabicNumeral[0], '').trimStart()
-      : definitionWithoutRomanNumeral;
-
     try {
       if (definitionWithoutAnyNumeral.includes(';')) {
         const examples = [] as Example[];
@@ -110,17 +155,13 @@ const customMapper = (
           .map((d) => d.trim())
           .filter((d) => d && d.length > 0)
           .map((d) => {
-            const inflections = d
-              .match(/^<[^>]*>/gi)
-              ?.filter(
-                (word) =>
-                  !word.match(DEFINED_TAGS_REGEX) &&
-                  !word.match(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS),
-              );
-            if (inflections && inflections.length > 0) {
-              tempInflections.push(...inflections);
-            }
-            const definitionResult = createDefinitionObject(d);
+            const definitionWithoutInflection = extractInflections(
+              d,
+              tempInflections,
+              details,
+              entry.spelling,
+            );
+            const definitionResult = createDefinitionObject(definitionWithoutInflection);
             const exampleObj = splitToExampleObject(definitionResult.value);
             if (exampleObj) {
               if (definitionResult.tags && definitionResult.tags.length > 0) {
@@ -129,9 +170,12 @@ const customMapper = (
               examples.push(exampleObj);
               isPreviousExample = true;
               return null;
-            } else if (isPreviousExample && !d.trim().match(/^(<|)см.тж(\.|)(>|)/)) {
-              examples[examples.length - 1].trl += `; ${d}`;
-              examples[examples.length - 1].raw += `; ${d}`;
+            } else if (
+              isPreviousExample &&
+              !definitionWithoutInflection.trim().match(/^(<|)см.тж(\.|)(>|)/)
+            ) {
+              examples[examples.length - 1].trl += `; ${definitionWithoutInflection}`;
+              examples[examples.length - 1].raw += `; ${definitionWithoutInflection}`;
               return null;
             }
             isPreviousExample = false;
@@ -143,16 +187,13 @@ const customMapper = (
 
         details.definitionDetails.push(resultingDetails);
       } else {
-        const inflections = definitionWithoutAnyNumeral
-          .match(/^<[^>]*>/gi)
-          ?.filter(
-            (word) =>
-              !word.match(DEFINED_TAGS_REGEX) && !word.match(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS),
-          );
-        if (inflections && inflections.length > 0) {
-          tempInflections.push(...inflections);
-        }
-        const definitionResult = createDefinitionObject(definitionWithoutAnyNumeral);
+        const definitionWithoutInflection = extractInflections(
+          definitionWithoutAnyNumeral,
+          tempInflections,
+          details,
+          entry.spelling,
+        );
+        const definitionResult = createDefinitionObject(definitionWithoutInflection);
         const exampleObj = splitToExampleObject(definitionResult.value);
         if (exampleObj) {
           if (definitionResult.tags && definitionResult.tags.length > 0) {
@@ -167,15 +208,6 @@ const customMapper = (
       console.log(`Error while processing definition "${definitionWithoutAnyNumeral}"`);
       throw e;
     }
-  }
-  if (tempInflections && tempInflections.length > 1) {
-    console.log(
-      entry.spelling,
-      `\t\tINFLECTIONS: `,
-      tempInflections,
-      'with default inflection',
-      details.inflection,
-    );
   }
 
   // cleanup
@@ -196,13 +228,23 @@ const customMapper = (
 };
 
 /*
+TODO: MANUAL FIXES
+АЬКСИ
+ГЪАНШАРДИ
+ГЬИЛЛА
+КЪАРШУ
+КЪАРШУДИ
+ПОСЛЕЛОГ
+ТЕАТР
+ШАЙР
+
 
 EDGE CASES:
 АВЧЙ
-АГЬЛИI
+АГЬЛИ
 БАГАГЬЛУ
 АЬЯНДАР
-БИКАРI
+БИКАР
 КАР
 ШЮРЮКЬЮН
 УБГУБ/УРГУБ
@@ -210,26 +252,25 @@ EDGE CASES:
 // TODO: CHECK FOR DOUBLE INFLECTIONS
 БАГАГЬЛУ  
 АЬЯНДАР   
-БИКАРI.   
+БИКАР     
 ГАД       
 ИГАГ      
 КАР       
 КЕЛЛЕГЮЗ  
-КЕЧЕЛI.   
-ЛАЛАКII.  
+КЕЧЕЛ     
+ЛАЛАКI    
 МЕРДИМАЗАР
 МУТIЛАКЬ  
 ТАХСИРКАР 
-ТЕВЕКЕРI. 
+ТЕВЕКЕР   
 УРТАБАБ   
 ФАСАД     
-ФАГЪЙРI.  
+ФАГЪЙР    
 ХАБАРДАР  
 ШЮРЮКЬЮН  
 
 SPOTTING ISSUES IN DEFINITIONS (regex):
         ".*([А-ЯЁ]{2,})+
-
 
 
 */
