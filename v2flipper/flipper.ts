@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from '../v2migration/engine';
 import { DictionaryV2, ExpressionV2 } from '../v2migration/engine/types';
-import * as v2dict from '../v2migration/output/lezgi_rus_dict_babakhanov_v2.json';
+import v2dict from '../v2migration/clean-output/lezgi_rus_dict_babakhanov_v2.json';
 
 const dictionary = (v2dict as DictionaryV2).expressions as ExpressionV2[];
 
