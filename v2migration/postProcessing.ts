@@ -4,6 +4,7 @@ import { DictionaryV2, ExpressionV2 } from './engine/types';
 import tags from '../tags';
 
 import v2dict from './output/lezgi_rus_dict_babakhanov_v2.json';
+import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from './engine';
 // import v2dict from './output/rus_lezgi_dict_hajiyev_v2.json';
 // import v2dict from './output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 
@@ -20,15 +21,27 @@ function tagMapper(tag: string): string {
   return cleanTag;
 }
 
+function checkIsDefinitionTag(value: string): boolean {
+  return !!value.match(DEFINED_TAGS_REGEX) || !!value.match(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS);
+}
+
+let tagDefinitionsCount = 0;
+
 const notMatchingTags = [];
 const result = v2dict as DictionaryV2;
 // TODO: clear up and standardize all the tags of json dictionaries from the output folder
 for (const expression of result.expressions) {
+  let tagDefinition: string | undefined = undefined;
   for (const expressionDetails of expression.details) {
     for (const defDetail of expressionDetails.definitionDetails) {
       for (const def of defDetail.definitions) {
         if (def.tags) {
           def.tags = def.tags.map(tagMapper);
+        }
+        if (checkIsDefinitionTag(def.value)) {
+          tagDefinition = def.value;
+          tagDefinitionsCount++;
+          console.log('==>', expression.spelling, '=>', tagDefinition);
         }
       }
       if (defDetail.examples) {
@@ -49,9 +62,11 @@ for (const expression of result.expressions) {
   }
 }
 
-console.log(notMatchingTags);
+// console.log(notMatchingTags);
+console.log('tagDefinitionsCount', tagDefinitionsCount);
 
 // TODO: FIXME: tags that are parsed as definitions
+// TODO: finish fixing `"value": "(` first
 
 /**
  * Function to write a JSON file
