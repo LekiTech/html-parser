@@ -67,6 +67,20 @@ console.log('tagDefinitionsCount', tagDefinitionsCount);
 
 // TODO: FIXME: tags that are parsed as definitions
 // TODO: finish fixing `"value": "(` first
+// аллагь -> Аллагь
+// аллах -> Аллах
+// – => -
+// find `{"[\n|,]`
+
+
+/*
+({К} – прописное) мужское имя - {Керим}
+\(\{(.)\}( прописное)\)(.*- )\{(.*)\}
+*/
+
+// ===================== TODO: ADD `tags` TO THE `definitionDetails` LEVEL TOO ====================
+// ===================== TODO: ADD `description` TO THE `definition` OBJECT =======================
+// ===================== TODO: CHANGE `trl` TO ARRAY OF STRINGS IN EXAMPLE ========================
 
 /**
  * Function to write a JSON file
