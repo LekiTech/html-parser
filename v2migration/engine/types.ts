@@ -16,14 +16,6 @@ export type DictionaryV1 = {
 
 export type Example = { raw: string; src?: string; trl?: string; tags?: string[] };
 
-// export type Definition = {
-//   text: string;
-//   // NOTE: extracted from the definition
-//   tags?: string[];
-//   examples?: Example[];
-//   childDefinitions?: Definition[];
-// };
-
 export type DefinitionDetails = {
   definitions: {
     value: string;
