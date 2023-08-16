@@ -66,17 +66,35 @@ for (const expression of result.expressions) {
 console.log('tagDefinitionsCount', tagDefinitionsCount);
 
 // TODO: FIXME: tags that are parsed as definitions
-// TODO: finish fixing `"value": "(` first
-// аллагь -> Аллагь
-// аллах -> Аллах
+// ========== FIXING =================
+// noregex:  "value": "(
+// regex:    "value": "([^а-яА-ЯёЁ{<]).*
+// regex:    "spelling": "([а-яА-ЯёЁ]*)([^а-яА-ЯёЁI!?-])([а-яА-ЯёЁ]*)"
+// regex:    "inflection": "([а-яА-ЯёЁ]*)([^а-яА-ЯёЁ -])([а-яА-ЯёЁ]*)"
+// noregex:  "value": "<
+// ----------------------------------------
+// find `,` in values to split the defintitions as far as possible:
+//           "value": "([а-яА-ЯёЁ]*)([^а-яА-ЯёЁI\{}.<\(\)?:! -])(.*)"
+// OR
+//           "value": "([а-яА-ЯёЁI-]*),([а-яА-ЯёЁI,-]*)"
+// ----------------------------------------
 // – => -
-// find `{"[\n|,]`
-
-
+// find `\{"[\n|,]`
 /*
-({К} – прописное) мужское имя - {Керим}
-\(\{(.)\}( прописное)\)(.*- )\{(.*)\}
+TRY WITH REGEX:
+find:
+            {
+              "raw": "{вадралди  кIелзавайди} <сущ> отличник"
+            }
+replace by:
+            {
+              "src": "вадралди  кIелзавайди",
+              "trl": "отличник",
+              "tags": ["<сущ>"],
+              "raw": "{вадралди  кIелзавайди} <сущ> отличник"
 */
+
+// ===================================
 
 // ===================== TODO: ADD `tags` TO THE `definitionDetails` LEVEL TOO ====================
 // ===================== TODO: ADD `description` TO THE `definition` OBJECT =======================
