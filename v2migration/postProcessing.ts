@@ -21,28 +21,83 @@ function tagMapper(tag: string): string {
   return cleanTag;
 }
 
+function mapTags(tags: string[] | undefined, tagDefinition: string): string[] {
+  const newTags = [];
+  if (tags) {
+    newTags.push(...tags.map(tagMapper));
+  }
+  if (tagDefinition && !newTags?.includes('см.тж.') && !newTags?.includes('см.')) {
+    const newTag = tagMapper(tagDefinition);
+    newTags.push(newTag);
+  }
+  return newTags;
+}
+
 function checkIsDefinitionTag(value: string): boolean {
-  return !!value.match(DEFINED_TAGS_REGEX) || !!value.match(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS);
+  return (
+    (!!value.match(DEFINED_TAGS_REGEX) || !!value.match(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS)) &&
+    // make sure it's not a phrase
+    !value.includes(' ') &&
+    // make sure it's not a composed word
+    !value.includes('-') &&
+    // make sure it is a tag and not an actual definition
+    // e.g. tag 'мор.' as shortened for 'морской' and a word 'мор' as a definition
+    (value.includes('.') || value.includes('<') || value.includes('>') || value.includes(','))
+  );
 }
 
 let tagDefinitionsCount = 0;
+let amountOfDefinitions = 0;
+let splitCandidatesCount = 0;
 
 const notMatchingTags = [];
 const result = v2dict as DictionaryV2;
-// TODO: clear up and standardize all the tags of json dictionaries from the output folder
+// Clear up and standardize all the tags of json dictionaries from the output folder
 for (const expression of result.expressions) {
-  let tagDefinition: string | undefined = undefined;
   for (const expressionDetails of expression.details) {
+    let tagDefinition: string | undefined = undefined;
+    let tagDefinitionDefIdx: number | undefined = undefined;
     for (const defDetail of expressionDetails.definitionDetails) {
-      for (const def of defDetail.definitions) {
-        if (def.tags) {
-          def.tags = def.tags.map(tagMapper);
+      try {
+        for (let i = 0; i < defDetail.definitions.length; i++) {
+          const def = defDetail.definitions[i];
+          amountOfDefinitions++;
+          // ======= Handle mapping and moving tags from definitions to the tags array =======
+          const newTags = mapTags(def.tags, tagDefinition);
+          if (newTags.length > 0) {
+            def.tags = newTags;
+          }
+          if (checkIsDefinitionTag(def.value)) {
+            tagDefinition = def.value;
+            tagDefinitionDefIdx = i;
+            tagDefinitionsCount++;
+            // prettier-ignore
+            // console.log('==>', expression.spelling, expression.spelling.length >= 18 ? '=>\t\t' : expression.spelling.length >= 11 ? '\t=>\t\t' : '\t\t=>\t\t', tagDefinition);
+          }
+          // =================================================================================
+          if (
+            !def.value.includes('(') &&
+            !def.value.includes('{') &&
+            def.value.includes(',') &&
+            !def.tags?.includes('см.тж.') &&
+            !def.tags?.includes('см.')
+          ) {
+            splitCandidatesCount++;
+            console.log(expression.spelling, '\t', def.value);
+          }
         }
-        if (checkIsDefinitionTag(def.value)) {
-          tagDefinition = def.value;
-          tagDefinitionsCount++;
-          console.log('==>', expression.spelling, '=>', tagDefinition);
+        // Clean up empty definitions and moved tags
+        if (tagDefinitionDefIdx !== undefined) {
+          const newDefinitions = defDetail.definitions.filter(
+            (def, i) => i !== tagDefinitionDefIdx,
+          );
+          defDetail.definitions = newDefinitions;
+          tagDefinitionDefIdx = undefined;
         }
+      } catch (e) {
+        console.log(expression.spelling);
+        console.log(defDetail);
+        throw e;
       }
       if (defDetail.examples) {
         for (const example of defDetail.examples) {
@@ -51,6 +106,14 @@ for (const expression of result.expressions) {
           }
         }
       }
+    }
+    const newDefinitionDetails = expressionDetails.definitionDetails.filter(
+      (defDetail) => defDetail.definitions.length > 0 || defDetail.examples?.length > 0,
+    );
+    if (newDefinitionDetails.length !== expressionDetails.definitionDetails.length) {
+      expressionDetails.definitionDetails = newDefinitionDetails;
+      // console.log('=== MODIFIED ===', expression.spelling);
+      // console.log('NEW:\n', JSON.stringify(expressionDetails, null, 2));
     }
     if (expressionDetails.examples) {
       for (const example of expressionDetails.examples) {
@@ -64,6 +127,9 @@ for (const expression of result.expressions) {
 
 // console.log(notMatchingTags);
 console.log('tagDefinitionsCount', tagDefinitionsCount);
+console.log('amountOfExpressions', result.expressions.length);
+console.log('amountOfDefinitions', amountOfDefinitions);
+console.log('splitCandidatesCount', splitCandidatesCount);
 
 // TODO: FIXME: tags that are parsed as definitions
 // ========== FIXING =================
@@ -118,4 +184,4 @@ const resultPath = path.join(
   // './clean-output/rus_lezgi_dict_hajiyev_v2.json',
   // './clean-output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json',
 );
-writeJSONFile(resultPath, result);
+// writeJSONFile(resultPath, result);
