@@ -23,6 +23,8 @@ export type DefinitionDetails = {
     tags?: string[];
   }[];
   examples?: Example[];
+  /** tags applicable to all `definitions` and `examples` */
+  tags?: string[];
 };
 /**
  * It represents the whole definition of a word for the following cases:
