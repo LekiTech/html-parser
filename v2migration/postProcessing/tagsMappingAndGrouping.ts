@@ -10,6 +10,7 @@ import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from '../engi
 
 const standardizedTags = Object.keys(tags);
 const DEFAULT_SEE_ALSO_TAG = 'см.';
+const DEFAULT_POSTPOSITION_TAG = 'посл.';
 
 function tagMapper(tag: string): string {
   let cleanTag = tag.replaceAll(/(<|>|,)/g, '').trim();
@@ -31,8 +32,10 @@ function mapTags(tags: string[] | undefined, tagDefinition: string): string[] {
     const newTag = tagMapper(tagDefinition);
     newTags.push(newTag);
   }
-  // standardize 'смотри' tag
-  return newTags.map((tag) => (tag === 'см.тж.' ? DEFAULT_SEE_ALSO_TAG : tag));
+  // standardize tags
+  return newTags.map((tag) =>
+    tag === 'см.тж.' ? DEFAULT_SEE_ALSO_TAG : tag === 'послелог.' ? DEFAULT_POSTPOSITION_TAG : tag,
+  );
 }
 
 function checkIsDefinitionTag(value: string): boolean {
@@ -192,6 +195,9 @@ console.log('fixedCommonTagsCount', fixedCommonTagsCount);
 
 // TODO: FIXME: tags that are parsed as definitions
 // ========== FIXING =================
+// EXPRESSIONS IN DEFINITIONS
+//    regex: "value": ".*([А-ЯЁ]{2})
+//    regex: "raw": ".*([А-ЯЁ]{2})
 // noregex:  "value": "(
 // regex:    "value": "([^а-яА-ЯёЁ{<]).*
 // regex:    "spelling": "([а-яА-ЯёЁ]*)([^а-яА-ЯёЁI!?-])([а-яА-ЯёЁ]*)"

@@ -19,7 +19,6 @@ export type Example = { raw: string; src?: string; trl?: string; tags?: string[]
 export type DefinitionDetails = {
   definitions: {
     value: string;
-    // NOTE: extracted from the definition
     tags?: string[];
   }[];
   examples?: Example[];
@@ -33,11 +32,10 @@ export type DefinitionDetails = {
  * - Expressions with Roman numerals, so definitions under each numeral have their own ExpressionDetails object
  */
 export type ExpressionDetails = {
-  // TODO: find out the full name of the field
+  // grammatical forms of the expression
   gr?: string;
   inflection?: string;
   definitionDetails: DefinitionDetails[];
-  // NOTE: extracted from the definition
   examples?: Example[];
 };
 
