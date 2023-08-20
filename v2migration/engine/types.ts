@@ -46,7 +46,12 @@ export type ExpressionV2 = {
 
 export type DictionaryV2 = {
   name: string;
-  url?: string;
+  authors?: string;
+  publicationYear?: string;
+  providedBy?: string;
+  providedByURL?: string;
+  processedBy?: string;
+  seeSourceURL?: string;
   expressionLanguageId: string;
   definitionLanguageId: string;
   expressions: ExpressionV2[];

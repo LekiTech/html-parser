@@ -277,6 +277,10 @@ SPOTTING ISSUES IN DEFINITIONS (regex):
 
 const filePath = path.join(__dirname, './input/tab_rus_dict_hanmagomedov_shalbuzov.json');
 const dictV1 = readDictionaryFromJSONFile(filePath);
-const dictV2 = convertDictionaryV1ToV2(dictV1, customMapper);
+const dictV2 = convertDictionaryV1ToV2(dictV1, customMapper, {
+  authors: 'Ханмагомедов Б.Г.К., Шалбузов К.Т.',
+  providedBy: 'Imran Gadzhiev',
+  processedBy: 'K.Z. Tadzjibov',
+});
 const resultPath = path.join(__dirname, './output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json');
 writeJSONFile(resultPath, dictV2);

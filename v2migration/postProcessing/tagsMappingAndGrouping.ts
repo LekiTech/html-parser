@@ -3,14 +3,67 @@ import path from 'path';
 import { DefinitionDetails, DictionaryV2, ExpressionV2 } from '../engine/types';
 import tags from '../../tags';
 
-import v2dict from '../output/lezgi_rus_dict_babakhanov_v2.json';
+// import v2dict from '../output/lezgi_rus_dict_babakhanov_v2.json';
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from '../engine';
-// import v2dict from './output/rus_lezgi_dict_hajiyev_v2.json';
-// import v2dict from './output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
+import v2dict from '../output/rus_lezgi_dict_hajiyev_v2.json';
+// import v2dict from '../output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 
 const standardizedTags = Object.keys(tags);
 const DEFAULT_SEE_ALSO_TAG = 'см.';
 const DEFAULT_POSTPOSITION_TAG = 'посл.';
+
+/**
+ *
+ * @param tagCandidates candidate tags to be processed
+ * @param spelling spelling of the expression for debug purposes
+ * @returns processed tags
+ */
+function candidatesToTags(tagCandidates: string[], spelling?: string) {
+  // array that will contain parts of compound tags
+  let tempTagParts = '';
+  const processedTags: string[] = [];
+  // iterate in reverse order to make sure that partial tags are processed correclty
+  for (let i = tagCandidates.length - 1; i >= 0; i--) {
+    const tag = tagCandidates[i];
+    const tempTagJoined = (tag + '.' + tempTagParts).replaceAll('..', '.').replaceAll(/\.$/g, '');
+    // console.log('tempTagJoined', tempTagJoined);
+    // try first joined tag match, then separate match and if nothing matches, add to the temporary array
+    if (
+      !!tempTagJoined.match(DEFINED_TAGS_REGEX) ||
+      !!tempTagJoined.match(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS)
+    ) {
+      // add matched tags to the result array
+      processedTags.push(tempTagJoined);
+      // clear the temporary array
+      tempTagParts = '';
+    } else if (
+      !!tag.match(DEFINED_TAGS_REGEX) ||
+      !!tag.match(DEFINED_TAGS_REGEX_WITHOUT_END_DOTS)
+    ) {
+      // add matched tags to the result array
+      processedTags.push(tag);
+    } else {
+      // add unmatched tags to the temporary array
+      tempTagParts = tempTagJoined;
+    }
+  }
+  // if spelling is passed => debug
+  if (tempTagParts.length > 0 && spelling) {
+    console.log(`====> UNPROCESSED: spelling:\t ${spelling}\t tempTagParts: ${tempTagParts}`);
+  }
+  return processedTags;
+}
+
+function processMissedTags(defValue: string) {
+  const tagCandidates = defValue
+    ?.split('>')
+    .filter((tc) => tc && tc.includes('<'))
+    .flatMap((tc) => tc.replaceAll('<', '').trim().split(/[,|.]/))
+    ?.filter((tc) => tc && tc.length > 0);
+  const processedTags = candidatesToTags(tagCandidates);
+  // TODO: return also definitions without tags
+  return processedTags;
+}
 
 function tagMapper(tag: string): string {
   let cleanTag = tag.replaceAll(/(<|>|,)/g, '').trim();
@@ -132,6 +185,14 @@ for (const expression of result.expressions) {
         for (let i = 0; i < defDetail.definitions.length; i++) {
           const def = defDetail.definitions[i];
           amountOfDefinitions++;
+          const processedTags = processMissedTags(def.value);
+          if (processedTags.length > 0) {
+            if (!def.tags) {
+              def.tags = processedTags;
+            } else {
+              def.tags.push(...processedTags);
+            }
+          }
           // ======= Handle mapping and moving tags from definitions to the tags array =======
           const newTags = mapTags(def.tags, tagDefinition);
           if (newTags.length > 0) {
@@ -203,6 +264,7 @@ console.log('fixedCommonTagsCount', fixedCommonTagsCount);
 // regex:    "spelling": "([а-яА-ЯёЁ]*)([^а-яА-ЯёЁI!?-])([а-яА-ЯёЁ]*)"
 // regex:    "inflection": "([а-яА-ЯёЁ]*)([^а-яА-ЯёЁ -])([а-яА-ЯёЁ]*)"
 // noregex:  "value": "<
+// regex:    \{"[\n|,]
 // ----------------------------------------
 // find `,` in values to split the defintitions as far as possible:
 //           "value": "([а-яА-ЯёЁ]*)([^а-яА-ЯёЁI\{}.<\(\)?:! -])(.*)"
@@ -210,23 +272,9 @@ console.log('fixedCommonTagsCount', fixedCommonTagsCount);
 //           "value": "([а-яА-ЯёЁI-]*),([а-яА-ЯёЁI,-]*)"
 // ----------------------------------------
 // – => -
-// find `\{"[\n|,]`
-/*
-TRY WITH REGEX:
-find:
-            {
-              "raw": "{вадралди  кIелзавайди} <сущ> отличник"
-            }
-replace by:
-            {
-              "src": "вадралди  кIелзавайди",
-              "trl": "отличник",
-              "tags": ["<сущ>"],
-              "raw": "{вадралди  кIелзавайди} <сущ> отличник"
-*/
-
 // ===================================
 
+// ===================== TODO: TURN `spelling` INTO ARRAY OF STRINGS ==============================
 // ===================== TODO: ADD `description` TO THE `definition` OBJECT =======================
 // ===================== TODO: CHANGE `trl` TO ARRAY OF STRINGS IN EXAMPLE ========================
 
@@ -244,8 +292,8 @@ export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint 
 
 const resultPath = path.join(
   __dirname,
-  './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json',
-  // './clean-output/rus_lezgi_dict_hajiyev_v2.json',
-  // './clean-output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json',
+  // './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json',
+  './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json',
+  // './cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json',
 );
 writeJSONFile(resultPath, result);

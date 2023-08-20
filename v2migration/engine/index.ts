@@ -185,6 +185,13 @@ export function convertDictionaryV1ToV2(
     expression: ExpressionV2;
     mergeWithExisting: boolean;
   },
+  meta: {
+    authors?: string;
+    publicationYear?: string;
+    providedBy?: string;
+    providedByURL?: string;
+    processedBy?: string;
+  } = {},
 ): DictionaryV2 {
   const parsedSpellings = new Set<string>();
   const expressions: ExpressionV2[] = []; //dict.dictionary.map(customMapper);
@@ -213,7 +220,12 @@ export function convertDictionaryV1ToV2(
   }
   return {
     name: dict.name,
-    url: dict.url,
+    authors: meta.authors,
+    publicationYear: meta.publicationYear,
+    providedBy: meta.providedBy,
+    providedByURL: meta.providedByURL,
+    processedBy: meta.processedBy,
+    seeSourceURL: dict.url,
     expressionLanguageId: dict.expressionLanguageId,
     definitionLanguageId: dict.definitionLanguageId,
     expressions,
