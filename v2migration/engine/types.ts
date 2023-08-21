@@ -48,9 +48,11 @@ export type DictionaryV2 = {
   name: string;
   authors?: string;
   publicationYear?: string;
+  description?: string;
   providedBy?: string;
   providedByURL?: string;
   processedBy?: string;
+  copyright?: string;
   seeSourceURL?: string;
   expressionLanguageId: string;
   definitionLanguageId: string;

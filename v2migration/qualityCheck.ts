@@ -4,9 +4,9 @@ import { DefinitionDetails, DictionaryV2, ExpressionV2 } from './engine/types';
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from './engine';
 import tags from '../tags';
 
-// import lezgiRusBabakhanov from './output/lezgi_rus_dict_babakhanov_v2.json';
+// import lezgiRusBabakhanov from './postProcessing/cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json';
 import rusLezgiHajyiev from './postProcessing/cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json';
-// import tabRusHanShal from './output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
+// import tabRusHanShal from './postProcessing/cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 
 /**
  * Function to write a CSV file
@@ -251,5 +251,8 @@ for (const dictionary of dictionaries) {
       .map(([spelling, ar]) => ar.toCsv(spelling))
       .join('\n');
 
-  writeCsvFile(path.join(__dirname, 'reports', dictionary.name + '_analysis.csv'), csvFileData);
+  writeCsvFile(
+    path.join(__dirname, 'reports', dictionary.name + '_' + dictionary.authors + '_analysis.csv'),
+    csvFileData,
+  );
 }

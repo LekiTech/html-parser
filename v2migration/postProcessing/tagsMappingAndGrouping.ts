@@ -3,9 +3,9 @@ import path from 'path';
 import { DefinitionDetails, DictionaryV2, ExpressionV2 } from '../engine/types';
 import tags from '../../tags';
 
-// import v2dict from '../output/lezgi_rus_dict_babakhanov_v2.json';
+import v2dict from '../output/lezgi_rus_dict_babakhanov_v2.json';
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from '../engine';
-import v2dict from '../output/rus_lezgi_dict_hajiyev_v2.json';
+// import v2dict from '../output/rus_lezgi_dict_hajiyev_v2.json';
 // import v2dict from '../output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 
 const standardizedTags = Object.keys(tags);
@@ -292,8 +292,8 @@ export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint 
 
 const resultPath = path.join(
   __dirname,
-  // './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json',
-  './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json',
+  './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json',
+  // './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json',
   // './cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json',
 );
 writeJSONFile(resultPath, result);
