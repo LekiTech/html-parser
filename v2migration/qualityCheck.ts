@@ -58,6 +58,9 @@ const dictionaries: DictionaryV2[] = [
 // Replace random chars looking like dashes
 // – => -
 
+// TODO: add check for: "definitions": []
+// TODO: add check for: "definitionDetails": [] and "examples": []
+
 class ExpressionAnalysisResult {
   private static readonly csvSeparator = ';';
   spellingWithRandomChars: boolean;
@@ -149,20 +152,26 @@ const includeDefinitionsStartingWithRandomChars = false;
 
 for (const dictionary of dictionaries) {
   const analysisResults: Record<string, ExpressionAnalysisResult> = {};
+  // const expressionWithMostExamples = {
+  //   spelling: '',
+  //   examplesCount: 0,
+  // };
   for (const expression of dictionary.expressions) {
+    // const thisExamplesCount =
+    //   expression.details.reduce((acc, cur) => acc + (cur.examples?.length ?? 0), 0) +
+    //   expression.details
+    //     .flatMap((d) => d.definitionDetails)
+    //     .reduce((acc, cur) => acc + (cur.examples?.length ?? 0), 0);
+    // if (thisExamplesCount > expressionWithMostExamples.examplesCount) {
+    //   expressionWithMostExamples.spelling = expression.spelling;
+    //   expressionWithMostExamples.examplesCount = thisExamplesCount;
+    // }
+
     const expressionAR = new ExpressionAnalysisResult();
     expressionAR.spellingWithRandomChars = !!expression.spelling.match(/[^а-яА-ЯёЁI!?\(\)-]/);
     expressionAR.spellingWithRandomCharsIgnoreSpaces =
       !!expression.spelling.match(/[^а-яА-ЯёЁI!?\(\) -]/);
-    // if (expressionAR.spellingWithRandomChars) {
-    //   foundData.expressionsWithRandomChars.push(expression.spelling);
-    // }
-    // if (expression.spelling.match(/[^а-яА-ЯёЁI!?\(\) -]/)) {
-    //   if (foundData.expressionsWithRandomCharsIgnoreSpaces.length < 10) {
-    //     console.log('expression', expression.spelling);
-    //   }
-    //   foundData.expressionsWithRandomCharsIgnoreSpaces.push(expression.spelling);
-    // }
+
     for (const expressionDetails of expression.details) {
       if (expressionDetails.inflection?.match(/[^а-яёI\/, -]/)) {
         expressionAR.inflectionsWithRandomChars = expressionDetails.inflection;
@@ -219,7 +228,7 @@ for (const dictionary of dictionaries) {
     }
   }
 
-  // console.table(analysisResults);
+  // console.log('expressionWithMostExamples: ', expressionWithMostExamples);
 
   console.log(
     dictionary.name,
@@ -227,23 +236,9 @@ for (const dictionary of dictionaries) {
     Object.keys(analysisResults).length,
     'expressions with errors',
   );
-  console.log('-------- STATS ----------');
+  console.log('-------- STATS ----------\n');
   console.table(stats);
-  // console.log(
-  //   Object.entries(foundData)
-  //     .map(([k, v]) => `${k}: ${v.length}`)
-  //     .join('\n'),
-  // );
-  // console.log('expressionsWithRandomChars', expressionsWithRandomChars.length);
-  // console.log('expressionsWithRandomCharsIgnoreSpaces', expressionsWithRandomCharsIgnoreSpaces.length);
-  // console.log('inflectionsWithRandomChars', inflectionsWithRandomChars.length);
-  // console.log('definitionsContainingExpressions', definitionsContainingExpressions.length);
-  // console.log('definitionsStartingWithParenthesis', definitionsStartingWithParenthesis.length);
-  // console.log('definitionsStartingWithRandomChars', definitionsStartingWithRandomChars.length);
-  // console.log('examplesContainingExpressions', examplesContainingExpressions.length);
-  // console.log('definitionsStartingWithTags', definitionsStartingWithTags.length);
-  // console.log('stringsEndingWithCurlyBraces', stringsEndingWithCurlyBraces.length);
-  // console.log('------------------');
+
   const csvFileData =
     ExpressionAnalysisResult.getHeader('spelling') +
     '\n' +

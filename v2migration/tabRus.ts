@@ -272,6 +272,22 @@ EDGE CASES:
 SPOTTING ISSUES IN DEFINITIONS (regex):
         ".*([А-ЯЁ]{2,})+
 
+REPLACE TYPOS EVERYWHERE EXCEPT SPELLING:
+example: кймень => камень
+
+example: пбмощь => помощь
+  regex:
+    ([бвгджзклмнпрстфхцчшщ])б([бвгджзклмнпрстфхцчшщ])
+  replace with:
+    $1о$2
+
+example: ПБМОЩЬ => ПОМОЩЬ
+  regex:
+    ([БВГДЖЗКЛМНПРСТФХЦЧШЩ])Б([БВГДЖЗКЛМНПРСТФХЦЧШЩ])
+  replace with:
+    $1О$2
+
+example 3та => эта
 
 */
 
