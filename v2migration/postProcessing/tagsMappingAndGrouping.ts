@@ -3,9 +3,9 @@ import path from 'path';
 import { DefinitionDetails, DictionaryV2, ExpressionV2 } from '../engine/types';
 import tags from '../../tags';
 
-import v2dict from '../output/lezgi_rus_dict_babakhanov_v2.json';
+// import v2dict from '../output/lezgi_rus_dict_babakhanov_v2.json';
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from '../engine';
-// import v2dict from '../output/rus_lezgi_dict_hajiyev_v2.json';
+import v2dict from '../output/rus_lezgi_dict_hajiyev_v2.json';
 // import v2dict from '../output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 
 const standardizedTags = Object.keys(tags);
@@ -55,14 +55,13 @@ function candidatesToTags(tagCandidates: string[], spelling?: string) {
 }
 
 function processMissedTags(defValue: string) {
-  const tagCandidates = defValue
-    ?.split('>')
-    .filter((tc) => tc && tc.includes('<'))
+  const tagsStrings = defValue?.split('>').filter((tc) => tc && tc.includes('<'));
+  const tagCandidates = tagsStrings
     .flatMap((tc) => tc.replaceAll('<', '').trim().split(/[,|.]/))
     ?.filter((tc) => tc && tc.length > 0);
   const processedTags = candidatesToTags(tagCandidates);
   // TODO: return also definitions without tags
-  return processedTags;
+  return { processedTags, tagsStrings: tagsStrings?.map((tc) => tc + '>') };
 }
 
 function tagMapper(tag: string): string {
@@ -185,13 +184,15 @@ for (const expression of result.expressions) {
         for (let i = 0; i < defDetail.definitions.length; i++) {
           const def = defDetail.definitions[i];
           amountOfDefinitions++;
-          const processedTags = processMissedTags(def.value);
+          const { processedTags, tagsStrings } = processMissedTags(def.value);
           if (processedTags.length > 0) {
             if (!def.tags) {
               def.tags = processedTags;
             } else {
               def.tags.push(...processedTags);
             }
+            // Remove processed tags from the definition value
+            def.value = tagsStrings.reduce((acc, cur) => acc.replaceAll(cur, ''), def.value).trim();
           }
           // ======= Handle mapping and moving tags from definitions to the tags array =======
           const newTags = mapTags(def.tags, tagDefinition);
@@ -292,8 +293,8 @@ export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint 
 
 const resultPath = path.join(
   __dirname,
-  './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json',
-  // './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json',
+  // './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json',
+  './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json',
   // './cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json',
 );
 writeJSONFile(resultPath, result);
