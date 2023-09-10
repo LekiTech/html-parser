@@ -4,9 +4,9 @@ import { DefinitionDetails, DictionaryV2, ExpressionV2 } from './engine/types';
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from './engine';
 import tags from '../tags';
 
-// import lezgiRusBabakhanov from './postProcessing/cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json';
-// import rusLezgiHajyiev from './postProcessing/cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json';
-import tabRusHanShal from './postProcessing/cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
+import lezgiRusBabakhanov from './postProcessing/cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json';
+import rusLezgiHajyiev from './postProcessing/extractedExamplesOutput/rus_lezgi_dict_hajiyev_v2.json';
+import tabRusHanShal from './postProcessing/extractedExamplesOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 
 /**
  * Function to write a CSV file
@@ -19,8 +19,8 @@ export function writeCsvFile(filePath: string, data: string) {
 }
 
 const dictionaries: DictionaryV2[] = [
-  // lezgiRusBabakhanov as DictionaryV2,
-  // rusLezgiHajyiev as DictionaryV2,
+  lezgiRusBabakhanov as DictionaryV2,
+  rusLezgiHajyiev as DictionaryV2,
   tabRusHanShal as DictionaryV2,
 ];
 
@@ -160,88 +160,82 @@ const includeDefinitionsStartingWithRandomChars = false;
 
 for (const dictionary of dictionaries) {
   const analysisResults: Record<string, ExpressionAnalysisResult> = {};
-  // const expressionWithMostExamples = {
-  //   spelling: '',
-  //   examplesCount: 0,
-  // };
   for (const expression of dictionary.expressions) {
-    // const thisExamplesCount =
-    //   expression.details.reduce((acc, cur) => acc + (cur.examples?.length ?? 0), 0) +
-    //   expression.details
-    //     .flatMap((d) => d.definitionDetails)
-    //     .reduce((acc, cur) => acc + (cur.examples?.length ?? 0), 0);
-    // if (thisExamplesCount > expressionWithMostExamples.examplesCount) {
-    //   expressionWithMostExamples.spelling = expression.spelling;
-    //   expressionWithMostExamples.examplesCount = thisExamplesCount;
-    // }
+    try {
+      const expressionAR = new ExpressionAnalysisResult();
+      expressionAR.spellingWithRandomChars = !!expression.spelling.match(/[^а-яА-ЯёЁI!?\(\)-]/);
+      expressionAR.spellingWithRandomCharsIgnoreSpaces =
+        !!expression.spelling.match(/[^а-яА-ЯёЁI!?\(\) -]/);
 
-    const expressionAR = new ExpressionAnalysisResult();
-    expressionAR.spellingWithRandomChars = !!expression.spelling.match(/[^а-яА-ЯёЁI!?\(\)-]/);
-    expressionAR.spellingWithRandomCharsIgnoreSpaces =
-      !!expression.spelling.match(/[^а-яА-ЯёЁI!?\(\) -]/);
-
-    for (const expressionDetails of expression.details) {
-      if (expressionDetails.inflection?.match(/[^а-яёI\/, -]/)) {
-        expressionAR.inflectionsWithRandomChars = expressionDetails.inflection;
-      }
-      if (expressionDetails.examples) {
-        for (const example of expressionDetails.examples) {
-          if (example.raw.match(/.*([А-ЯЁ]{2})/)) {
-            expressionAR.examplesContainingExpressions.push(example.raw);
-          }
+      for (const expressionDetails of expression.details) {
+        if (expressionDetails.inflection?.match(/[^а-яёI\/, -]/)) {
+          expressionAR.inflectionsWithRandomChars = expressionDetails.inflection;
         }
-      }
-      for (const defDetail of expressionDetails.definitionDetails) {
-        if (defDetail.examples) {
-          for (const example of defDetail.examples) {
+        if (expressionDetails.examples) {
+          for (const example of expressionDetails.examples) {
             if (example.raw.match(/.*([А-ЯЁ]{2})/)) {
               expressionAR.examplesContainingExpressions.push(example.raw);
             }
           }
         }
-        for (const def of defDetail.definitions) {
-          if (def.value.match(/.*([А-ЯЁ]{2})/)) {
-            expressionAR.definitionsContainingExpressions.push(def.value);
+        for (const defDetail of expressionDetails.definitionDetails) {
+          if (defDetail.examples) {
+            for (const example of defDetail.examples) {
+              if (example.raw.match(/.*([А-ЯЁ]{2})/)) {
+                expressionAR.examplesContainingExpressions.push(example.raw);
+              }
+            }
           }
-          if (def.value.match(/^\(/)) {
-            expressionAR.definitionsStartingWithParenthesis.push(def.value);
-          }
-          if (includeDefinitionsStartingWithRandomChars && def.value.match(/[^а-яА-ЯёЁ{<].*/)) {
-            expressionAR.definitionsStartingWithRandomChars.push(def.value);
-          }
-          if (def.value.match(/^</)) {
-            expressionAR.definitionsStartingWithTags.push(def.value);
-          }
-          if (def.value.match(/.*\{$/)) {
-            expressionAR.stringsEndingWithCurlyBraces.push(def.value);
-          }
-          if (
-            def.value.match(/^\{.*\}[^"]+/) &&
-            (def.tags === undefined ||
-              def.tags?.length === 0 ||
-              def.tags.filter((t) => t.includes('см')).length === 0)
-          ) {
-            expressionAR.examplesStoredAsDefinitions.push(def.value);
+          for (const def of defDetail.definitions) {
+            if (def.value.match(/.*([А-ЯЁ]{2})/)) {
+              expressionAR.definitionsContainingExpressions.push(def.value);
+            }
+            if (def.value.match(/^\(/)) {
+              expressionAR.definitionsStartingWithParenthesis.push(def.value);
+            }
+            if (includeDefinitionsStartingWithRandomChars && def.value.match(/[^а-яА-ЯёЁ{<].*/)) {
+              expressionAR.definitionsStartingWithRandomChars.push(def.value);
+            }
+            if (def.value.match(/^</)) {
+              expressionAR.definitionsStartingWithTags.push(def.value);
+            }
+            if (def.value.match(/.*\{$/)) {
+              expressionAR.stringsEndingWithCurlyBraces.push(def.value);
+            }
+            if (
+              def.value.match(/^\{.*\}[^"]+/) &&
+              (def.tags === undefined ||
+                def.tags?.length === 0 ||
+                def.tags.filter((t) => t.includes('см')).length === 0)
+            ) {
+              expressionAR.examplesStoredAsDefinitions.push(def.value);
+            }
           }
         }
       }
-    }
-    if (!expressionAR.isEmpty()) {
-      analysisResults[expression.spelling] = expressionAR;
-      stats.expressionsWithRandomChars += expressionAR.spellingWithRandomChars ? 1 : 0;
-      stats.expressionsWithRandomCharsIgnoreSpaces +=
-        expressionAR.spellingWithRandomCharsIgnoreSpaces ? 1 : 0;
-      stats.inflectionsWithRandomChars += expressionAR.inflectionsWithRandomChars ? 1 : 0;
-      stats.definitionsContainingExpressions +=
-        expressionAR.definitionsContainingExpressions.length;
-      stats.definitionsStartingWithParenthesis +=
-        expressionAR.definitionsStartingWithParenthesis.length;
-      stats.definitionsStartingWithRandomChars +=
-        expressionAR.definitionsStartingWithRandomChars.length;
-      stats.examplesContainingExpressions += expressionAR.examplesContainingExpressions.length;
-      stats.definitionsStartingWithTags += expressionAR.definitionsStartingWithTags.length;
-      stats.stringsEndingWithCurlyBraces += expressionAR.stringsEndingWithCurlyBraces.length;
-      stats.examplesStoredAsDefinitions += expressionAR.examplesStoredAsDefinitions.length;
+      if (!expressionAR.isEmpty()) {
+        analysisResults[expression.spelling] = expressionAR;
+        stats.expressionsWithRandomChars += expressionAR.spellingWithRandomChars ? 1 : 0;
+        stats.expressionsWithRandomCharsIgnoreSpaces +=
+          expressionAR.spellingWithRandomCharsIgnoreSpaces ? 1 : 0;
+        stats.inflectionsWithRandomChars += expressionAR.inflectionsWithRandomChars ? 1 : 0;
+        stats.definitionsContainingExpressions +=
+          expressionAR.definitionsContainingExpressions.length;
+        stats.definitionsStartingWithParenthesis +=
+          expressionAR.definitionsStartingWithParenthesis.length;
+        stats.definitionsStartingWithRandomChars +=
+          expressionAR.definitionsStartingWithRandomChars.length;
+        stats.examplesContainingExpressions += expressionAR.examplesContainingExpressions.length;
+        stats.definitionsStartingWithTags += expressionAR.definitionsStartingWithTags.length;
+        stats.stringsEndingWithCurlyBraces += expressionAR.stringsEndingWithCurlyBraces.length;
+        stats.examplesStoredAsDefinitions += expressionAR.examplesStoredAsDefinitions.length;
+      }
+    } catch (e) {
+      console.log(
+        `Error processing expression "${expression.spelling}" in dictionary "${dictionary.name}"`,
+      );
+      console.log(e);
+      throw e;
     }
   }
 
