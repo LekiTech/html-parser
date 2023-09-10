@@ -5,8 +5,8 @@ import tags from '../../tags';
 
 // import v2dict from '../output/lezgi_rus_dict_babakhanov_v2.json';
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from '../engine';
-import v2dict from '../output/rus_lezgi_dict_hajiyev_v2.json';
-// import v2dict from '../output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
+// import v2dict from '../output/rus_lezgi_dict_hajiyev_v2.json';
+import v2dict from '../output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 
 const standardizedTags = Object.keys(tags);
 const DEFAULT_SEE_ALSO_TAG = 'см.';
@@ -275,6 +275,7 @@ console.log('fixedCommonTagsCount', fixedCommonTagsCount);
 // – => -
 // ===================================
 
+// NOTE: the following todo's are for the next version of the dictionary
 // ===================== TODO: TURN `spelling` INTO ARRAY OF STRINGS ==============================
 // ===================== TODO: ADD `description` TO THE `definition` OBJECT =======================
 // ===================== TODO: CHANGE `trl` TO ARRAY OF STRINGS IN EXAMPLE ========================
@@ -291,10 +292,12 @@ export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint 
   fs.writeFileSync(filePath, fileContent);
 }
 
+// TODO: add here specific mapper for tabasaran dictionary to convert definitions which start with a `{` to examples
+
 const resultPath = path.join(
   __dirname,
   // './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json',
-  './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json',
-  // './cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json',
+  // './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json',
+  './cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json',
 );
 writeJSONFile(resultPath, result);

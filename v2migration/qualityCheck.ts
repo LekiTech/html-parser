@@ -5,8 +5,8 @@ import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from './engin
 import tags from '../tags';
 
 // import lezgiRusBabakhanov from './postProcessing/cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json';
-import rusLezgiHajyiev from './postProcessing/cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json';
-// import tabRusHanShal from './postProcessing/cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
+// import rusLezgiHajyiev from './postProcessing/cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json';
+import tabRusHanShal from './postProcessing/cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 
 /**
  * Function to write a CSV file
@@ -20,8 +20,8 @@ export function writeCsvFile(filePath: string, data: string) {
 
 const dictionaries: DictionaryV2[] = [
   // lezgiRusBabakhanov as DictionaryV2,
-  rusLezgiHajyiev as DictionaryV2,
-  // tabRusHanShal as DictionaryV2,
+  // rusLezgiHajyiev as DictionaryV2,
+  tabRusHanShal as DictionaryV2,
 ];
 
 // ========== QUALITY CHECKS =================
@@ -72,6 +72,7 @@ class ExpressionAnalysisResult {
   private _examplesContainingExpressions: string[] = [];
   private _definitionsStartingWithTags: string[] = [];
   private _stringsEndingWithCurlyBraces: string[] = [];
+  private _examplesStoredAsDefinitions: string[] = [];
 
   get definitionsContainingExpressions() {
     return this._definitionsContainingExpressions;
@@ -91,6 +92,9 @@ class ExpressionAnalysisResult {
   get stringsEndingWithCurlyBraces() {
     return this._stringsEndingWithCurlyBraces;
   }
+  get examplesStoredAsDefinitions() {
+    return this._examplesStoredAsDefinitions;
+  }
 
   isEmpty(): boolean {
     return (
@@ -102,7 +106,8 @@ class ExpressionAnalysisResult {
       this.definitionsStartingWithRandomChars.length === 0 &&
       this.examplesContainingExpressions.length === 0 &&
       this.definitionsStartingWithTags.length === 0 &&
-      this.stringsEndingWithCurlyBraces.length === 0
+      this.stringsEndingWithCurlyBraces.length === 0 &&
+      this.examplesStoredAsDefinitions.length === 0
     );
   }
 
@@ -117,6 +122,7 @@ class ExpressionAnalysisResult {
       this.examplesContainingExpressions.join('|'),
       this.definitionsStartingWithTags.join('|'),
       this.stringsEndingWithCurlyBraces.join('|'),
+      this.examplesStoredAsDefinitions.join('|'),
     ].join(ExpressionAnalysisResult.csvSeparator);
     return firstColumn ? firstColumn + ExpressionAnalysisResult.csvSeparator + result : result;
   }
@@ -132,6 +138,7 @@ class ExpressionAnalysisResult {
       'examplesContainingExpressions',
       'definitionsStartingWithTags',
       'stringsEndingWithCurlyBraces',
+      'examplesStoredAsDefinitions',
     ].join(ExpressionAnalysisResult.csvSeparator);
     return firstColumn ? firstColumn + ExpressionAnalysisResult.csvSeparator + result : result;
   }
@@ -146,6 +153,7 @@ const stats = {
   examplesContainingExpressions: 0,
   definitionsStartingWithTags: 0,
   stringsEndingWithCurlyBraces: 0,
+  examplesStoredAsDefinitions: 0,
 };
 
 const includeDefinitionsStartingWithRandomChars = false;
@@ -207,6 +215,14 @@ for (const dictionary of dictionaries) {
           if (def.value.match(/.*\{$/)) {
             expressionAR.stringsEndingWithCurlyBraces.push(def.value);
           }
+          if (
+            def.value.match(/^\{.*\}[^"]+/) &&
+            (def.tags === undefined ||
+              def.tags?.length === 0 ||
+              def.tags.filter((t) => t.includes('см')).length === 0)
+          ) {
+            expressionAR.examplesStoredAsDefinitions.push(def.value);
+          }
         }
       }
     }
@@ -225,6 +241,7 @@ for (const dictionary of dictionaries) {
       stats.examplesContainingExpressions += expressionAR.examplesContainingExpressions.length;
       stats.definitionsStartingWithTags += expressionAR.definitionsStartingWithTags.length;
       stats.stringsEndingWithCurlyBraces += expressionAR.stringsEndingWithCurlyBraces.length;
+      stats.examplesStoredAsDefinitions += expressionAR.examplesStoredAsDefinitions.length;
     }
   }
 
