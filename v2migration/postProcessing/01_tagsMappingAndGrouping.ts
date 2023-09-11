@@ -5,6 +5,7 @@ import tags from '../../tags';
 
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from '../engine';
 import v2dict from '../output/lezgi_rus_dict_babakhanov_v2.json';
+import { writeJSONFile } from '../../utils';
 // import v2dict from '../output/rus_lezgi_dict_hajiyev_v2.json';
 // import v2dict from '../output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 
@@ -279,18 +280,6 @@ console.log('fixedCommonTagsCount', fixedCommonTagsCount);
 // ===================== TODO: TURN `spelling` INTO ARRAY OF STRINGS ==============================
 // ===================== TODO: ADD `description` TO THE `definition` OBJECT =======================
 // ===================== TODO: CHANGE `trl` TO ARRAY OF STRINGS IN EXAMPLE ========================
-
-/**
- * Function to write a JSON file
- *
- * @param {string} filePath Absolute path and name of the JSON file to be written
- * @param {Dictionary} data Dictionary data to be written to the JSON file
- * @param {boolean} prettyPrint Whether to pretty print the JSON file
- */
-export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint = true) {
-  const fileContent = JSON.stringify(data, null, prettyPrint ? 2 : null);
-  fs.writeFileSync(filePath, fileContent);
-}
 
 // TODO: add here specific mapper for tabasaran dictionary to convert definitions which start with a `{` to examples
 

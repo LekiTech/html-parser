@@ -6,9 +6,9 @@ import {
   createDefinitionObject,
   readDictionaryFromJSONFile,
   splitToExampleObject,
-  writeJSONFile,
 } from './engine';
 import { Example, ExpressionDetails, ExpressionV1, ExpressionV2 } from './engine/types';
+import { writeJSONFile } from '../utils';
 
 const customMapper = (
   entry: ExpressionV1,

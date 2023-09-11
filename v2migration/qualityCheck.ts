@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { DefinitionDetails, DictionaryV2, ExpressionV2 } from './engine/types';
+import { DefinitionDetails, DictionaryV2, DictionaryV2_1, ExpressionV2 } from './engine/types';
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from './engine';
 import tags from '../tags';
 
-import lezgiRusBabakhanov from './postProcessing/cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json';
-import rusLezgiHajyiev from './postProcessing/extractedExamplesOutput/rus_lezgi_dict_hajiyev_v2.json';
-import tabRusHanShal from './postProcessing/extractedExamplesOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
+import lezgiRusBabakhanov from './postProcessing/splittedSpellingOutput/lezgi_rus_dict_babakhanov_v2_1.json';
+import rusLezgiHajyiev from './postProcessing/splittedSpellingOutput/rus_lezgi_dict_hajiyev_v2_1.json';
+import tabRusHanShal from './postProcessing/splittedSpellingOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2_1.json';
 
 /**
  * Function to write a CSV file
@@ -18,10 +18,10 @@ export function writeCsvFile(filePath: string, data: string) {
   fs.writeFileSync(filePath, data);
 }
 
-const dictionaries: DictionaryV2[] = [
-  lezgiRusBabakhanov as DictionaryV2,
-  rusLezgiHajyiev as DictionaryV2,
-  tabRusHanShal as DictionaryV2,
+const dictionaries: DictionaryV2_1[] = [
+  lezgiRusBabakhanov as DictionaryV2_1,
+  rusLezgiHajyiev as DictionaryV2_1,
+  tabRusHanShal as DictionaryV2_1,
 ];
 
 // ========== QUALITY CHECKS =================
@@ -163,10 +163,10 @@ for (const dictionary of dictionaries) {
   for (const expression of dictionary.expressions) {
     try {
       const expressionAR = new ExpressionAnalysisResult();
-      expressionAR.spellingWithRandomChars = !!expression.spelling.match(/[^а-яА-ЯёЁI!?\(\)-]/);
-      expressionAR.spellingWithRandomCharsIgnoreSpaces =
-        !!expression.spelling.match(/[^а-яА-ЯёЁI!?\(\) -]/);
-
+      expression.spelling.forEach((spelling) => {
+        expressionAR.spellingWithRandomChars = !!spelling.match(/[^а-яА-ЯёЁI!?\(\)-]/);
+        expressionAR.spellingWithRandomCharsIgnoreSpaces = !!spelling.match(/[^а-яА-ЯёЁI!?\(\) -]/);
+      });
       for (const expressionDetails of expression.details) {
         if (expressionDetails.inflection?.match(/[^а-яёI\/, -]/)) {
           expressionAR.inflectionsWithRandomChars = expressionDetails.inflection;
@@ -214,7 +214,7 @@ for (const dictionary of dictionaries) {
         }
       }
       if (!expressionAR.isEmpty()) {
-        analysisResults[expression.spelling] = expressionAR;
+        analysisResults[expression.spelling.join(',')] = expressionAR;
         stats.expressionsWithRandomChars += expressionAR.spellingWithRandomChars ? 1 : 0;
         stats.expressionsWithRandomCharsIgnoreSpaces +=
           expressionAR.spellingWithRandomCharsIgnoreSpaces ? 1 : 0;

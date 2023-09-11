@@ -58,3 +58,25 @@ export type DictionaryV2 = {
   definitionLanguageId: string;
   expressions: ExpressionV2[];
 };
+
+// ============================= V2.1 TYPES =============================
+
+export type ExpressionV2_1 = {
+  spelling: string[];
+  details: ExpressionDetails[];
+};
+
+export type DictionaryV2_1 = {
+  name: string;
+  authors?: string;
+  publicationYear?: string;
+  description?: string;
+  providedBy?: string;
+  providedByURL?: string;
+  processedBy?: string;
+  copyright?: string;
+  seeSourceURL?: string;
+  expressionLanguageId: string;
+  definitionLanguageId: string;
+  expressions: ExpressionV2_1[];
+};

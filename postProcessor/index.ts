@@ -36,19 +36,6 @@ export function readDictionaryFromJSONFile(filename: string): Dictionary {
 }
 
 /**
- * Function to write a JSON file
- *
- * @param {string} filename Path and name of the JSON file to be written
- * @param {Dictionary} data Dictionary data to be written to the JSON file
- * @param {boolean} prettyPrint Whether to pretty print the JSON file
- */
-export function writeJSONFile(filename: string, data: Dictionary, prettyPrint = true) {
-  const filePath = path.join(__dirname, filename);
-  const fileContent = JSON.stringify(data, null, prettyPrint ? 2 : null);
-  fs.writeFileSync(filePath, fileContent);
-}
-
-/**
  * This function takes a dictionary object read from file and checks wheather under its `dictionary` property array all its objects
  * are in alphabetical order according to the provided alphabet compared by `spelling` property
  * If not, it prints encountered errors

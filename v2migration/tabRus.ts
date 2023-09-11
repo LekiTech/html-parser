@@ -7,9 +7,9 @@ import {
   createDefinitionObject,
   readDictionaryFromJSONFile,
   splitToExampleObject,
-  writeJSONFile,
 } from './engine';
 import { Example, ExpressionDetails, ExpressionV1, ExpressionV2 } from './engine/types';
+import { writeJSONFile } from '../utils';
 
 function hasOneMoreClosingParenthesis(str: string) {
   return str.split(')').length - str.split('(').length === 1;

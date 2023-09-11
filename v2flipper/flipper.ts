@@ -3,6 +3,7 @@ import path from 'path';
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from '../v2migration/engine';
 import { DictionaryV2, ExpressionV2 } from '../v2migration/engine/types';
 import v2dict from '../v2migration/clean-output/lezgi_rus_dict_babakhanov_v2.json';
+import { writeJSONFile } from '../utils';
 
 const dictionary = (v2dict as DictionaryV2).expressions as ExpressionV2[];
 
@@ -123,28 +124,16 @@ const groupedByExpressionSpelling = splittedCommadSeparatedDefinitions.reduce(fu
 
 const groupedExpressionsList: ExpressionV2[] = Object.values(groupedByExpressionSpelling);
 
-const flippedDictionary: DictionaryV2 = {
-  name: (v2dict as DictionaryV2).name,
-  url: (v2dict as DictionaryV2).url,
-  definitionLanguageId: (v2dict as DictionaryV2).expressionLanguageId,
-  expressionLanguageId: (v2dict as DictionaryV2).definitionLanguageId,
-  expressions: groupedExpressionsList.sort((a, b) => a.spelling.localeCompare(b.spelling)),
-};
-
-/**
- * Function to write a JSON file
- *
- * @param {string} filePath Absolute path and name of the JSON file to be written
- * @param {Dictionary} data Dictionary data to be written to the JSON file
- * @param {boolean} prettyPrint Whether to pretty print the JSON file
- */
-export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint = true) {
-  const fileContent = JSON.stringify(data, null, prettyPrint ? 2 : null);
-  fs.writeFileSync(filePath, fileContent);
-}
+// const flippedDictionary: DictionaryV2 = {
+//   name: (v2dict as DictionaryV2).name,
+//   url: (v2dict as DictionaryV2).url,
+//   definitionLanguageId: (v2dict as DictionaryV2).expressionLanguageId,
+//   expressionLanguageId: (v2dict as DictionaryV2).definitionLanguageId,
+//   expressions: groupedExpressionsList.sort((a, b) => a.spelling.localeCompare(b.spelling)),
+// };
 
 const resultPath = path.join(__dirname, './output/lezgi_rus_dict_babakhanov_v2_flipped.json');
-writeJSONFile(resultPath, flippedDictionary);
+// writeJSONFile(resultPath, flippedDictionary);
 
 // TODO: ALL EXAMPLES SHOULD BE REUSED IN THE DATABASE with the 'raw' field as a source to compare
 // TODO: all definitions in the flipped dictionary are synonyms in the original dictionary, so they should be marked as such

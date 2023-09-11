@@ -90,20 +90,6 @@ export function readDictionaryFromJSONFile(filePath: string): DictionaryV1 {
 }
 
 /**
- * Function to write a JSON file
- *
- * @param {string} filePath Absolute path and name of the JSON file to be written
- * @param {Dictionary} data Dictionary data to be written to the JSON file
- * @param {boolean} prettyPrint Whether to pretty print the JSON file
- */
-export function writeJSONFile(filePath: string, data: DictionaryV2, prettyPrint = true) {
-  // console.log(JSON.stringify([...tempDefaultInflection].sort(), null, 2));
-  // console.log('Total size:', tempDefaultInflection.size);
-  const fileContent = JSON.stringify(data, null, prettyPrint ? 2 : null);
-  fs.writeFileSync(filePath, fileContent);
-}
-
-/**
  * Extracts tags from a definition and returns them as an array together with the definition without the tags
  * @param {string} definition
  * @returns {{tags: string[], def: string}}
@@ -231,15 +217,3 @@ export function convertDictionaryV1ToV2(
     expressions,
   };
 }
-
-// const dictV1 = readDictionaryFromJSONFile('./input/lezgi_rus_dict_babakhanov.json');
-// const dictV2 = convertDictionaryV1ToV2(dictV1);
-// writeJSONFile('./output/lezgi_rus_dict_babakhanov_v2_test2.json', dictV2);
-
-// const dictV1 = readDictionaryFromJSONFile('./input/rus_lezgi_dict_hajiyev.json');
-// const dictV2 = convertDictionaryV1ToV2(dictV1);
-// writeJSONFile('./output/rus_lezgi_dict_hajiyev_v2.json', dictV2);
-
-// const dictV1 = readDictionaryFromJSONFile('./input/tab_rus_dict_hanmagomedov_shalbuzov.json');
-// const dictV2 = convertDictionaryV1ToV2(dictV1);
-// writeJSONFile('./output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json', dictV2);
