@@ -2,7 +2,7 @@ import path from 'path';
 import { DictionaryV2 } from '../engine/types';
 import { splitToExampleObject } from '../engine';
 
-// import rusLezgiHajyiev from './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json';
+import rusLezgiHajyiev from './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json';
 import tabRusHanShal from './cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 import { writeJSONFile } from '../../utils';
 

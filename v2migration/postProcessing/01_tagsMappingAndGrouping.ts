@@ -18,7 +18,7 @@ const dictionaries: { dictionary: DictionaryV2; fileName: string }[] = [
   },
 ];
 // NOTE: SWITCH HERE TO THE DICTIONARY OF CHOICE
-const CHOSEN_DICTIONARY = dictionaries[0];
+const CHOSEN_DICTIONARY = dictionaries[2];
 
 const standardizedTags = Object.keys(tags);
 const DEFAULT_SEE_ALSO_TAG = 'см.';

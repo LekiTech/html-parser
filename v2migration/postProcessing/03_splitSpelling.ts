@@ -23,19 +23,19 @@ const dictionaries: {
   fileName: string;
   split(spelling: string): string[];
 }[] = [
-  {
-    dictionary: lezRuzBabakhanov as DictionaryV2,
-    fileName: 'lezgi_rus_dict_babakhanov_v2_1.json',
-    split: (spelling) => {
-      if (spelling.includes('(')) {
-        return splitParenthesesSpelling(spelling);
-      } else {
-        // Example:
-        // Spelling that looks like "АБАСИ" will become ["АБАСИ"]
-        return [spelling];
-      }
-    },
-  },
+  // {
+  //   dictionary: lezRuzBabakhanov as DictionaryV2,
+  //   fileName: 'lezgi_rus_dict_babakhanov_v2_1.json',
+  //   split: (spelling) => {
+  //     if (spelling.includes('(')) {
+  //       return splitParenthesesSpelling(spelling);
+  //     } else {
+  //       // Example:
+  //       // Spelling that looks like "АБАСИ" will become ["АБАСИ"]
+  //       return [spelling];
+  //     }
+  //   },
+  // },
   // {
   //   dictionary: rusLezgiHajyiev as DictionaryV2,
   //   fileName: 'rus_lezgi_dict_hajiyev_v2_1.json',
@@ -53,19 +53,19 @@ const dictionaries: {
   //     }
   //   },
   // },
-  // {
-  //   dictionary: tabRusHanShal as DictionaryV2,
-  //   fileName: 'tab_rus_dict_hanmagomedov_shalbuzov_v2_1.json',
-  //   split: (spelling) =>
-  //     // Example:
-  //     // Spelling that looks like "АБЦIУБ/АЦIУБ" will become ["АБЦIУБ", "АЦIУБ"]
-  //     spelling.includes('/')
-  //       ? spelling
-  //           .split('/')
-  //           .map((s) => (s.includes('(') ? splitParenthesesSpelling(s) : s.trim()))
-  //           .flat()
-  //       : [spelling],
-  // },
+  {
+    dictionary: tabRusHanShal as DictionaryV2,
+    fileName: 'tab_rus_dict_hanmagomedov_shalbuzov_v2_1.json',
+    split: (spelling) =>
+      // Example:
+      // Spelling that looks like "АБЦIУБ/АЦIУБ" will become ["АБЦIУБ", "АЦIУБ"]
+      spelling.includes('/')
+        ? spelling
+            .split('/')
+            .map((s) => (s.includes('(') ? splitParenthesesSpelling(s) : s.trim()))
+            .flat()
+        : [spelling],
+  },
 ];
 
 for (const { dictionary, fileName, split } of dictionaries) {
@@ -102,7 +102,8 @@ for (const { dictionary, fileName, split } of dictionaries) {
 
 /*
 // Regex
-("value": ")[^а-яА-ЯёЁ{]*([^а-яА-ЯёЁ{])
+("value": ")[^а-яА-ЯёЁ\{<]+[ ]*(.*)
+$1$2
 
 // БАБАХАНОВ
   {
@@ -146,4 +147,8 @@ for (const { dictionary, fileName, split } of dictionaries) {
                     "tags": [
                       "см."
                     ]
+
+// GADZHIEV parsing:
+(\{\n.*"value": ")(\d\) )(.*)(",*\n.*\n*.*)(,\n.*\n.*\d\) )(.*)("\n.*\})
+replace: $1$3, $6$4
 */
