@@ -1,8 +1,8 @@
 import path from 'path';
 import { DictionaryV2, DictionaryV2_1 } from '../engine/types';
 
-import lezRuzBabakhanov from './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json';
-import rusLezgiHajyiev from './extractedExamplesOutput/rus_lezgi_dict_hajiyev_v2.json';
+// import lezRuzBabakhanov from './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json';
+// import rusLezgiHajyiev from './extractedExamplesOutput/rus_lezgi_dict_hajiyev_v2.json';
 import tabRusHanShal from './extractedExamplesOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 import { writeJSONFile } from '../../utils';
 
@@ -23,36 +23,36 @@ const dictionaries: {
   fileName: string;
   split(spelling: string): string[];
 }[] = [
-  {
-    dictionary: lezRuzBabakhanov as DictionaryV2,
-    fileName: 'lezgi_rus_dict_babakhanov_v2_1.json',
-    split: (spelling) => {
-      if (spelling.includes('(')) {
-        return splitParenthesesSpelling(spelling);
-      } else {
-        // Example:
-        // Spelling that looks like "АБАСИ" will become ["АБАСИ"]
-        return [spelling];
-      }
-    },
-  },
-  {
-    dictionary: rusLezgiHajyiev as DictionaryV2,
-    fileName: 'rus_lezgi_dict_hajiyev_v2_1.json',
-    split: (spelling) => {
-      if (spelling.includes(',')) {
-        // Example:
-        // Spelling that looks like "ЯМКА, ЯМОЧКА", will become ["ЯМКА", "ЯМОЧКА"]
-        return spelling.split(',').map((s) => s.trim());
-      } else if (spelling.includes('! ')) {
-        // Example:
-        // Spelling that looks like "ОЙ! ОЙ-ОЙ-ОЙ!", will become ["ОЙ!", "ОЙ-ОЙ-ОЙ!"]
-        return spelling.split(/(?<=!)/g).map((s) => s.trim());
-      } else {
-        return [spelling];
-      }
-    },
-  },
+  // {
+  //   dictionary: lezRuzBabakhanov as DictionaryV2,
+  //   fileName: 'lezgi_rus_dict_babakhanov_v2_1.json',
+  //   split: (spelling) => {
+  //     if (spelling.includes('(')) {
+  //       return splitParenthesesSpelling(spelling);
+  //     } else {
+  //       // Example:
+  //       // Spelling that looks like "АБАСИ" will become ["АБАСИ"]
+  //       return [spelling];
+  //     }
+  //   },
+  // },
+  // {
+  //   dictionary: rusLezgiHajyiev as DictionaryV2,
+  //   fileName: 'rus_lezgi_dict_hajiyev_v2_1.json',
+  //   split: (spelling) => {
+  //     if (spelling.includes(',')) {
+  //       // Example:
+  //       // Spelling that looks like "ЯМКА, ЯМОЧКА", will become ["ЯМКА", "ЯМОЧКА"]
+  //       return spelling.split(',').map((s) => s.trim());
+  //     } else if (spelling.includes('! ')) {
+  //       // Example:
+  //       // Spelling that looks like "ОЙ! ОЙ-ОЙ-ОЙ!", will become ["ОЙ!", "ОЙ-ОЙ-ОЙ!"]
+  //       return spelling.split(/(?<=!)/g).map((s) => s.trim());
+  //     } else {
+  //       return [spelling];
+  //     }
+  //   },
+  // },
   {
     dictionary: tabRusHanShal as DictionaryV2,
     fileName: 'tab_rus_dict_hanmagomedov_shalbuzov_v2_1.json',
@@ -99,3 +99,51 @@ for (const { dictionary, fileName, split } of dictionaries) {
   const resultPath = path.join(__dirname, `./splittedSpellingOutput/${fileName}`);
   writeJSONFile(resultPath, newDictionary);
 }
+
+/*
+// Regex
+("value": ")[^а-яА-ЯёЁ{]*([^а-яА-ЯёЁ{])
+
+// БАБАХАНОВ
+  {
+        "spelling": [
+          "ДЕРДИСЕР"
+        ],
+        "details": [
+          {
+            "inflection": "-ди, -да, -рри",
+            "definitionDetails": [
+              {
+                "definitions": [
+                  {
+                    "value": ".",
+                    "tags": [
+                      "сущ.",
+                      "сущ."
+                    ]
+                  }
+                ]
+              },
+  
+// ГАДЖИЕВ
+  {
+        "spelling": [
+          "НАПОЛНЯТЬ"
+        ],
+        "details": [
+          {
+            "definitionDetails": [
+              {
+                "definitions": [
+                  {
+                    "value": "",
+                    "tags": [
+                      "несов."
+                    ]
+                  },
+                  {
+                    "value": "{наполнить}",
+                    "tags": [
+                      "см."
+                    ]
+*/
