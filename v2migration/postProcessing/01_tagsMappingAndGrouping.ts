@@ -4,10 +4,21 @@ import { DefinitionDetails, DictionaryV2, ExpressionV2 } from '../engine/types';
 import tags from '../../tags';
 
 import { DEFINED_TAGS_REGEX, DEFINED_TAGS_REGEX_WITHOUT_END_DOTS } from '../engine';
-// import v2dict from '../output/lezgi_rus_dict_babakhanov_v2.json';
+import lezRuzBabakhanov from '../output/lezgi_rus_dict_babakhanov_v2.json';
+import rusLezgiHajyiev from '../output/rus_lezgi_dict_hajiyev_v2.json';
+import tabRusHanShal from '../output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
 import { writeJSONFile } from '../../utils';
-// import v2dict from '../output/rus_lezgi_dict_hajiyev_v2.json';
-import v2dict from '../output/tab_rus_dict_hanmagomedov_shalbuzov_v2.json';
+
+const dictionaries: { dictionary: DictionaryV2; fileName: string }[] = [
+  { dictionary: lezRuzBabakhanov as DictionaryV2, fileName: 'lezgi_rus_dict_babakhanov_v2.json' },
+  { dictionary: rusLezgiHajyiev as DictionaryV2, fileName: 'rus_lezgi_dict_hajiyev_v2.json' },
+  {
+    dictionary: tabRusHanShal as DictionaryV2,
+    fileName: 'tab_rus_dict_hanmagomedov_shalbuzov_v2.json',
+  },
+];
+// NOTE: SWITCH HERE TO THE DICTIONARY OF CHOICE
+const CHOSEN_DICTIONARY = dictionaries[0];
 
 const standardizedTags = Object.keys(tags);
 const DEFAULT_SEE_ALSO_TAG = 'см.';
@@ -174,7 +185,7 @@ let tagDefinitionsCount = 0;
 let amountOfDefinitions = 0;
 
 const notMatchingTags = [];
-const result = v2dict as DictionaryV2;
+const result = CHOSEN_DICTIONARY.dictionary;
 // Clear up and standardize all the tags of json dictionaries from the output folder
 for (const expression of result.expressions) {
   for (const expressionDetails of expression.details) {
@@ -283,10 +294,5 @@ console.log('fixedCommonTagsCount', fixedCommonTagsCount);
 
 // TODO: add here specific mapper for tabasaran dictionary to convert definitions which start with a `{` to examples
 
-const resultPath = path.join(
-  __dirname,
-  // './cleanTagsOutput/lezgi_rus_dict_babakhanov_v2.json',
-  // './cleanTagsOutput/rus_lezgi_dict_hajiyev_v2.json',
-  './cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov_v2.json',
-);
+const resultPath = path.join(__dirname, './cleanTagsOutput', CHOSEN_DICTIONARY.fileName);
 writeJSONFile(resultPath, result);

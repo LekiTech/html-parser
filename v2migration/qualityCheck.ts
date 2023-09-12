@@ -156,7 +156,7 @@ const stats = {
   examplesStoredAsDefinitions: 0,
 };
 
-const includeDefinitionsStartingWithRandomChars = false;
+const includeDefinitionsStartingWithRandomChars = true;
 
 for (const dictionary of dictionaries) {
   const analysisResults: Record<string, ExpressionAnalysisResult> = {};
@@ -193,7 +193,8 @@ for (const dictionary of dictionaries) {
             if (def.value.match(/^\(/)) {
               expressionAR.definitionsStartingWithParenthesis.push(def.value);
             }
-            if (includeDefinitionsStartingWithRandomChars && def.value.match(/[^а-яА-ЯёЁ{<].*/)) {
+            // if (includeDefinitionsStartingWithRandomChars && def.value.match(/[^а-яА-ЯёЁ{<].*/)) {
+            if (includeDefinitionsStartingWithRandomChars && def.value.match(/^[^а-яА-ЯёЁ\{\[]/)) {
               expressionAR.definitionsStartingWithRandomChars.push(def.value);
             }
             if (def.value.match(/^</)) {
