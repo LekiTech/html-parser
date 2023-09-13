@@ -23,36 +23,36 @@ const dictionaries: {
   fileName: string;
   split(spelling: string): string[];
 }[] = [
-  // {
-  //   dictionary: lezRuzBabakhanov as DictionaryV2,
-  //   fileName: 'lezgi_rus_dict_babakhanov_v2_1.json',
-  //   split: (spelling) => {
-  //     if (spelling.includes('(')) {
-  //       return splitParenthesesSpelling(spelling);
-  //     } else {
-  //       // Example:
-  //       // Spelling that looks like "АБАСИ" will become ["АБАСИ"]
-  //       return [spelling];
-  //     }
-  //   },
-  // },
-  // {
-  //   dictionary: rusLezgiHajyiev as DictionaryV2,
-  //   fileName: 'rus_lezgi_dict_hajiyev_v2_1.json',
-  //   split: (spelling) => {
-  //     if (spelling.includes(',')) {
-  //       // Example:
-  //       // Spelling that looks like "ЯМКА, ЯМОЧКА", will become ["ЯМКА", "ЯМОЧКА"]
-  //       return spelling.split(',').map((s) => s.trim());
-  //     } else if (spelling.includes('! ')) {
-  //       // Example:
-  //       // Spelling that looks like "ОЙ! ОЙ-ОЙ-ОЙ!", will become ["ОЙ!", "ОЙ-ОЙ-ОЙ!"]
-  //       return spelling.split(/(?<=!)/g).map((s) => s.trim());
-  //     } else {
-  //       return [spelling];
-  //     }
-  //   },
-  // },
+  {
+    dictionary: lezRuzBabakhanov as DictionaryV2,
+    fileName: 'lezgi_rus_dict_babakhanov_v2_1.json',
+    split: (spelling) => {
+      if (spelling.includes('(')) {
+        return splitParenthesesSpelling(spelling);
+      } else {
+        // Example:
+        // Spelling that looks like "АБАСИ" will become ["АБАСИ"]
+        return [spelling];
+      }
+    },
+  },
+  {
+    dictionary: rusLezgiHajyiev as DictionaryV2,
+    fileName: 'rus_lezgi_dict_hajiyev_v2_1.json',
+    split: (spelling) => {
+      if (spelling.includes(',')) {
+        // Example:
+        // Spelling that looks like "ЯМКА, ЯМОЧКА", will become ["ЯМКА", "ЯМОЧКА"]
+        return spelling.split(',').map((s) => s.trim());
+      } else if (spelling.includes('! ')) {
+        // Example:
+        // Spelling that looks like "ОЙ! ОЙ-ОЙ-ОЙ!", will become ["ОЙ!", "ОЙ-ОЙ-ОЙ!"]
+        return spelling.split(/(?<=!)/g).map((s) => s.trim());
+      } else {
+        return [spelling];
+      }
+    },
+  },
   {
     dictionary: tabRusHanShal as DictionaryV2,
     fileName: 'tab_rus_dict_hanmagomedov_shalbuzov_v2_1.json',

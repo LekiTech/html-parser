@@ -7,7 +7,7 @@ import tabRusHanShal from './cleanTagsOutput/tab_rus_dict_hanmagomedov_shalbuzov
 import { writeJSONFile } from '../../utils';
 
 const dictionaries: { dictionary: DictionaryV2; fileName: string }[] = [
-  // { dictionary: rusLezgiHajyiev as DictionaryV2, fileName: 'rus_lezgi_dict_hajiyev_v2.json' },
+  { dictionary: rusLezgiHajyiev as DictionaryV2, fileName: 'rus_lezgi_dict_hajiyev_v2.json' },
   {
     dictionary: tabRusHanShal as DictionaryV2,
     fileName: 'tab_rus_dict_hanmagomedov_shalbuzov_v2.json',

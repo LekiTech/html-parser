@@ -1,246 +1,246 @@
-spelling;spellingWithRandomChars;spellingWithRandomCharsIgnoreSpaces;inflectionsWithRandomChars;definitionsContainingExpressions;definitionsStartingWithParenthesis;definitionsStartingWithRandomChars;examplesContainingExpressions;definitionsStartingWithTags;stringsEndingWithCurlyBraces;examplesStoredAsDefinitions
--А;false;false;;;;-ка, же;;;;
-АВАЙ;false;false;-и, ав'яр;;;;;;;
-АДАШ'ВАЛ;true;true;;;;;;;;
-АЛАПIУБ,АЛАУБ;false;false;;;;<о.ф.> {алалапIуб/алалауб} <ид.> {алапIувал/алаувал};;<о.ф.> {алалапIуб/алалауб} <ид.> {алапIувал/алаувал};;
-АННАМЙШ'ВАЛ;true;true;;;;;;;;
-АЛЧАГЪ'ВАЛ;true;true;;;;;;;;
-АМАН;false;false;;;(выражает страдание, мольбу);(выражает страдание, мольбу);;;;
-АРГЪАЖ'ВАЛ;true;true;;;;;;;;
-АРЙ;false;false;;;;-ка;;;;
-АРТМЙШ'ВАЛ;true;true;;;;;;;;
-АРТУХЪ'ВАЛ;true;true;;;;;;;;
-АРАЛУГЬ'ВАЛ;true;true;;;;;;;;
-АСТАМ;false;false;;;(металлическая лопаточка для выскребания остатков теста);(металлическая лопаточка для выскребания остатков теста);;;;
-АХ'ВАХ;true;true;;;;;;;;
-АХ'ВАХАР;true;true;;;;;;;;
-АХ'ВАХЖВИ;true;true;;;;;;;;
-АХ'ВАХШИВ;true;true;;;;;;;;
-АХМАКЬ'ВАЛ;true;true;;;;;;;;
-АЧМЙШ'ВАЛ;true;true;;;;;;;;
-АЬЖАБ;false;false;;;(выражает чувство восхищения, радости) ох, какой!, ох, как!;(выражает чувство восхищения, радости) ох, какой!, ох, как!;;;;
-АЬЖ'ВЙ;true;true;;;;;;;;
-АЬЛЕЙКУМ САЛАМ;true;false;;;;;;;;
-БАЖАНАГЪ'ВАЛ;true;true;;;;;;;;
-БАЖАРМЙШ'ВАЛ;true;true;;;;;;;;
-БАЦIАК'ВАЛ;true;true;;;;;;;;
-БАШИБУЗУКЬ'ВАЛ;true;true;;;;;;;;
-БАСРУХ'ВАЛ;true;true;;;;;;;;
-БАТРАК'ВАЛ;true;true;;;;;;;;
-БЕГ'ВАЛ;true;true;;;;;;;;
-БЕГЕЛМЙШ'ВАЛ;true;true;;;;;;;;
-БЕЗЕТМЙШ'ВАЛ;true;true;;;;;;;;
-БЕРЦIЯХ'ВАЛ;true;true;;;;;;;;
-БИТМЙШ'ВАЛ;true;true;;;;;;;;
-БИТIАР ОСПА;true;false;;;;;;;;
-БИЦӀИВАЛ;true;true;;;;;;;;
-БИЦӀИДИ;true;true;;;;;;;;
-БИЦӀИДИМИДИ;true;true;;;;;;;;
-БИЦӀИНУ;true;true;;;;;;;;
-БИЦӀИШИН;true;true;;;;;;;;
-БИЧ'ВАЛ;true;true;;;;;;;;
-БУЛЛУГЪ'ВАЛ;true;true;;;;;;;;
-БУГЪМЙШ'ВАЛ;true;true;;;;;;;;
-БУШ'ВАЛ;true;true;;;;;;;;
-ВАТАНДАШ'ВАЛ;true;true;;;;;;;;
-ВАКЙЛ;false;false;;;;;{ООН-диъ Урусатдйн Федерацияйин вакйл} представитель Российской Федерации в ООН;;;
-ВЕРДЙШ'ВАЛ;true;true;;;;;;;;
-ВУБЖУВ,ВУРЖУВ;false;false;диал.;;;;;;;
-ГАТЕНЧ'ВАЛ;true;true;;;;;;;;
-ГАЦӀ;true;true;;;;;;;;
-ГАШ'ВАЛ;true;true;;;;;;;;
-ГЕГЬЕНШ'ВАЛ;true;true;;;;;;;;
-ГЙЖ'ВАЛ;true;true;;;;;;;;
-ГЕНГ'ВАЛ;true;true;;;;;;;;
-ГЕРЕК'ВАЛ;true;true;;;;;;;;
-ГЕРЧЕК'ВАЛ;true;true;;;;;;;;
-ГУДЛАР-ЦӀУДЛАР;true;true;;;;;;;;
-ГЮЛГЕРИ;false;false;;;(сорт яровой пшеницы);(сорт яровой пшеницы);;;;
-ГЮРЧЕГ'ВАЛ;true;true;;;;;;;;
-ГЮРЮШМИШ'ВАЛ;true;true;;;;;;;;
-ГУЧIБЯХ'ВАЛ;true;true;;;;;;;;
-ГУЧI'ВАЛ;true;true;;;;;;;;
-ГЪАВУМ-ГЪАРДАШ'ВАЛ;true;true;;;;;;;;
-ГЪАЛЛАЖ'ВАЛ;true;true;;;;;;;;
-ГЪАЛХМЙШ'ВАЛ;true;true;;;;;;;;
-ГЪАНЙХ'ВАЛ;true;true;;;;;;;;
-ГЪАРИШУГЪ'ВАЛ;true;true;;;;;;;;
-ГЪАЧАГЪ'ВАЛ;true;true;;;;;;;;
-ГЪВАРЧ'ВАЛ;true;true;;;;;;;;
-ГЪИР'ЯТ;true;true;;;;;;;;
-ГЪИР'ЯТЛУ;true;true;;;;;;;;
-ГЪИР'ЯТЛУВАЛ;true;true;;;;;;;;
-ГЪИР'ЯТЛУДИ;true;true;;;;;;;;
-ГЪИР'ЯТСУЗ;true;true;;;;;;;;
-ГЪИР'ЯТСУЗВАЛ;true;true;;;;;;;;
-ГЪИР'ЯТСУЗДИ;true;true;;;;;;;;
-ГЪУНАГЪЛУГЪ'ВАЛ;true;true;;;;;;;;
-ГЪУДУРМЙШ'ВАЛ;true;true;;;;;;;;
-ГЪУЧАГЪ'ВАЛ;true;true;;;;;;;;
-ГЪУРУМСАГЪ'ВАЛ;true;true;;;;;;;;
-ГЬАБЦӀУБ,ГЬАЦӀУБ;true;true;;;;;;;;
-ГЪЯЦӀАЛ;true;true;;;;;;;;
-ГЪЯЦӀАЛВАЛ;true;true;;;;;;;;
-ГЪЯЦӀАЛДИ;true;true;;;;;;;;
-ГЪЯЦӀЛИ;true;true;;;;;;;;
-ГЪЯЦӀЛЙВАЛ;true;true;;;;;;;;
-ГЪЯЦӀЛИДИ;true;true;;;;;;;;
-ГЪЯЦӀЛИШИН;true;true;;;;;;;;
-ГЪЯЦӀЛЮГЪ;true;true;;;;;;;;
-ГЬАМУШВ;false;false;;;;5то место;;;;
-ГЬАЧIАБККУБ,ГЬАЧIАРККУБ;false;false;;;;<о.ф.> {гьачIачIабккуб/гьачIачIарккуб} <и.т.> {гьачIабккувал/гьачIарккувал};;<о.ф.> {гьачIачIабккуб/гьачIачIарккуб} <и.т.> {гьачIабккувал/гьачIарккувал};;
-ГЬИТIИЛКНАКI'ВАЛ;true;true;;;;;;;;
-ГЬИЧ;false;false;;;(в сочетании с глаголами в о.ф.);(в сочетании с глаголами в о.ф.);;;;
-ГЬИЧ'ВАЛ;true;true;;;;;;;;
-ГЬЯКЬ'ВАЛ;true;true;;;;;;;;
-ДАБАКЬ'ВАЛ;true;true;;;;;;;;
-ДАРАЛМЙШ'ВАЛ;true;true;;;;;;;;
-ДИГИШ'ВАЛ;true;true;;;;;;;;
-ДИГМИШ'ВАЛ;true;true;;;;;;;;
-ДИЙИБГЪУБ,ДИЙИГЪУБ;false;false;;;;<о.ф> {дийййибгъуб/дийййигъуб} <и.д.> {дийибгъувал/дийигъувал};;<о.ф> {дийййибгъуб/дийййигъуб} <и.д.> {дийибгъувал/дийигъувал};;
-ДИШ'ВАЛ;true;true;;;;;;;;
-ДУЛАНМИШ'ВАЛ;true;true;;;;;;;;
-ДРАМАТУРГ'ВАЛ;true;true;;;;;;;;
-ДЮЗМЙШ'ВАЛ;true;true;;;;;;;;
-ДЮН'Я;true;true;;;;;;;;
-ДУШВ'АН;true;true;;;;;;;;
-ДЮШКЮНДАР'ВАЛ;true;true;;;;;;;;
-ЕРЛЕШМЙШ'ВАЛ;true;true;;;;;;;;
-ЖАСУ€ВАЛ;true;true;;;;;;;;
-ЖАННЗТ»;true;true;;;;;;;;
-ЗАГС;false;false;;ЗАГС (запись актов гражданского состояния) {□ загс апIуб} регистрировать брак в ЗАГСе;;;;;;
-ЗЕГЬМЕТКЕШ'ВАЛ;true;true;;;;;;;;
-ИГАГ'ВАЛ;true;true;;;;;;;;
-ИНАНМЙШ'ВАЛ;true;true;;;;;;;;
-ИХТИЯР;false;false;;;;;{СССР-йн агьалййриз рягьятвализ ихтияр а} граждане СССР имеют право на отдых;;;
-ИШБЯХ'ВАЛ;true;true;;;;;;;;
-ИШТИРАК'ВАЛ;true;true;;;;;;;;
-ЙИРСЙ ХЬУБ;true;false;;;;;;;;
-ЙИШВ-ЙИШВ'ИН;true;true;;;;;;;;
-КА(Б)ЦӀУБ;true;true;;;;;;;;
-КАРК;false;false;;;;—накк ккауб держать <кого-л.> в [своих] руках;;;;
-КЕВРЕК'ВАЛ;true;true;;;;;;;;
-КЕВШЕН;false;false;;;(чьё-либо) сжатое поле;(чьё-либо) сжатое поле;;;;
-КЕРЧЕГ'ВАЛ;true;true;;;;;;;;
-КЕФИКЮК'ВАЛ;true;true;;;;;;;;
-К$ТБ(Р)ЖУБ;true;true;;;;;;;;
-КЪАГЪ'ВАЛ;true;true;;;;;;;;
-КЬАТI'Й;true;true;;;;;;;;
-КЬАТI'ЙВАЛ;true;true;;;;;;;;
-КЬАТI'ЙДИ;true;true;;;;;;;;
-КЬЮБ;false;false;(-р, -д)-пи, -б, -р, -дар;;;;;;;
-КЬУВВАТ ИБШРЙ!;true;false;;;;;;;;
-КЬУР'АН;true;true;;;;;;;;
-КЬУТ;false;false;;;(приспособление для очистки риса, ячменя от шелухи);(приспособление для очистки риса, ячменя от шелухи);;;;
-КIАН'АН-КIУЛЙЗ;true;true;;;;;;;;
-КIАРУ ЛИКI;true;false;;;;;;;;
-ЛАЙЙКЬ'ВАЛ;true;true;;;;;;;;
-ЛЕНГ'ВАЛ;true;true;;;;;;;;
-ЛЕТЧИК'ВАЛ;true;true;;;;;;;;
-ЛИБГУБ,ЛИГУБ;false;false;;;;<о.ф.> дилибгуб/дилигуб <и.д.> либгувал/лигувал;;<о.ф.> дилибгуб/дилигуб <и.д.> либгувал/лигувал;;
-ЛУК'ВАЛ;true;true;;;;;;;;
-МАНЙГЪ'ВАЛ;true;true;;;;;;;;
-МЕНТЕШ'ВАЛ;true;true;;;;;;;;
-МЕНЬШЕВИК'ВАЛ;true;true;;;;;;;;
-МИЧIЙ;false;false;;;(проросшая пшеница для приготовления напитка ялуга);(проросшая пшеница для приготовления напитка ялуга);;;;
-МИНПЙКЬ'ВАЛ;true;true;;;;;;;;
-МУБАРАК'ВАЛ;true;true;;;;;;;;
-МУБЛАГЪ'ВАЛ;true;true;;;;;;;;
-МУТШАКЬ'ВАЛ;true;true;;;;;;;;
-МЮТIЮГЪ'ВАЛ;true;true;;;;;;;;
-МУШВ'АН;true;true;;;;;;;;
-МЮГЬТАЖ'ВАЛ;true;true;;;;;;;;
-НАБАЛУГЪ'ВАЛ;true;true;;;;;;;;
-НАБОРЩИК'ВАЛ;true;true;;;;;;;;
-МЯЛ'УЬМ;true;true;;;;;;;;
-МЯЛ'УЬМВАЛ;true;true;;;;;;;;
-НАДЙНЖ'ВАЛ;true;true;;;;;;;;
-НАЗУК'ВАЛ;true;true;;;;;;;;
-НАХУШ'ВАЛ;true;true;;;;;;;;
-НАЧАГЪ'ВАЛ;true;true;;;;;;;;
-НАЧ'ВАЛ;true;true;;;;;;;;
-НУНУЧ'ВАЛ;true;true;;;;;;;;
-НУШ'ВАЛ;true;true;;;;;;;;
-НЯГЬЯКЬ'ВАЛ;true;true;;;;;;;;
-ПАРЛАГЪ'ВАЛ;true;true;;;;;;;;
-ПАК'ВАЛ;true;true;;;;;;;;
-ПЕДАГОГ'ВАЛ;true;true;;;;;;;;
-ПЕЛТЕК'ВАЛ;true;true;;;;;;;;
-ПЕРЕВЙДЧИК'ВАЛ;true;true;;;;;;;;
-ПОЖАРНИК'ВАЛ;true;true;;;;;;;;
-ПУЧ'ВАЛ;true;true;;;;;;;;
-ПУБ;false;false;;;;<о.ф.> дарпуб <и.д.> пувал;;<о.ф.> дарпуб <и.д.> пувал;;
-ПУЗМЙШ'ВАЛ;true;true;;;;;;;;
-РАБГУБ,РАГУБ;false;false;;;;<о.ф.> дарабгуб/дарагуб <и.д.> рабгувал/рагувал;;<о.ф.> дарабгуб/дарагуб <и.д.> рабгувал/рагувал;;
-РЙШ'ВАЛ;true;true;;;;;;;;
-РОМАНТИК'ВАЛ;true;true;;;;;;;;
-РЮГЬЛАМЙШ'ВАЛ;true;true;;;;;;;;
-РЮ£Н;true;true;;;;;;;;
-РУШ'ВАТ;true;true;;;;;;;;
-РУШ'ВАТЧЙ;true;true;;;;;;;;
-РУШ'ВАТЧЙВАЛ;true;true;;;;;;;;
-САБИШВ'ИНДИ;true;true;;;;;;;;
-САГЪ'ВАЛ;true;true;;;;;;;;
-САРХУШ'ВАЛ;true;true;;;;;;;;
-СИВЙН ЦIИГЬ;true;false;;;;;;;;
-СЙГЬ'ВАЛ;true;true;;;;;;;;
-СУС5Т;true;true;;;;;;;;
-ТАБЙГЪ'ВАЛ;true;true;;;;;;;;
-ТАСДЙКЬ'ВАЛ;true;true;;;;;;;;
-ТАНЙШ'ВАЛ;true;true;;;;;;;;
-ТЕК'ВАЛ;true;true;;;;;;;;
-ТЕБРИК'ВАЛ;true;true;;;;;;;;
-ТЕШ'ВЙШ;true;true;;;;;;;;
-ТЙК'ВАЛ;true;true;;;;;;;;
-ТУХЪ'ВАЛ;true;true;;;;;;;;
-ТЮЛЕК'ВАЛ;true;true;;;;;;;;
-ТIАНКЬ'ВАЛ;true;true;;;;;;;;
-УЖ'ВАЛ;true;true;;;;;;;;
-УГЬРАШ'ВАЛ;true;true;;;;;;;;
-УГЬАР-ЦӀУГЬАР;true;true;;;;;;;;
-УРТАГЪ'ВАЛ;true;true;;;;;;;;
-УФАЛЛУГЪ'ВАЛ;true;true;;;;;;;;
-УХШАМЙШ'ВАЛ;true;true;;;;;;;;
-УТАНМЙШ'ВАЛ;true;true;;;;;;;;
-УШВ'УШВ;true;true;;;;;;;;
-УЯГЪ'ВАЛ;true;true;;;;;;;;
-УЬМУРЛУГЪ'ВАЛ;true;true;;;;;;;;
-УЬР'УЬР;true;true;;;;;;;;
-УЬЖ'ВАЛ;true;true;;;;;;;;
-УЬЗИАГЬ'ВАЛ;true;true;;;;;;;;
-ФАРАШ'ВАЛ;true;true;;;;;;;;
-ФАРКЬ'ВАЛ;true;true;;;;;;;;
-УЬ'УЬ;true;true;;;;;;;;
-ХАШАВ;false;false;хашви, хаш'вар;;;;;;;
-ХИРУРГ'ВАЛ;true;true;;;;;;;;
-ХИСПЙК'ВАЛ;true;true;;;;;;;;
-Х5ЧП'ВАЛ;true;true;;;;;;;;
-ХЪАБЦIНАЙИ ТЮФЕНГ;true;false;;;;;;;;
-ХЪУГЪ'ВАЛ;true;true;;;;;;;;
-ХЪЮЛ'АН;true;true;;;;;;;;
-ЧАВУШ'ВАЛ;true;true;;;;;;;;
-ЧАГЪЧ'ВАЛ;true;true;;;;;;;;
-ЧЙГ'ВАЛ;true;true;;;;;;;;
-ЧАШМИШ'ВАЛ;true;true;;;;;;;;
-ЧУЛАКЪ'ВАЛ;true;true;;;;;;;;
-ЧИПЛАГЪ'ВАЛ;true;true;;;;;;;;
-ЧЮРНЖ'ВАЛ;true;true;;;;;;;;
-ЧIЕРЕЪ;false;false;чIер'и, чIерйир;;;;;;;
-ШЕЙЪ;false;false;-ну, -нан, -шей'ар;;;;;;;
-ШИВ;false;false;;;;-шив аффикс, служащий для образования сущ., обозначающих лицо женского пола по национальности или месту жительства;;;;
-ШИРШЯХ'ВАЛ;true;true;;;;;;;;
-ШИК'ВАЛ;true;true;;;;;;;;
-ЭКСЙГ'ВАЛ;true;true;;;;;;;;
-ЮКЬВАН ГЬАР;true;false;;;;;;;;
-ЮКI;false;false;;;(ебцбан уьлчме) аршин, мера длины, равная 0,5 м;(ебцбан уьлчме) аршин, мера длины, равная 0,5 м;;;;
-ЮКIВ УЛУБКЬУБ;true;false;;;;;;;;
-ЮЛДАШ'ВАЛ;true;true;;;;;;;;
-ЮМШАГЪ'ВАЛ;true;true;;;;;;;;
-ЭЛЛЕШМИШ'ВАЛ;true;true;;;;;;;;
-ЭРГ'ВАЛ;true;true;;;;;;;;
-ЭРКЕК'ВАЛ;true;true;;;;;;;;
-ЯВАШ'ВАЛ;true;true;;;;;;;;
-ЯПАЛУГЪ'ВАЛ;true;true;;;;;;;;
-ЯРАШУГЪ'ВАЛ;true;true;;;;;;;;
-ЯЗУХЪ'ВАЛ;true;true;;;;;;;;
-ЯЛТАГЪ'ВАЛ;true;true;;;;;;;;
+spelling;spellingWithRandomChars;spellingWithRandomCharsIgnoreSpaces;inflectionsWithRandomChars;definitionsContainingExpressions;definitionsStartingWithParenthesis;definitionsStartingWithRandomChars;examplesContainingExpressions;definitionsStartingWithTags;stringsEndingWithCurlyBraces;examplesStoredAsDefinitions;tagInExpressionDetails
+-А;false;false;;;;-ка, же;;;;;false
+АВАЙ;false;false;-и, ав'яр;;;;;;;;false
+АДАШ'ВАЛ;true;true;;;;;;;;;false
+АЛАПIУБ,АЛАУБ;false;false;;;;<о.ф.> {алалапIуб/алалауб} <ид.> {алапIувал/алаувал};;<о.ф.> {алалапIуб/алалауб} <ид.> {алапIувал/алаувал};;;false
+АННАМЙШ'ВАЛ;true;true;;;;;;;;;false
+АЛЧАГЪ'ВАЛ;true;true;;;;;;;;;false
+АМАН;false;false;;;(выражает страдание, мольбу);(выражает страдание, мольбу);;;;;false
+АРГЪАЖ'ВАЛ;true;true;;;;;;;;;false
+АРЙ;false;false;;;;-ка;;;;;false
+АРТМЙШ'ВАЛ;true;true;;;;;;;;;false
+АРТУХЪ'ВАЛ;true;true;;;;;;;;;false
+АРАЛУГЬ'ВАЛ;true;true;;;;;;;;;false
+АСТАМ;false;false;;;(металлическая лопаточка для выскребания остатков теста);(металлическая лопаточка для выскребания остатков теста);;;;;false
+АХ'ВАХ;true;true;;;;;;;;;false
+АХ'ВАХАР;true;true;;;;;;;;;false
+АХ'ВАХЖВИ;true;true;;;;;;;;;false
+АХ'ВАХШИВ;true;true;;;;;;;;;false
+АХМАКЬ'ВАЛ;true;true;;;;;;;;;false
+АЧМЙШ'ВАЛ;true;true;;;;;;;;;false
+АЬЖАБ;false;false;;;(выражает чувство восхищения, радости) ох, какой!, ох, как!;(выражает чувство восхищения, радости) ох, какой!, ох, как!;;;;;false
+АЬЖ'ВЙ;true;true;;;;;;;;;false
+АЬЛЕЙКУМ САЛАМ;true;false;;;;;;;;;false
+БАЖАНАГЪ'ВАЛ;true;true;;;;;;;;;false
+БАЖАРМЙШ'ВАЛ;true;true;;;;;;;;;false
+БАЦIАК'ВАЛ;true;true;;;;;;;;;false
+БАШИБУЗУКЬ'ВАЛ;true;true;;;;;;;;;false
+БАСРУХ'ВАЛ;true;true;;;;;;;;;false
+БАТРАК'ВАЛ;true;true;;;;;;;;;false
+БЕГ'ВАЛ;true;true;;;;;;;;;false
+БЕГЕЛМЙШ'ВАЛ;true;true;;;;;;;;;false
+БЕЗЕТМЙШ'ВАЛ;true;true;;;;;;;;;false
+БЕРЦIЯХ'ВАЛ;true;true;;;;;;;;;false
+БИТМЙШ'ВАЛ;true;true;;;;;;;;;false
+БИТIАР ОСПА;true;false;;;;;;;;;false
+БИЦӀИВАЛ;true;true;;;;;;;;;false
+БИЦӀИДИ;true;true;;;;;;;;;false
+БИЦӀИДИМИДИ;true;true;;;;;;;;;false
+БИЦӀИНУ;true;true;;;;;;;;;false
+БИЦӀИШИН;true;true;;;;;;;;;false
+БИЧ'ВАЛ;true;true;;;;;;;;;false
+БУЛЛУГЪ'ВАЛ;true;true;;;;;;;;;false
+БУГЪМЙШ'ВАЛ;true;true;;;;;;;;;false
+БУШ'ВАЛ;true;true;;;;;;;;;false
+ВАТАНДАШ'ВАЛ;true;true;;;;;;;;;false
+ВАКЙЛ;false;false;;;;;{ООН-диъ Урусатдйн Федерацияйин вакйл} представитель Российской Федерации в ООН;;;;false
+ВЕРДЙШ'ВАЛ;true;true;;;;;;;;;false
+ВУБЖУВ,ВУРЖУВ;false;false;диал.;;;;;;;;false
+ГАТЕНЧ'ВАЛ;true;true;;;;;;;;;false
+ГАЦӀ;true;true;;;;;;;;;false
+ГАШ'ВАЛ;true;true;;;;;;;;;false
+ГЕГЬЕНШ'ВАЛ;true;true;;;;;;;;;false
+ГЙЖ'ВАЛ;true;true;;;;;;;;;false
+ГЕНГ'ВАЛ;true;true;;;;;;;;;false
+ГЕРЕК'ВАЛ;true;true;;;;;;;;;false
+ГЕРЧЕК'ВАЛ;true;true;;;;;;;;;false
+ГУДЛАР-ЦӀУДЛАР;true;true;;;;;;;;;false
+ГЮЛГЕРИ;false;false;;;(сорт яровой пшеницы);(сорт яровой пшеницы);;;;;false
+ГЮРЧЕГ'ВАЛ;true;true;;;;;;;;;false
+ГЮРЮШМИШ'ВАЛ;true;true;;;;;;;;;false
+ГУЧIБЯХ'ВАЛ;true;true;;;;;;;;;false
+ГУЧI'ВАЛ;true;true;;;;;;;;;false
+ГЪАВУМ-ГЪАРДАШ'ВАЛ;true;true;;;;;;;;;false
+ГЪАЛЛАЖ'ВАЛ;true;true;;;;;;;;;false
+ГЪАЛХМЙШ'ВАЛ;true;true;;;;;;;;;false
+ГЪАНЙХ'ВАЛ;true;true;;;;;;;;;false
+ГЪАРИШУГЪ'ВАЛ;true;true;;;;;;;;;false
+ГЪАЧАГЪ'ВАЛ;true;true;;;;;;;;;false
+ГЪВАРЧ'ВАЛ;true;true;;;;;;;;;false
+ГЪИР'ЯТ;true;true;;;;;;;;;false
+ГЪИР'ЯТЛУ;true;true;;;;;;;;;false
+ГЪИР'ЯТЛУВАЛ;true;true;;;;;;;;;false
+ГЪИР'ЯТЛУДИ;true;true;;;;;;;;;false
+ГЪИР'ЯТСУЗ;true;true;;;;;;;;;false
+ГЪИР'ЯТСУЗВАЛ;true;true;;;;;;;;;false
+ГЪИР'ЯТСУЗДИ;true;true;;;;;;;;;false
+ГЪУНАГЪЛУГЪ'ВАЛ;true;true;;;;;;;;;false
+ГЪУДУРМЙШ'ВАЛ;true;true;;;;;;;;;false
+ГЪУЧАГЪ'ВАЛ;true;true;;;;;;;;;false
+ГЪУРУМСАГЪ'ВАЛ;true;true;;;;;;;;;false
+ГЬАБЦӀУБ,ГЬАЦӀУБ;true;true;;;;;;;;;false
+ГЪЯЦӀАЛ;true;true;;;;;;;;;false
+ГЪЯЦӀАЛВАЛ;true;true;;;;;;;;;false
+ГЪЯЦӀАЛДИ;true;true;;;;;;;;;false
+ГЪЯЦӀЛИ;true;true;;;;;;;;;false
+ГЪЯЦӀЛЙВАЛ;true;true;;;;;;;;;false
+ГЪЯЦӀЛИДИ;true;true;;;;;;;;;false
+ГЪЯЦӀЛИШИН;true;true;;;;;;;;;false
+ГЪЯЦӀЛЮГЪ;true;true;;;;;;;;;false
+ГЬАМУШВ;false;false;;;;5то место;;;;;false
+ГЬАЧIАБККУБ,ГЬАЧIАРККУБ;false;false;;;;<о.ф.> {гьачIачIабккуб/гьачIачIарккуб} <и.т.> {гьачIабккувал/гьачIарккувал};;<о.ф.> {гьачIачIабккуб/гьачIачIарккуб} <и.т.> {гьачIабккувал/гьачIарккувал};;;false
+ГЬИТIИЛКНАКI'ВАЛ;true;true;;;;;;;;;false
+ГЬИЧ;false;false;;;(в сочетании с глаголами в о.ф.);(в сочетании с глаголами в о.ф.);;;;;false
+ГЬИЧ'ВАЛ;true;true;;;;;;;;;false
+ГЬЯКЬ'ВАЛ;true;true;;;;;;;;;false
+ДАБАКЬ'ВАЛ;true;true;;;;;;;;;false
+ДАРАЛМЙШ'ВАЛ;true;true;;;;;;;;;false
+ДИГИШ'ВАЛ;true;true;;;;;;;;;false
+ДИГМИШ'ВАЛ;true;true;;;;;;;;;false
+ДИЙИБГЪУБ,ДИЙИГЪУБ;false;false;;;;<о.ф> {дийййибгъуб/дийййигъуб} <и.д.> {дийибгъувал/дийигъувал};;<о.ф> {дийййибгъуб/дийййигъуб} <и.д.> {дийибгъувал/дийигъувал};;;false
+ДИШ'ВАЛ;true;true;;;;;;;;;false
+ДУЛАНМИШ'ВАЛ;true;true;;;;;;;;;false
+ДРАМАТУРГ'ВАЛ;true;true;;;;;;;;;false
+ДЮЗМЙШ'ВАЛ;true;true;;;;;;;;;false
+ДЮН'Я;true;true;;;;;;;;;false
+ДУШВ'АН;true;true;;;;;;;;;false
+ДЮШКЮНДАР'ВАЛ;true;true;;;;;;;;;false
+ЕРЛЕШМЙШ'ВАЛ;true;true;;;;;;;;;false
+ЖАСУ€ВАЛ;true;true;;;;;;;;;false
+ЖАННЗТ»;true;true;;;;;;;;;false
+ЗАГС;false;false;;ЗАГС (запись актов гражданского состояния) {□ загс апIуб} регистрировать брак в ЗАГСе;;;;;;;false
+ЗЕГЬМЕТКЕШ'ВАЛ;true;true;;;;;;;;;false
+ИГАГ'ВАЛ;true;true;;;;;;;;;false
+ИНАНМЙШ'ВАЛ;true;true;;;;;;;;;false
+ИХТИЯР;false;false;;;;;{СССР-йн агьалййриз рягьятвализ ихтияр а} граждане СССР имеют право на отдых;;;;false
+ИШБЯХ'ВАЛ;true;true;;;;;;;;;false
+ИШТИРАК'ВАЛ;true;true;;;;;;;;;false
+ЙИРСЙ ХЬУБ;true;false;;;;;;;;;false
+ЙИШВ-ЙИШВ'ИН;true;true;;;;;;;;;false
+КА(Б)ЦӀУБ;true;true;;;;;;;;;false
+КАРК;false;false;;;;—накк ккауб держать <кого-л.> в [своих] руках;;;;;false
+КЕВРЕК'ВАЛ;true;true;;;;;;;;;false
+КЕВШЕН;false;false;;;(чьё-либо) сжатое поле;(чьё-либо) сжатое поле;;;;;false
+КЕРЧЕГ'ВАЛ;true;true;;;;;;;;;false
+КЕФИКЮК'ВАЛ;true;true;;;;;;;;;false
+К$ТБ(Р)ЖУБ;true;true;;;;;;;;;false
+КЪАГЪ'ВАЛ;true;true;;;;;;;;;false
+КЬАТI'Й;true;true;;;;;;;;;false
+КЬАТI'ЙВАЛ;true;true;;;;;;;;;false
+КЬАТI'ЙДИ;true;true;;;;;;;;;false
+КЬЮБ;false;false;(-р, -д)-пи, -б, -р, -дар;;;;;;;;false
+КЬУВВАТ ИБШРЙ!;true;false;;;;;;;;;false
+КЬУР'АН;true;true;;;;;;;;;false
+КЬУТ;false;false;;;(приспособление для очистки риса, ячменя от шелухи);(приспособление для очистки риса, ячменя от шелухи);;;;;false
+КIАН'АН-КIУЛЙЗ;true;true;;;;;;;;;false
+КIАРУ ЛИКI;true;false;;;;;;;;;false
+ЛАЙЙКЬ'ВАЛ;true;true;;;;;;;;;false
+ЛЕНГ'ВАЛ;true;true;;;;;;;;;false
+ЛЕТЧИК'ВАЛ;true;true;;;;;;;;;false
+ЛИБГУБ,ЛИГУБ;false;false;;;;<о.ф.> дилибгуб/дилигуб <и.д.> либгувал/лигувал;;<о.ф.> дилибгуб/дилигуб <и.д.> либгувал/лигувал;;;false
+ЛУК'ВАЛ;true;true;;;;;;;;;false
+МАНЙГЪ'ВАЛ;true;true;;;;;;;;;false
+МЕНТЕШ'ВАЛ;true;true;;;;;;;;;false
+МЕНЬШЕВИК'ВАЛ;true;true;;;;;;;;;false
+МИЧIЙ;false;false;;;(проросшая пшеница для приготовления напитка ялуга);(проросшая пшеница для приготовления напитка ялуга);;;;;false
+МИНПЙКЬ'ВАЛ;true;true;;;;;;;;;false
+МУБАРАК'ВАЛ;true;true;;;;;;;;;false
+МУБЛАГЪ'ВАЛ;true;true;;;;;;;;;false
+МУТШАКЬ'ВАЛ;true;true;;;;;;;;;false
+МЮТIЮГЪ'ВАЛ;true;true;;;;;;;;;false
+МУШВ'АН;true;true;;;;;;;;;false
+МЮГЬТАЖ'ВАЛ;true;true;;;;;;;;;false
+НАБАЛУГЪ'ВАЛ;true;true;;;;;;;;;false
+НАБОРЩИК'ВАЛ;true;true;;;;;;;;;false
+МЯЛ'УЬМ;true;true;;;;;;;;;false
+МЯЛ'УЬМВАЛ;true;true;;;;;;;;;false
+НАДЙНЖ'ВАЛ;true;true;;;;;;;;;false
+НАЗУК'ВАЛ;true;true;;;;;;;;;false
+НАХУШ'ВАЛ;true;true;;;;;;;;;false
+НАЧАГЪ'ВАЛ;true;true;;;;;;;;;false
+НАЧ'ВАЛ;true;true;;;;;;;;;false
+НУНУЧ'ВАЛ;true;true;;;;;;;;;false
+НУШ'ВАЛ;true;true;;;;;;;;;false
+НЯГЬЯКЬ'ВАЛ;true;true;;;;;;;;;false
+ПАРЛАГЪ'ВАЛ;true;true;;;;;;;;;false
+ПАК'ВАЛ;true;true;;;;;;;;;false
+ПЕДАГОГ'ВАЛ;true;true;;;;;;;;;false
+ПЕЛТЕК'ВАЛ;true;true;;;;;;;;;false
+ПЕРЕВЙДЧИК'ВАЛ;true;true;;;;;;;;;false
+ПОЖАРНИК'ВАЛ;true;true;;;;;;;;;false
+ПУЧ'ВАЛ;true;true;;;;;;;;;false
+ПУБ;false;false;;;;<о.ф.> дарпуб <и.д.> пувал;;<о.ф.> дарпуб <и.д.> пувал;;;false
+ПУЗМЙШ'ВАЛ;true;true;;;;;;;;;false
+РАБГУБ,РАГУБ;false;false;;;;<о.ф.> дарабгуб/дарагуб <и.д.> рабгувал/рагувал;;<о.ф.> дарабгуб/дарагуб <и.д.> рабгувал/рагувал;;;false
+РЙШ'ВАЛ;true;true;;;;;;;;;false
+РОМАНТИК'ВАЛ;true;true;;;;;;;;;false
+РЮГЬЛАМЙШ'ВАЛ;true;true;;;;;;;;;false
+РЮ£Н;true;true;;;;;;;;;false
+РУШ'ВАТ;true;true;;;;;;;;;false
+РУШ'ВАТЧЙ;true;true;;;;;;;;;false
+РУШ'ВАТЧЙВАЛ;true;true;;;;;;;;;false
+САБИШВ'ИНДИ;true;true;;;;;;;;;false
+САГЪ'ВАЛ;true;true;;;;;;;;;false
+САРХУШ'ВАЛ;true;true;;;;;;;;;false
+СИВЙН ЦIИГЬ;true;false;;;;;;;;;false
+СЙГЬ'ВАЛ;true;true;;;;;;;;;false
+СУС5Т;true;true;;;;;;;;;false
+ТАБЙГЪ'ВАЛ;true;true;;;;;;;;;false
+ТАСДЙКЬ'ВАЛ;true;true;;;;;;;;;false
+ТАНЙШ'ВАЛ;true;true;;;;;;;;;false
+ТЕК'ВАЛ;true;true;;;;;;;;;false
+ТЕБРИК'ВАЛ;true;true;;;;;;;;;false
+ТЕШ'ВЙШ;true;true;;;;;;;;;false
+ТЙК'ВАЛ;true;true;;;;;;;;;false
+ТУХЪ'ВАЛ;true;true;;;;;;;;;false
+ТЮЛЕК'ВАЛ;true;true;;;;;;;;;false
+ТIАНКЬ'ВАЛ;true;true;;;;;;;;;false
+УЖ'ВАЛ;true;true;;;;;;;;;false
+УГЬРАШ'ВАЛ;true;true;;;;;;;;;false
+УГЬАР-ЦӀУГЬАР;true;true;;;;;;;;;false
+УРТАГЪ'ВАЛ;true;true;;;;;;;;;false
+УФАЛЛУГЪ'ВАЛ;true;true;;;;;;;;;false
+УХШАМЙШ'ВАЛ;true;true;;;;;;;;;false
+УТАНМЙШ'ВАЛ;true;true;;;;;;;;;false
+УШВ'УШВ;true;true;;;;;;;;;false
+УЯГЪ'ВАЛ;true;true;;;;;;;;;false
+УЬМУРЛУГЪ'ВАЛ;true;true;;;;;;;;;false
+УЬР'УЬР;true;true;;;;;;;;;false
+УЬЖ'ВАЛ;true;true;;;;;;;;;false
+УЬЗИАГЬ'ВАЛ;true;true;;;;;;;;;false
+ФАРАШ'ВАЛ;true;true;;;;;;;;;false
+ФАРКЬ'ВАЛ;true;true;;;;;;;;;false
+УЬ'УЬ;true;true;;;;;;;;;false
+ХАШАВ;false;false;хашви, хаш'вар;;;;;;;;false
+ХИРУРГ'ВАЛ;true;true;;;;;;;;;false
+ХИСПЙК'ВАЛ;true;true;;;;;;;;;false
+Х5ЧП'ВАЛ;true;true;;;;;;;;;false
+ХЪАБЦIНАЙИ ТЮФЕНГ;true;false;;;;;;;;;false
+ХЪУГЪ'ВАЛ;true;true;;;;;;;;;false
+ХЪЮЛ'АН;true;true;;;;;;;;;false
+ЧАВУШ'ВАЛ;true;true;;;;;;;;;false
+ЧАГЪЧ'ВАЛ;true;true;;;;;;;;;false
+ЧЙГ'ВАЛ;true;true;;;;;;;;;false
+ЧАШМИШ'ВАЛ;true;true;;;;;;;;;false
+ЧУЛАКЪ'ВАЛ;true;true;;;;;;;;;false
+ЧИПЛАГЪ'ВАЛ;true;true;;;;;;;;;false
+ЧЮРНЖ'ВАЛ;true;true;;;;;;;;;false
+ЧIЕРЕЪ;false;false;чIер'и, чIерйир;;;;;;;;false
+ШЕЙЪ;false;false;-ну, -нан, -шей'ар;;;;;;;;false
+ШИВ;false;false;;;;-шив аффикс, служащий для образования сущ., обозначающих лицо женского пола по национальности или месту жительства;;;;;false
+ШИРШЯХ'ВАЛ;true;true;;;;;;;;;false
+ШИК'ВАЛ;true;true;;;;;;;;;false
+ЭКСЙГ'ВАЛ;true;true;;;;;;;;;false
+ЮКЬВАН ГЬАР;true;false;;;;;;;;;false
+ЮКI;false;false;;;(ебцбан уьлчме) аршин, мера длины, равная 0,5 м;(ебцбан уьлчме) аршин, мера длины, равная 0,5 м;;;;;false
+ЮКIВ УЛУБКЬУБ;true;false;;;;;;;;;false
+ЮЛДАШ'ВАЛ;true;true;;;;;;;;;false
+ЮМШАГЪ'ВАЛ;true;true;;;;;;;;;false
+ЭЛЛЕШМИШ'ВАЛ;true;true;;;;;;;;;false
+ЭРГ'ВАЛ;true;true;;;;;;;;;false
+ЭРКЕК'ВАЛ;true;true;;;;;;;;;false
+ЯВАШ'ВАЛ;true;true;;;;;;;;;false
+ЯПАЛУГЪ'ВАЛ;true;true;;;;;;;;;false
+ЯРАШУГЪ'ВАЛ;true;true;;;;;;;;;false
+ЯЗУХЪ'ВАЛ;true;true;;;;;;;;;false
+ЯЛТАГЪ'ВАЛ;true;true;;;;;;;;;false

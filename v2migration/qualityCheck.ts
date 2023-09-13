@@ -66,6 +66,7 @@ class ExpressionAnalysisResult {
   spellingWithRandomChars: boolean;
   spellingWithRandomCharsIgnoreSpaces: boolean;
   inflectionsWithRandomChars?: string;
+  tagInExpressionDetails: boolean = false;
   private _definitionsContainingExpressions: string[] = [];
   private _definitionsStartingWithParenthesis: string[] = [];
   private _definitionsStartingWithRandomChars: string[] = [];
@@ -107,7 +108,8 @@ class ExpressionAnalysisResult {
       this.examplesContainingExpressions.length === 0 &&
       this.definitionsStartingWithTags.length === 0 &&
       this.stringsEndingWithCurlyBraces.length === 0 &&
-      this.examplesStoredAsDefinitions.length === 0
+      this.examplesStoredAsDefinitions.length === 0 &&
+      this.tagInExpressionDetails === false
     );
   }
 
@@ -123,6 +125,7 @@ class ExpressionAnalysisResult {
       this.definitionsStartingWithTags.join('|'),
       this.stringsEndingWithCurlyBraces.join('|'),
       this.examplesStoredAsDefinitions.join('|'),
+      this.tagInExpressionDetails,
     ].join(ExpressionAnalysisResult.csvSeparator);
     return firstColumn ? firstColumn + ExpressionAnalysisResult.csvSeparator + result : result;
   }
@@ -139,6 +142,7 @@ class ExpressionAnalysisResult {
       'definitionsStartingWithTags',
       'stringsEndingWithCurlyBraces',
       'examplesStoredAsDefinitions',
+      'tagInExpressionDetails',
     ].join(ExpressionAnalysisResult.csvSeparator);
     return firstColumn ? firstColumn + ExpressionAnalysisResult.csvSeparator + result : result;
   }
@@ -154,6 +158,7 @@ const stats = {
   definitionsStartingWithTags: 0,
   stringsEndingWithCurlyBraces: 0,
   examplesStoredAsDefinitions: 0,
+  tagsInExpressionDetails: 0,
 };
 
 const includeDefinitionsStartingWithRandomChars = true;
@@ -170,6 +175,10 @@ for (const dictionary of dictionaries) {
       for (const expressionDetails of expression.details) {
         if (expressionDetails.inflection?.match(/[^а-яёI\/, -]/)) {
           expressionAR.inflectionsWithRandomChars = expressionDetails.inflection;
+        }
+        // @ts-ignore
+        if (expressionDetails.tags != undefined) {
+          expressionAR.tagInExpressionDetails = true;
         }
         if (expressionDetails.examples) {
           for (const example of expressionDetails.examples) {
@@ -230,6 +239,7 @@ for (const dictionary of dictionaries) {
         stats.definitionsStartingWithTags += expressionAR.definitionsStartingWithTags.length;
         stats.stringsEndingWithCurlyBraces += expressionAR.stringsEndingWithCurlyBraces.length;
         stats.examplesStoredAsDefinitions += expressionAR.examplesStoredAsDefinitions.length;
+        stats.tagsInExpressionDetails += expressionAR.tagInExpressionDetails ? 1 : 0;
       }
     } catch (e) {
       console.log(
