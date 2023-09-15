@@ -147,26 +147,30 @@ class ExpressionAnalysisResult {
     return firstColumn ? firstColumn + ExpressionAnalysisResult.csvSeparator + result : result;
   }
 }
-const stats = {
-  expressionsWithRandomChars: 0,
-  expressionsWithRandomCharsIgnoreSpaces: 0,
-  inflectionsWithRandomChars: 0,
-  definitionsContainingExpressions: 0,
-  definitionsStartingWithParenthesis: 0,
-  definitionsStartingWithRandomChars: 0,
-  examplesContainingExpressions: 0,
-  definitionsStartingWithTags: 0,
-  stringsEndingWithCurlyBraces: 0,
-  examplesStoredAsDefinitions: 0,
-  tagsInExpressionDetails: 0,
-};
 
 const includeDefinitionsStartingWithRandomChars = true;
 
 for (const dictionary of dictionaries) {
+  const stats = {
+    amountOfExpressions: 0,
+    amountOfSpellings: 0,
+    expressionsWithRandomChars: 0,
+    expressionsWithRandomCharsIgnoreSpaces: 0,
+    inflectionsWithRandomChars: 0,
+    definitionsContainingExpressions: 0,
+    definitionsStartingWithParenthesis: 0,
+    definitionsStartingWithRandomChars: 0,
+    examplesContainingExpressions: 0,
+    definitionsStartingWithTags: 0,
+    stringsEndingWithCurlyBraces: 0,
+    examplesStoredAsDefinitions: 0,
+    tagsInExpressionDetails: 0,
+  };
   const analysisResults: Record<string, ExpressionAnalysisResult> = {};
   for (const expression of dictionary.expressions) {
     try {
+      stats.amountOfExpressions++;
+      stats.amountOfSpellings += expression.spelling.length;
       const expressionAR = new ExpressionAnalysisResult();
       expression.spelling.forEach((spelling) => {
         expressionAR.spellingWithRandomChars = !!spelling.match(/[^а-яА-ЯёЁI!?\(\)-]/);
