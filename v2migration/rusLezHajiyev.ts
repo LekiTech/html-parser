@@ -210,7 +210,7 @@ const dictV2 = convertDictionaryV1ToV2(dictV1, customMapper, {
   authors: 'Гаджиев М.М.',
   providedBy: 'Сайт Лезги ким с Майрудином Бабахановым (https://lezgikim.narod.ru/)',
   providedByURL: 'https://lezgikim.narod.ru/Pages/Biblioteka_Slovari.html',
-  processedBy: '',
+  processedBy: 'A.N. Rasulov, K.Z. Tadzjibov',
 });
 const resultPath = path.join(__dirname, './output/rus_lezgi_dict_hajiyev_v2.json');
 writeJSONFile(resultPath, dictV2);
