@@ -71,7 +71,7 @@ function getExamplesFromDictionary(
 
 const csvData: ExampleResult[] = [
   ...getExamplesFromDictionary(dictionaries.lezRus, 'src', 'trl'),
-  // ...getExamplesFromDictionary(dictionaries.rusLez, 'trl', 'src'),
+  ...getExamplesFromDictionary(dictionaries.rusLez, 'trl', 'src'),
 ];
 
 console.log(`Total of ${csvData.length} parallel lez-rus translations`);
